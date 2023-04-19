@@ -49,19 +49,19 @@ public class AllLoans extends AppCompatActivity {
         Button back = (Button) findViewById(R.id.backButton);
         Button total = (Button) findViewById(R.id.total);
         Button reportBtn = (Button) findViewById(R.id.report);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-            if (!Environment.isExternalStorageManager())
-            {
-                try{
-                    Method m = StrictMode.class.getMethod("disableDeathOnFileUriExposure");
-                    m.invoke(null);
-                }catch(Exception e){
-                    e.printStackTrace();
-                }
-                Intent intent = new Intent(Settings.ACTION_MANAGE_ALL_FILES_ACCESS_PERMISSION);
-                startActivity(intent);
-            }
-        }
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+//            if (!Environment.isExternalStorageManager())
+//            {
+//                try{
+//                    Method m = StrictMode.class.getMethod("disableDeathOnFileUriExposure");
+//                    m.invoke(null);
+//                }catch(Exception e){
+//                    e.printStackTrace();
+//                }
+//                Intent intent = new Intent(Settings.ACTION_MANAGE_ALL_FILES_ACCESS_PERMISSION);
+//                startActivity(intent);
+//            }
+//        }
 
         reportBtn.setOnClickListener(new View.OnClickListener() {
             @Override
