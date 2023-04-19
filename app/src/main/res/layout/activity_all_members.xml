@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/app_default"
+    tools:context=".admin.AllMembers">
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <Button
+            android:id="@+id/backButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#000000"
+            android:textColor="#ffffff"
+            android:gravity="left|center"
+            android:paddingLeft="20dp"
+            android:text="GO BACK" />
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/print"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/total"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/title_color"
+            android:textColor="#ffffff"
+            android:gravity="center"
+            android:justificationMode="inter_word"
+            android:padding="20dp"
+            android:text="Loading..." />
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:divider="#000"
+            android:id="@+id/usersListView"
+            android:dividerHeight="1dp"/>
+    </LinearLayout>
+        <Button
+            android:id="@+id/report"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/cancel"
+            android:textColor="#ffffff"
+            android:enabled="false"
+            android:gravity="center"
+            android:text="Generate Report" />
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

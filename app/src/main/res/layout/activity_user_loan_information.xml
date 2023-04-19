@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#009d5b"
+    tools:context=".UserLoanInformation">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/registration"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:textStyle="bold"
+            android:textColor="@color/title_color"
+            android:shadowColor="#fff"
+            android:shadowDx="0.0"
+            android:shadowDy="0.0"
+            android:shadowRadius="80"
+            android:textSize="24dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="20dp"
+            android:text="LOAN INFORMATION" />
+
+        <EditText
+            android:id="@+id/fullName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/baseline_drive_file_rename_outline_24"
+            android:ems="10"
+            android:background="@drawable/edittext_border"
+            android:hint="Full Name"
+            android:enabled="false"
+            android:digits=". qwertzuiopasdfghjklyxcvbnmABCDEFGHIJKLMNOPQRSTUVWXYZ"
+            android:padding="15dp"
+            android:drawablePadding="10dp"
+            android:layout_marginBottom="10dp"
+            android:inputType="text" />
+
+        <EditText
+            android:id="@+id/guarantorName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/baseline_check_circle_24"
+            android:ems="10"
+            android:background="@drawable/edittext_border"
+            android:hint="Guarator Name"
+            android:enabled="false"
+            android:digits=". qwertzuiopasdfghjklyxcvbnmABCDEFGHIJKLMNOPQRSTUVWXYZ"
+            android:padding="15dp"
+            android:drawablePadding="10dp"
+            android:layout_marginBottom="10dp"
+            android:inputType="text" />
+
+        <EditText
+            android:id="@+id/loanAmount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/baseline_monetization_on_24"
+            android:ems="10"
+            android:background="@drawable/edittext_border"
+            android:hint="Loan Amount"
+            android:enabled="false"
+            android:digits=",.- 0123456789qwertzuiopasdfghjklyxcvbnmABCDEFGHIJKLMNOPQRSTUVWXYZ"
+            android:padding="15dp"
+            android:drawablePadding="10dp"
+            android:layout_marginBottom="10dp"
+            android:inputType="number" />
+        <EditText
+            android:id="@+id/numberMonths"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/baseline_view_week_24"
+            android:ems="10"
+            android:background="@drawable/edittext_border"
+            android:hint="Months to be paid"
+            android:enabled="false"
+            android:digits=",.- 0123456789qwertzuiopasdfghjklyxcvbnmABCDEFGHIJKLMNOPQRSTUVWXYZ"
+            android:padding="15dp"
+            android:drawablePadding="10dp"
+            android:layout_marginBottom="10dp"
+            android:inputType="text" />
+
+        <EditText
+            android:id="@+id/reqDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/baseline_calendar_month_24"
+            android:ems="10"
+            android:background="@drawable/edittext_border"
+            android:hint="Date requested"
+            android:padding="15dp"
+            android:enabled="false"
+            android:drawablePadding="10dp"
+            android:layout_marginBottom="10dp"
+            android:inputType="text" />
+
+        <EditText
+            android:id="@+id/interest"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/baseline_playlist_add_check_24"
+            android:ems="10"
+            android:background="@drawable/edittext_border"
+            android:hint="Interest"
+            android:enabled="false"
+            android:digits=",.- 0123456789qwertzuiopasdfghjklyxcvbnmABCDEFGHIJKLMNOPQRSTUVWXYZ"
+            android:padding="15dp"
+            android:drawablePadding="10dp"
+            android:layout_marginBottom="10dp"
+            android:inputType="text" />
+
+        <EditText
+            android:id="@+id/serviceCharge"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/baseline_playlist_add_check_24"
+            android:ems="10"
+            android:background="@drawable/edittext_border"
+            android:hint="Service Charge"
+            android:enabled="false"
+            android:digits=",.- 0123456789qwertzuiopasdfghjklyxcvbnmABCDEFGHIJKLMNOPQRSTUVWXYZ"
+            android:padding="15dp"
+            android:drawablePadding="10dp"
+            android:layout_marginBottom="10dp"
+            android:inputType="text" />
+
+        <EditText
+            android:id="@+id/surcharge"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/baseline_playlist_add_check_24"
+            android:ems="10"
+            android:background="@drawable/edittext_border"
+            android:hint="Surcharge"
+            android:enabled="false"
+            android:digits=",.- 0123456789qwertzuiopasdfghjklyxcvbnmABCDEFGHIJKLMNOPQRSTUVWXYZ"
+            android:padding="15dp"
+            android:drawablePadding="10dp"
+            android:layout_marginBottom="10dp"
+            android:inputType="text" />
+        <EditText
+            android:id="@+id/monthly"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/baseline_edit_calendar_24"
+            android:ems="10"
+            android:background="@drawable/edittext_border"
+            android:hint="Monthly Payment"
+            android:enabled="false"
+            android:digits=",.- 0123456789qwertzuiopasdfghjklyxcvbnmABCDEFGHIJKLMNOPQRSTUVWXYZ"
+            android:padding="15dp"
+            android:drawablePadding="10dp"
+            android:layout_marginBottom="10dp"
+            android:inputType="text" />
+
+        <Button
+            android:id="@+id/backButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#000000"
+            android:textColor="#ffffff"
+            android:layout_marginTop="30dp"
+            android:text="GO BACK" />
+
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

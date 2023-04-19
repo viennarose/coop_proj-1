@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="#0b804f"
+    android:layout_height="match_parent"
+    tools:context=".user.ui.dashboard.DashboardFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="top">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:orientation="horizontal"
+            android:background="@color/app_default"
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="200dp"
+                android:layout_height="150dp"
+                app:srcCompat="@drawable/icon"
+                tools:ignore="MissingConstraints" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@color/app_default">
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_gravity="right"
+                    android:background="@color/app_default">
+                    <TextView
+                        android:id="@+id/accBtn"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textAlignment="textEnd"
+                        android:textStyle="bold"
+                        android:textColor="#fff"
+                        android:textSize="15dp"
+                        android:drawableStart="@drawable/baseline_settings_24"
+                        android:background="@color/sub_default"
+                        android:drawablePadding="5dp"
+                        android:padding="5dp"
+                        android:text="Account Settings" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_gravity="right"
+                    android:background="@color/app_default">
+                    <TextView
+                        android:id="@+id/logoutButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textAlignment="textEnd"
+                        android:textStyle="bold"
+                        android:textColor="#fff"
+                        android:background="#a61616"
+                        android:drawableStart="@drawable/baseline_logout_24"
+                        android:textSize="15dp"
+                        android:drawablePadding="5dp"
+                        android:padding="5dp"
+                        android:text="Log-out" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:orientation="vertical">
+            <Button
+                android:id="@+id/loanreq"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#000000"
+                android:textColor="#ffffff"
+                android:gravity="left|center"
+                android:paddingLeft="20dp"
+                android:text="REQUESTED LOANS [pending]"/>
+            <ListView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:divider="#000"
+                android:id="@+id/reqloanListView"
+                android:dividerHeight="1dp"/>
+        </LinearLayout>
+
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:orientation="vertical">
+            <Button
+                android:id="@+id/loantext"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#000000"
+                android:textColor="#ffffff"
+                android:gravity="left|center"
+                android:paddingLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:text="LOANS" />
+            <ListView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:divider="#000"
+                android:id="@+id/loanListView"
+                android:dividerHeight="1dp"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

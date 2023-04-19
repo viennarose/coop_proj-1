@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#202020"
+    android:padding="20dp"
+    tools:context=".AccountSettings">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:padding="20dp"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/registration"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:shadowColor="#fff"
+            android:shadowDx="0.0"
+            android:shadowDy="0.0"
+            android:shadowRadius="80"
+            android:textSize="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:text="ACCOUNT INFORMATION" />
+
+        <EditText
+            android:id="@+id/fullName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/baseline_drive_file_rename_outline_24"
+            android:ems="10"
+            android:background="@drawable/edittext_border"
+            android:hint="Full Name"
+            android:textColorHint="@color/white"
+            android:padding="15dp"
+            android:digits=". qwertzuiopasdfghjklyxcvbnmABCDEFGHIJKLMNOPQRSTUVWXYZ"
+            android:enabled="false"
+            android:drawablePadding="10dp"
+            android:layout_marginBottom="10dp"
+            android:inputType="text" />
+
+        <EditText
+            android:id="@+id/address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/baseline_add_home_24"
+            android:ems="10"
+            android:background="@drawable/edittext_border"
+            android:hint="Address"
+            android:textColorHint="@color/white"
+            android:digits=",.- 0123456789qwertzuiopasdfghjklyxcvbnmABCDEFGHIJKLMNOPQRSTUVWXYZ"
+            android:padding="15dp"
+            android:enabled="false"
+            android:drawablePadding="10dp"
+            android:layout_marginBottom="10dp"
+            android:inputType="text" />
+
+        <EditText
+            android:id="@+id/age"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/edittext_border"
+            android:drawableStart="@drawable/baseline_attribution_24"
+            android:drawablePadding="10dp"
+            android:ems="10"
+            android:enabled="false"
+            android:hint="Age"
+            android:textColorHint="@color/white"
+            android:inputType="number"
+            android:padding="15dp" />
+
+        <EditText
+            android:id="@+id/phoneNumber"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/baseline_add_ic_call_24"
+            android:ems="10"
+            android:background="@drawable/edittext_border"
+            android:hint="Phone Number (09xxxxxxxxx)"
+            android:textColorHint="@color/white"
+            android:enabled="false"
+            android:maxLength="11"
+            android:padding="15dp"
+            android:drawablePadding="10dp"
+            android:layout_marginBottom="10dp"
+            android:inputType="number|phone" />
+
+        <EditText
+            android:id="@+id/email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/edittext_border"
+            android:drawableStart="@drawable/baseline_email_24"
+            android:drawablePadding="10dp"
+            android:ems="10"
+            android:enabled="false"
+            android:hint="Email"
+            android:textColorHint="@color/white"
+            android:inputType="textEmailAddress"
+            android:padding="15dp" />
+
+        <TextView
+            android:id="@+id/acctitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:shadowColor="#fff"
+            android:shadowDx="0.0"
+            android:shadowDy="0.0"
+            android:shadowRadius="80"
+            android:textSize="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:text="LOG-IN INFORMATION" />
+        <EditText
+            android:id="@+id/username"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/baseline_account_circle_24"
+            android:ems="10"
+            android:background="@drawable/edittext_border"
+            android:hint="Username"
+            android:textColorHint="@color/white"
+            android:digits="_.-0123456789qwertzuiopasdfghjklyxcvbnmABCDEFGHIJKLMNOPQRSTUVWXYZ"
+            android:enabled="false"
+            android:padding="15dp"
+            android:maxLength="15"
+            android:drawablePadding="10dp"
+            android:layout_marginBottom="10dp"
+            android:inputType="text" />
+
+        <EditText
+            android:id="@+id/password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/baseline_lock_24"
+            android:ems="10"
+            android:padding="15dp"
+            android:enabled="false"
+            android:maxLength="25"
+            android:drawablePadding="10dp"
+            android:background="@drawable/edittext_border"
+            android:hint="Password"
+            android:textColorHint="@color/white"
+            android:inputType="textPassword" />
+
+        <Switch
+            android:id="@+id/passwordSwitch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="15dp"
+            android:text="SHOW PASSWORD"
+            android:textColor="@color/white"
+            android:textAlignment="textEnd" />
+
+        <Button
+            android:id="@+id/updateButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#000000"
+            android:textColor="#ffff"
+            android:text="UPDATE ACCOUNT" />
+
+        <TextView
+            android:id="@+id/backButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:textStyle="bold"
+            android:textColor="#C8C8C8"
+            android:layout_marginTop="10dp"
+            android:text="GO BACK TO DASHBOARD"/>
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
