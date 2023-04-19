@@ -26,6 +26,7 @@ public class AdminMainActivity extends AppCompatActivity {
         Button loansBtn = (Button) findViewById(R.id.loansButton);
         Button membersBtn = (Button) findViewById(R.id.membersButton);
         Button accBtn = (Button) findViewById(R.id.accButton);
+        Button totalsBtn = (Button) findViewById(R.id.totalsBtn);
         TextView logout = (TextView) findViewById(R.id.loutButton);
 
         logout.setOnClickListener(new View.OnClickListener() {

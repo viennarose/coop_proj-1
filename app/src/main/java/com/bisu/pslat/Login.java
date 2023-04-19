@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.method.PasswordTransformationMethod;
 import android.util.Log;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
@@ -17,6 +18,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -37,14 +39,16 @@ public class Login extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        mAuth = FirebaseAuth.getInstance();
 
-        EditText username = (EditText) findViewById(R.id.username);
+
+        EditText email = (EditText) findViewById(R.id.username);
         EditText password = (EditText) findViewById(R.id.password);
         TextView createAcc = (TextView) findViewById(R.id.createAcc);
         Button loginButton = (Button) findViewById(R.id.loginButton);
         ImageView adminBtn = (ImageView) findViewById(R.id.adminButton);
         Switch simpleSwitch = (Switch) findViewById(R.id.passwordSwitch);
+
+        mAuth = FirebaseAuth.getInstance();
 
         adminBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -93,74 +97,46 @@ public class Login extends AppCompatActivity {
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(username.getText().toString().matches("")){
-                    Toast.makeText(Login.this, "Input username", Toast.LENGTH_SHORT).show();
-                }
-                else if(password.getText().toString().matches("")){
-                    Toast.makeText(Login.this, "Input password", Toast.LENGTH_SHORT).show();
-                }
-                else {
-                    DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
-                    mDatabase.child("users").orderByChild("username").equalTo(AccountSettings.encode(username.getText().toString()))
-                            .addListenerForSingleValueEvent(new ValueEventListener() {
 
-                                @Override
-                                public void onDataChange(DataSnapshot dataSnapshot) {
-                                    if(dataSnapshot.exists()){
-                                        String user_info = dataSnapshot.getValue().toString();
-                                        String removebracket = user_info.substring(1,user_info.length()-1);
-                                        String[] extract_id = removebracket.split(",");
-                                        String entered_email = extract_id[8].split("=")[1];
-                                        String entered_password = password.getText().toString();
-                                        Log.d("KINI: ", removebracket);
-                                        mAuth.signInWithEmailAndPassword(entered_email, entered_password)
-                                                .addOnCompleteListener(Login.this, new OnCompleteListener<AuthResult>() {
-                                                    @Override
-                                                    public void onComplete(@NonNull Task<AuthResult> task) {
-                                                        if (task.isSuccessful()) {
-                                                            // Sign in success, update UI with the signed-in user's information
-                                                            FirebaseUser user = mAuth.getCurrentUser();
-                                                            Toast.makeText(Login.this, "Logged-in Successfully", Toast.LENGTH_SHORT).show();
+                String Email = email.getText().toString();
+                String Pass = password.getText().toString();
 
-                                                            Intent i = new Intent(Login.this, UserDashboard.class);
+                if (!Email.isEmpty() && Patterns.EMAIL_ADDRESS.matcher(Email).matches()) {
 
-                                                            // on below line we are
-                                                            // starting a new activity.
-                                                            startActivity(i);
-
-                                                            // on the below line we are finishing
-                                                            // our current activity.
-                                                            finish();
-                                                        } else {
-                                                            // If sign in fails, display a message to the user.
-                                                            Toast.makeText(Login.this, "Authentication failed.",
-                                                                    Toast.LENGTH_SHORT).show();
-                                                        }
-                                                    }
-                                                });
-                                    } else {
-                                        Toast.makeText(Login.this, "Account doesn't exists", Toast.LENGTH_SHORT).show();
+                    if (!Pass.isEmpty()) {
+                        mAuth.signInWithEmailAndPassword(Email, Pass)
+                                .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
+                                    @Override
+                                    public void onSuccess(AuthResult authResult) {
+                                        Toast.makeText(Login.this, "Login Successful", Toast.LENGTH_SHORT).show();
+                                        startActivity(new Intent(Login.this, UserDashboard.class));
+                                        finish();
                                     }
-                                }
-
-                                @Override
-                                public void onCancelled(@NonNull DatabaseError error) {
-
-                                }
-                            });
+                                }).addOnFailureListener(new OnFailureListener() {
+                                    @Override
+                                    public void onFailure(@NonNull Exception e) {
+                                        Toast.makeText(Login.this, "Login Failed", Toast.LENGTH_SHORT).show();
+                                    }
+                                });
+                    } else {
+                        password.setError("Empty fields are not allowed");
+                    }
+                } else if (Email.isEmpty()) {
+                    email.setError("Empty fields are not allowed");
+                } else {
+                    email.setError("Please enter correct email");
                 }
             }
         });
-    }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        if(user != null){
-            Intent intent = new Intent(Login.this, UserDashboard.class);
-            startActivity(intent);
-            finish();
-        }
+//    @Override
+//    protected void onStart() {
+//        super.onStart();
+//        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+//        if(user != null){
+//            Intent intent = new Intent(Login.this, UserDashboard.class);
+//            startActivity(intent);
+//            finish();
+//        }
     }
 }
