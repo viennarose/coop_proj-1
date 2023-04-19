@@ -23,14 +23,11 @@
             android:textAlignment="center"
             android:textStyle="bold"
             android:textColor="@color/white"
-            android:shadowColor="#fff"
-            android:shadowDx="0.0"
-            android:shadowDy="0.0"
-            android:shadowRadius="80"
             android:textSize="20dp"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
-            android:text="REGISTRATION" />
+            android:textFontWeight="300"
+            android:text="Create an Account" />
 
         <EditText
             android:id="@+id/fullName"
@@ -41,7 +38,7 @@
             android:layout_marginBottom="10dp"
             android:background="@drawable/edittext_border"
             android:digits=". qwertzuiopasdfghjklyxcvbnmABCDEFGHIJKLMNOPQRSTUVWXYZ"
-            android:drawableStart="@drawable/baseline_drive_file_rename_outline_24"
+            android:drawableEnd="@drawable/baseline_drive_file_rename_outline_24"
             android:drawablePadding="10dp"
             android:ems="10"
             android:hint="Full Name"
@@ -54,7 +51,7 @@
             android:textColor="@color/white"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:drawableStart="@drawable/baseline_add_home_24"
+            android:drawableEnd="@drawable/baseline_add_home_24"
             android:ems="10"
             android:background="@drawable/edittext_border"
             android:hint="Address"
@@ -70,7 +67,7 @@
             android:textColor="@color/white"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:drawableStart="@drawable/baseline_attribution_24"
+            android:drawableEnd="@drawable/baseline_attribution_24"
             android:ems="10"
             android:background="@drawable/edittext_border"
             android:hint="Age"
@@ -85,7 +82,7 @@
             android:textColor="@color/white"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:drawableStart="@drawable/baseline_add_ic_call_24"
+            android:drawableEnd="@drawable/baseline_add_ic_call_24"
             android:ems="10"
             android:background="@drawable/edittext_border"
             android:hint="Phone Number (09xxxxxxxxx)"
@@ -101,7 +98,7 @@
             android:textColor="@color/white"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:drawableStart="@drawable/baseline_email_24"
+            android:drawableEnd="@drawable/baseline_email_24"
             android:ems="10"
             android:background="@drawable/edittext_border"
             android:hint="Email"
@@ -116,7 +113,7 @@
             android:textColor="@color/white"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:drawableStart="@drawable/baseline_account_circle_24"
+            android:drawableEnd="@drawable/baseline_account_circle_24"
             android:ems="10"
             android:background="@drawable/edittext_border"
             android:hint="Username"
@@ -133,7 +130,7 @@
             android:textColor="@color/white"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:drawableStart="@drawable/baseline_lock_24"
+            android:drawableEnd="@drawable/baseline_lock_24"
             android:ems="10"
             android:padding="15dp"
             android:maxLength="25"
@@ -156,7 +153,7 @@
             android:id="@+id/createButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#000000"
+            android:background="@color/light_blue_600"
             android:textColor="#ffffff"
             android:text="CREATE" />
 
@@ -168,6 +165,7 @@
             android:textStyle="bold"
             android:textColor="#E3E3E3"
             android:layout_marginTop="10dp"
+            android:textFontWeight="300"
             android:text="BACK TO LOGIN" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
