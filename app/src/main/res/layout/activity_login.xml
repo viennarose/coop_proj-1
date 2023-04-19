@@ -34,7 +34,7 @@
             android:drawablePadding="10dp"
             android:ems="10"
             android:textColor="#fff"
-            android:hint="Username"
+            android:hint="Email Address"
             android:inputType="text"
             android:padding="15dp"
             android:textColorHint="#fff" />

@@ -168,6 +168,6 @@
             android:textStyle="bold"
             android:textColor="#E3E3E3"
             android:layout_marginTop="10dp"
-            android:text="GO BACK TO LOGIN" />
+            android:text="BACK TO LOGIN" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
