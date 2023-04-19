@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/sub_default"
+    android:background="#202020"
     tools:context=".JoinMembership">
 
         <LinearLayout
@@ -12,7 +12,7 @@
             android:layout_height="match_parent"
             android:orientation="vertical"
             android:layout_margin="20dp"
-            android:background="@color/sub_default">
+            android:background="#202020">
 
             <TextView
                 android:id="@+id/title"
@@ -20,10 +20,11 @@
                 android:layout_height="wrap_content"
                 android:textAlignment="textStart"
                 android:textStyle="bold"
-                android:background="@color/app_default"
+                android:background="@color/light_blue_600"
                 android:textColor="@color/white"
-                android:textSize="20dp"
+                android:textSize="18dp"
                 android:padding="20dp"
+                android:textFontWeight="300"
                 android:text="JOIN MEMBERSHIP" />
 
             <TextView
@@ -32,10 +33,11 @@
                 android:layout_height="wrap_content"
                 android:textAlignment="textStart"
                 android:textStyle="bold"
-                android:background="@color/black_overlay"
+                android:background="#202020"
                 android:textColor="#fff"
                 android:justificationMode="inter_word"
-                android:textSize="20dp"
+                android:textSize="15dp"
+                android:textFontWeight="300"
                 android:padding="20dp"
                 android:text="Enter amount of Capital Build Up and pay directly to the Admin. Once paid, admin will approve your membership registration. Thank you" />
 
@@ -43,7 +45,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:background="@color/sub_default">
+                android:background="@color/white"
+                android:layout_marginBottom="30dp">
 
                 <TextView
                     android:id="@+id/textView"
@@ -51,9 +54,11 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:textStyle="bold"
-                    android:textSize="20dp"
+                    android:textSize="18dp"
+                    android:textColor="@color/light_blue_600"
                     android:layout_marginBottom="10dp"
                     android:layout_marginTop="10dp"
+                    android:layout_marginLeft="2dp"
                     android:text="CBU Amount:" />
 
                 <EditText
@@ -84,5 +89,13 @@
                 android:background="#e54949"
                 android:textColor="#ffffff"
                 android:text="CANCEL" />
+
+
+            <ImageView
+                android:id="@+id/imageView4"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:layout_marginTop="-30dp"
+                app:srcCompat="@drawable/logocoop"/>
         </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

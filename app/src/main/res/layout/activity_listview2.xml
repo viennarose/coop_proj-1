@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/app_default"
+    android:background="#202020"
     android:orientation="vertical">
 
     <TextView
@@ -11,5 +11,5 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:padding="@dimen/activity_horizontal_margin"
-        android:textColor="@color/black" />
+        android:textColor="@color/white" />
 </LinearLayout>

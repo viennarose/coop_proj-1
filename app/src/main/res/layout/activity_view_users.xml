@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/app_default"
+    android:background="#202020"
     tools:context=".admin.ViewUsers">
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
@@ -14,7 +14,7 @@
             android:id="@+id/backButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#000000"
+            android:background="@color/light_blue_600"
             android:textColor="#ffffff"
             android:gravity="left|center"
             android:paddingLeft="20dp"
@@ -22,8 +22,8 @@
     <ListView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:divider="#000"
+        android:divider="@color/light_blue_600"
         android:id="@+id/usersListView"
-        android:dividerHeight="1dp"/>
+        android:dividerHeight="3dp"/>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
