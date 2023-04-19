@@ -9,9 +9,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.bisu.pslat.AdminLogin;
-import com.bisu.pslat.Login;
 import com.bisu.pslat.R;
-import com.bisu.pslat.UserDashboard;
 
 public class AdminMainActivity extends AppCompatActivity {
 
@@ -26,6 +24,7 @@ public class AdminMainActivity extends AppCompatActivity {
         Button loansBtn = (Button) findViewById(R.id.loansButton);
         Button membersBtn = (Button) findViewById(R.id.membersButton);
         Button accBtn = (Button) findViewById(R.id.accButton);
+        Button totalsBtn = (Button) findViewById(R.id.totalsBtn);
         TextView logout = (TextView) findViewById(R.id.loutButton);
 
         logout.setOnClickListener(new View.OnClickListener() {
@@ -77,6 +76,15 @@ public class AdminMainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(AdminMainActivity.this, AllLoans.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
+        totalsBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(AdminMainActivity.this, OverallTotals.class);
                 startActivity(intent);
                 finish();
             }

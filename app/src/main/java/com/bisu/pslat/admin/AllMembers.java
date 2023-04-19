@@ -43,6 +43,10 @@ import java.lang.reflect.Method;
 import java.util.ArrayList;
 
 public class AllMembers extends AppCompatActivity {
+
+
+
+
     ListView simpleList;
     private DatabaseReference mDatabase;
     @Override
@@ -108,58 +112,58 @@ public class AllMembers extends AppCompatActivity {
 
         mDatabase = FirebaseDatabase.getInstance().getReference();
         mDatabase.child("users").orderByChild("type").equalTo("member")
-                        .addListenerForSingleValueEvent(new ValueEventListener() {
-                            @Override
-                            public void onDataChange(@NonNull DataSnapshot task) {
-                                if(!task.exists()){
-                                    totalBtn.setText("No members yet");
-                                }
-                                else{
-                                    final double[] totalcbu = {0};
-                                    ArrayList<String> userList = new ArrayList<String>();
-                                    for (DataSnapshot child : task.getChildren()) {
-                                        String full_name = AccountSettings.decode(child.child("fullname").getValue().toString());
-                                        mDatabase.child("balance").orderByChild("user_id").equalTo(child.getKey())
-                                                .addListenerForSingleValueEvent(new ValueEventListener() {
-                                                    @Override
-                                                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                                        String cbu = "";
-                                                        double patronage = 0.00;
-                                                        for (DataSnapshot child2: snapshot.getChildren()){
-                                                            if(child2.child("type").getValue().toString().matches("CBU")){
+                .addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot task) {
+                        if(!task.exists()){
+                            totalBtn.setText("No members yet");
+                        }
+                        else{
+                            final double[] totalcbu = {0};
+                            ArrayList<String> userList = new ArrayList<String>();
+                            for (DataSnapshot child : task.getChildren()) {
+                                String full_name = AccountSettings.decode(child.child("fullname").getValue().toString());
+                                mDatabase.child("balance").orderByChild("user_id").equalTo(child.getKey())
+                                        .addListenerForSingleValueEvent(new ValueEventListener() {
+                                            @Override
+                                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                                String cbu = "";
+                                                double patronage = 0.00;
+                                                for (DataSnapshot child2: snapshot.getChildren()){
+                                                    if(child2.child("type").getValue().toString().matches("CBU")){
 //                                                            Log.d("jjjjjj",child.getValue().toString());
 //                                                            Log.d("jjjjjj222",child2.getValue().toString());
-                                                                cbu = child2.child("amount").getValue().toString();
-                                                                totalcbu[0] += Double.parseDouble(child2.child("amount").getValue().toString());
-                                                            }
-                                                            else if(child2.child("type").getValue().toString().matches("patronage_refund")){
-                                                                patronage += Double.parseDouble(child2.child("amount").getValue().toString());
-                                                            }
-                                                        }
-                                                        userList.add(full_name+" @"+AccountSettings.decode(child.child("username").getValue().toString())
-                                                                +System.getProperty("line.separator")+"Capital Build Up: P"+cbu
-                                                                +System.getProperty("line.separator")+"Patronage Refund: P"+patronage);
-                                                        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(AllMembers.this, R.layout.activity_listview, R.id.textView, userList);
-                                                        simpleList.setAdapter(arrayAdapter);
-                                                        totalBtn.setText("Total Capital: P"+totalcbu[0]);
+                                                        cbu = child2.child("amount").getValue().toString();
+                                                        totalcbu[0] += Double.parseDouble(child2.child("amount").getValue().toString());
                                                     }
-
-                                                    @Override
-                                                    public void onCancelled(@NonNull DatabaseError error) {
-
+                                                    else if(child2.child("type").getValue().toString().matches("patronage_refund")){
+                                                        patronage += Double.parseDouble(child2.child("amount").getValue().toString());
                                                     }
-                                                });
-                                        reportBtn.setEnabled(true);
-                                    }
-                                }
+                                                }
+                                                userList.add(full_name+" @"+AccountSettings.decode(child.child("username").getValue().toString())
+                                                        +System.getProperty("line.separator")+"Capital Build Up: P"+cbu
+                                                        +System.getProperty("line.separator")+"Patronage Refund: P"+patronage);
+                                                ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(AllMembers.this, R.layout.activity_listview, R.id.textView, userList);
+                                                simpleList.setAdapter(arrayAdapter);
+                                                totalBtn.setText("Total Capital: P"+totalcbu[0]);
+                                            }
 
+                                            @Override
+                                            public void onCancelled(@NonNull DatabaseError error) {
+
+                                            }
+                                        });
+                                reportBtn.setEnabled(true);
                             }
+                        }
 
-                            @Override
-                            public void onCancelled(@NonNull DatabaseError error) {
+                    }
 
-                            }
-                        });
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
 
         back.setOnClickListener(new View.OnClickListener() {
             @Override

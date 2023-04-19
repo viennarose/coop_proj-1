@@ -93,6 +93,15 @@
             android:text="ACCOUNT SETTINGS"
             android:elevation="4dp"/>
 
+        <Button
+            android:id="@+id/totalsBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#000000"
+            android:layout_marginBottom="20dp"
+            android:textColor="#ffffff"
+            android:text="VIEW TOTALS" />
+
         <TextView
             android:id="@+id/loutButton"
             android:layout_width="wrap_content"
