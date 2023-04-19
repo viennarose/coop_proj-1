@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#009d5b"
+    android:background="#202020"
     tools:context=".admin.MembershipRequestInformation">
 
     <LinearLayout
@@ -21,27 +21,26 @@
             android:layout_height="wrap_content"
             android:textAlignment="center"
             android:textStyle="bold"
-            android:textColor="@color/title_color"
-            android:shadowColor="#fff"
-            android:shadowDx="0.0"
-            android:shadowDy="0.0"
-            android:shadowRadius="80"
+            android:textColor="@color/white"
             android:textSize="20dp"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="20dp"
-            android:text="MEMBERSHIP REQUEST INFORMATION" />
+            android:textFontWeight="300"
+            android:text="Membership Request Information" />
 
         <EditText
             android:id="@+id/fullName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:drawableStart="@drawable/baseline_drive_file_rename_outline_24"
+            android:drawableEnd="@drawable/baseline_drive_file_rename_outline_24"
             android:ems="10"
             android:background="@drawable/edittext_border"
             android:hint="Full Name"
+            android:textColorHint="@color/white"
             android:enabled="false"
             android:digits=". qwertzuiopasdfghjklyxcvbnmABCDEFGHIJKLMNOPQRSTUVWXYZ"
             android:padding="15dp"
+            android:textColor="@color/white"
             android:drawablePadding="10dp"
             android:layout_marginBottom="10dp"
             android:inputType="text" />
@@ -50,11 +49,13 @@
             android:id="@+id/cbu"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:drawableStart="@drawable/baseline_monetization_on_24"
+            android:drawableEnd="@drawable/baseline_monetization_on_24"
             android:ems="10"
             android:background="@drawable/edittext_border"
             android:hint="Capital Build Up"
             android:enabled="false"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
             android:digits=",.- 0123456789qwertzuiopasdfghjklyxcvbnmABCDEFGHIJKLMNOPQRSTUVWXYZ"
             android:padding="15dp"
             android:drawablePadding="10dp"
@@ -65,10 +66,12 @@
             android:id="@+id/reqDate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:drawableStart="@drawable/baseline_calendar_month_24"
+            android:drawableEnd="@drawable/baseline_calendar_month_24"
             android:ems="10"
+            android:textColorHint="@color/white"
             android:background="@drawable/edittext_border"
             android:hint="Date requested"
+            android:textColor="@color/white"
             android:padding="15dp"
             android:enabled="false"
             android:drawablePadding="10dp"
@@ -77,7 +80,8 @@
 
         <Button
             android:id="@+id/approveButton"
-            android:layout_width="match_parent"
+            android:layout_width="200dp"
+            android:gravity="center"
             android:layout_height="wrap_content"
             android:background="@color/title_color"
             android:textColor="#ffffff"
@@ -85,7 +89,8 @@
             android:text="APPROVE" />
         <Button
             android:id="@+id/rejectButton"
-            android:layout_width="match_parent"
+            android:layout_width="200dp"
+            android:gravity="center"
             android:layout_height="wrap_content"
             android:background="@color/cancel"
             android:layout_marginTop="10dp"
@@ -112,10 +117,11 @@
 
         <Button
             android:id="@+id/backButton"
-            android:layout_width="match_parent"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:background="#000000"
+            android:background="@color/light_blue_600"
             android:textColor="#ffffff"
+            android:gravity="center"
             android:layout_marginTop="50dp"
             android:text="GO BACK" />
 
