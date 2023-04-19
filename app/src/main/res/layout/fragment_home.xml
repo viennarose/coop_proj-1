@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#fff"
+    android:background="#202020"
     tools:context=".user.ui.home.HomeFragment">
 
     <LinearLayout
@@ -17,23 +17,23 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="120dp"
+            android:layout_height="wrap_content"
             android:background="#202020"
             android:gravity="center"
             android:orientation="horizontal">
 
-            <ImageView
-                android:id="@+id/imageView3"
-                android:layout_width="200dp"
-                android:layout_height="150dp"
-                android:scaleType="fitXY"
-                app:srcCompat="@drawable/logo1"
-                tools:ignore="MissingConstraints" />
+<!--            <ImageView-->
+<!--                android:id="@+id/imageView3"-->
+<!--                android:layout_width="150dp"-->
+<!--                android:layout_height="150dp"-->
+<!--                android:scaleType="fitXY"-->
+<!--                app:srcCompat="@drawable/logocoop"-->
+<!--                tools:ignore="MissingConstraints" />-->
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/white"
+                android:background="@color/light_blue_600"
                 android:orientation="vertical">
 
                 <LinearLayout
@@ -48,9 +48,10 @@
                         android:layout_height="wrap_content"
                         android:padding="5dp"
                         android:text="Balance:"
+                        android:textFontWeight="300"
                         android:textAlignment="textEnd"
-                        android:textColor="#000"
-                        android:background="@color/white"
+                        android:textColor="@color/white"
+                        android:background="@color/light_blue_600"
                         android:textSize="15dp"
                         android:textStyle="bold" />
 
@@ -61,7 +62,7 @@
                         android:padding="5dp"
                         android:text=""
                         android:textAlignment="textEnd"
-                        android:textColor="#fff"
+                        android:textColor="@color/white"
                         android:textSize="15dp"
                         android:textStyle="bold" />
                 </LinearLayout>
@@ -70,23 +71,31 @@
                     android:id="@+id/status"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="#fff"
+                    android:background="@color/light_blue_600"
                     android:padding="5dp"
                     android:text=""
                     android:textAlignment="center"
-                    android:textColor="#000"
+                    android:textColor="@color/white"
+                    android:textFontWeight="300"
                     android:textSize="15dp"
                     android:textStyle="bold" />
 
             </LinearLayout>
         </LinearLayout>
-
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="250dp"
+            android:layout_height="250dp"
+            android:scaleType="fitXY"
+            android:layout_gravity="center"
+            app:srcCompat="@drawable/logocoop"
+            tools:ignore="MissingConstraints" />
         <TextView
             android:id="@+id/text_home"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
-            android:layout_marginTop="100dp"
+            android:layout_marginTop="-50dp"
             android:layout_marginRight="20dp"
             android:layout_marginBottom="10dp"
             android:fontFamily="sans-serif-medium"
@@ -95,7 +104,7 @@
             android:shadowRadius="80"
             android:text=""
             android:textAlignment="center"
-            android:textColor="#000"
+            android:textColor="@color/white"
             android:textSize="20dp"
             android:textStyle="bold" />
 
@@ -106,9 +115,9 @@
             android:layout_marginLeft="20dp"
             android:layout_marginTop="10dp"
             android:layout_marginRight="20dp"
-            android:background="#000000"
+            android:background="@drawable/button_background"
             android:text="APPLY FOR LOAN"
-            android:textColor="#ffffff"
+            android:textColor="@color/white"
             android:visibility="invisible" />
 
         <Button
@@ -118,9 +127,9 @@
             android:layout_marginLeft="20dp"
             android:layout_marginTop="10dp"
             android:layout_marginRight="20dp"
-            android:background="#000000"
+            android:background="@drawable/button_background"
             android:text="JOIN MEMBERSHIP"
-            android:textColor="#ffffff"
+            android:textColor="@color/white"
             android:visibility="invisible" />
 
     </LinearLayout>
