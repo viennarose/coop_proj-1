@@ -45,7 +45,7 @@
             android:text="ADMIN PANEL"
             android:textAlignment="center"
             android:textColor="@color/white"
-            android:textSize="30dp"
+            android:textSize="25dp"
             android:textFontWeight="300"
             android:textStyle="bold" />
         <TableRow
@@ -64,7 +64,7 @@
                 android:drawableTop="@drawable/baseline_groups_24"
                 android:paddingTop="10dp"
                 android:text="VIEW USERS"
-                android:textColor="#212121" />
+                android:textColor="@color/white" />
 
             <Button
                 android:id="@+id/membersButton"
@@ -76,7 +76,7 @@
                 android:paddingTop="10dp"
                 android:text="VIEW MEMBERS"
                 android:layout_column="1"
-                android:textColor="#212121" />
+                android:textColor="@color/white" />
         </TableRow>
         <TableRow
             android:layout_width="fill_parent"
@@ -94,7 +94,7 @@
                 android:drawableTop="@drawable/baseline_attach_money_24"
                 android:paddingTop="10dp"
                 android:text="VIEW LOANS"
-                android:textColor="#212121" />
+                android:textColor="@color/white" />
 
             <Button
                 android:id="@+id/memberButton"
@@ -105,7 +105,7 @@
                 android:drawableTop="@drawable/baseline_group_add_24"
                 android:paddingTop="10dp"
                 android:text="MEMBERSHIP REQUESTS"
-                android:textColor="#212121"
+                android:textColor="@color/white"
                 android:textSize="12dp"
                 android:layout_column="1"
                 tools:ignore="TextSizeCheck" />
@@ -125,8 +125,7 @@
                 android:drawableTop="@drawable/baseline_settings_24"
                 android:paddingTop="10dp"
                 android:text="LOAN REQUESTS"
-
-                android:textColor="#212121" />
+                android:textColor="@color/white" />
             <Button
                 android:id="@+id/accButton"
                 android:layout_width="180dp"
@@ -137,7 +136,7 @@
                 android:paddingTop="10dp"
                 android:text="ACCOUNT SETTINGS"
                 android:layout_column="1"
-                android:textColor="#212121" />
+                android:textColor="@color/white" />
 
         </TableRow>
         <TableRow
@@ -155,7 +154,7 @@
                 android:drawableTop="@drawable/baseline_settings_24"
                 android:paddingTop="10dp"
                 android:text="VIEW TOTALS"
-                android:textColor="#212121" />
+                android:textColor="@color/white" />
             <TextView
                 android:id="@+id/loutButton"
                 android:layout_width="wrap_content"

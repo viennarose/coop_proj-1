@@ -136,7 +136,7 @@ public class AllMembers extends AppCompatActivity {
                                                         patronage += Double.parseDouble(child2.child("amount").getValue().toString());
                                                     }
                                                 }
-                                                userList.add(full_name + " @" + AccountSettings.decode(child.child("username").getValue().toString())
+                                                userList.add("Name: " + full_name + " @" + AccountSettings.decode(child.child("username").getValue().toString())
                                                         + System.getProperty("line.separator") + "Capital Build Up: P" + cbu
                                                         + System.getProperty("line.separator") + "Patronage Refund: P" + patronage
                                                        + System.getProperty("line.separator") + "Date Paid: " + date_created);
@@ -175,13 +175,17 @@ public class AllMembers extends AppCompatActivity {
                                                   Log.d("User", (String) adapterView.getItemAtPosition(i));
                                                   String fullName = adapterView.getItemAtPosition(i).toString().split("@")[0];
                                                   String cbu = adapterView.getItemAtPosition(i).toString().split("Capital Build Up: P")[1].split("\\r?\\n")[0];
-//                                                  String dateCreated = adapterView.getItemAtPosition(i).toString().split("@")[0];;
-                                                  String[] info = adapterView.getItemAtPosition(i).toString().split("\\r?\\n");
-                                                  String dateCreated = info[info.length - 1].substring("Date Created: ".length());
+                                                  String patronage = adapterView.getItemAtPosition(i).toString().split("Patronage Refund: P")[1].split("\\r?\\n")[0];
+                                                  String dateCreated = adapterView.getItemAtPosition(i).toString().split("Date Paid: ")[1];
+//
+//                                                  String dateCreated = adapterView.getItemAtPosition(i).toString().split("Capital Build Up: P")[1].split("\\r?\\n")[1];
+//                                                  String[] info = adapterView.getItemAtPosition(i).toString().split("\\r?\\n");
+//                                                  String dateCreated = info[info.length -1].substring("Date Created: ".length());
 
                                                   Intent go = new Intent(AllMembers.this, MemberInfoIndividual.class);
                                                   go.putExtra("fullname", fullName);
                                                   go.putExtra("cbu", cbu);
+                                                  go.putExtra("patronage", patronage);
                                                   go.putExtra("date_created", dateCreated);
                                                   startActivity(go);
                                                   finish();

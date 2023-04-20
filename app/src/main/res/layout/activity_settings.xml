@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/sub_default"
+    android:background="#202020"
     tools:context=".admin.Settings">
     <LinearLayout
         android:layout_width="match_parent"
@@ -13,7 +13,12 @@
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:gravity="center">
-
+        <ImageView
+            android:id="@+id/imageView4"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:layout_marginTop="-90dp"
+            app:srcCompat="@drawable/logocoop"  />
 
         <TextView
             android:id="@+id/acctitle"
@@ -21,20 +26,17 @@
             android:layout_height="wrap_content"
             android:textAlignment="center"
             android:textStyle="bold"
-            android:textColor="@color/title_color"
-            android:shadowColor="#fff"
-            android:shadowDx="0.0"
-            android:shadowDy="0.0"
-            android:shadowRadius="80"
-            android:textSize="30dp"
-            android:layout_marginTop="10dp"
+            android:textColor="@color/white"
+            android:textSize="25dp"
+            android:textFontWeight="300"
+            android:layout_marginTop="-60dp"
             android:layout_marginBottom="10dp"
             android:text="ACCOUNT SETTINGS" />
         <EditText
             android:id="@+id/username"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:drawableStart="@drawable/baseline_account_circle_24"
+            android:drawableEnd="@drawable/baseline_account_circle_24"
             android:ems="10"
             android:background="@drawable/edittext_border"
             android:hint="Username"
@@ -42,6 +44,8 @@
             android:enabled="false"
             android:padding="15dp"
             android:maxLength="15"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
             android:drawablePadding="10dp"
             android:layout_marginBottom="10dp"
             android:inputType="text" />
@@ -50,11 +54,13 @@
             android:id="@+id/password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:drawableStart="@drawable/baseline_lock_24"
+            android:drawableEnd="@drawable/baseline_lock_24"
             android:ems="10"
             android:padding="15dp"
             android:enabled="false"
             android:maxLength="25"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
             android:drawablePadding="10dp"
             android:background="@drawable/edittext_border"
             android:hint="Password"
@@ -67,13 +73,14 @@
             android:textAlignment="textEnd"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="15dp"
+            android:textColor="@color/white"
             android:text="SHOW PASSWORD" />
 
         <Button
             android:id="@+id/updateButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#0062ff"
+            android:background="@color/light_blue_600"
             android:textColor="#ffffff"
             android:text="UPDATE ACCOUNT" />
 
@@ -83,8 +90,9 @@
             android:layout_height="wrap_content"
             android:textAlignment="center"
             android:textStyle="bold"
-            android:textColor="#000000"
-            android:layout_marginTop="10dp"
+            android:textColor="@color/white"
+            android:layout_marginTop="20dp"
+            android:textFontWeight="300"
             android:text="GO BACK" />
     </LinearLayout>
 
