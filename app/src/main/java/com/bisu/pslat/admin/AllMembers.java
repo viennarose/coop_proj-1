@@ -119,6 +119,7 @@ public class AllMembers extends AppCompatActivity {
                             ArrayList<String> userList = new ArrayList<String>();
                             for (DataSnapshot child : task.getChildren()) {
                                 String full_name = AccountSettings.decode(child.child("fullname").getValue().toString());
+                                String date_created = child.child("date_created").getValue().toString();
                                 mDatabase.child("balance").orderByChild("user_id").equalTo(child.getKey())
                                         .addListenerForSingleValueEvent(new ValueEventListener() {
                                             @Override
@@ -137,7 +138,8 @@ public class AllMembers extends AppCompatActivity {
                                                 }
                                                 userList.add(full_name + " @" + AccountSettings.decode(child.child("username").getValue().toString())
                                                         + System.getProperty("line.separator") + "Capital Build Up: P" + cbu
-                                                        + System.getProperty("line.separator") + "Patronage Refund: P" + patronage);
+                                                        + System.getProperty("line.separator") + "Patronage Refund: P" + patronage
+                                                       + System.getProperty("line.separator") + "Date Paid: " + date_created);
                                                 ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(AllMembers.this, R.layout.activity_listview, R.id.textView, userList);
                                                 simpleList.setAdapter(arrayAdapter);
                                                 totalBtn.setText("Total Capital: P" + totalcbu[0]);
@@ -152,6 +154,13 @@ public class AllMembers extends AppCompatActivity {
                             }
                         }
 
+                        // add the if statement here
+                        if (task.exists()) {
+                            totalBtn.setText("No members yet");
+                            // handle pending requests
+                        } else {
+                            Toast.makeText(AllMembers.this, "No pending requests", Toast.LENGTH_SHORT).show();
+                        }
                     }
 
                     @Override
@@ -160,24 +169,26 @@ public class AllMembers extends AppCompatActivity {
                     }
                 });
 
-
         simpleList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Log.d("User", (String) adapterView.getItemAtPosition(i));
-                Intent go = new Intent(AllMembers.this, MemberInfoIndividual.class);
-                go.putExtra("username", adapterView.getItemAtPosition(i).toString().split("@")[1]);
-                startActivity(go);
-                finish();
-            }
-        });
+                                              @Override
+                                              public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                                                  Log.d("User", (String) adapterView.getItemAtPosition(i));
+                                                  String fullName = adapterView.getItemAtPosition(i).toString().split("@")[0];
+                                                  String cbu = adapterView.getItemAtPosition(i).toString().split("Capital Build Up: P")[1].split("\\r?\\n")[0];
+//                                                  String dateCreated = adapterView.getItemAtPosition(i).toString().split("@")[0];;
+                                                  String[] info = adapterView.getItemAtPosition(i).toString().split("\\r?\\n");
+                                                  String dateCreated = info[info.length - 1].substring("Date Created: ".length());
 
-//        if (flag == 0) {
-//            Toast.makeText(AllMembers.this, "No pending requests", Toast.LENGTH_SHORT).show();
-//        } else {
-        {
-            // ...
-        }
+                                                  Intent go = new Intent(AllMembers.this, MemberInfoIndividual.class);
+                                                  go.putExtra("fullname", fullName);
+                                                  go.putExtra("cbu", cbu);
+                                                  go.putExtra("date_created", dateCreated);
+                                                  startActivity(go);
+                                                  finish();
+                                              }
+                                          });
+
+//
 
         back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -187,6 +198,17 @@ public class AllMembers extends AppCompatActivity {
                 finish();
             }
         });
+
     }
 }
+
+
+
+
+
+
+
+
+
+
 
