@@ -9,8 +9,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -23,7 +26,9 @@ import com.bisu.pslat.MemberLoan;
 import com.bisu.pslat.NotMemberLoan;
 import com.bisu.pslat.R;
 import com.bisu.pslat.UserDashboard;
+import com.bisu.pslat.UserLoanInformation;
 import com.bisu.pslat.databinding.FragmentHomeBinding;
+import com.bisu.pslat.user.ui.dashboard.DashboardFragment;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -36,6 +41,7 @@ import java.util.ArrayList;
 
 public class HomeFragment extends Fragment {
     String type;
+    String status;
     private FragmentHomeBinding binding;
 
     TextView stat;
@@ -50,7 +56,7 @@ public class HomeFragment extends Fragment {
         final Button loanB = binding.loanButton;
         final TextView textView = binding.textHome;
         stat = binding.status;
-        final TextView bal = binding.balanceValue;
+//        final TextView bal = binding.balanceValue;
         //homeViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
 
         joinB.setOnClickListener(new View.OnClickListener() {
@@ -85,7 +91,7 @@ public class HomeFragment extends Fragment {
                                                         for(DataSnapshot ds : snapshot2.getChildren()){
                                                             balanceVal+=Double.parseDouble(ds.child("amount").getValue().toString());
                                                         }
-                                                        bal.setText("P"+balanceVal);
+//                                                        bal.setText("P"+balanceVal);
                                                     }
 
                                                     @Override
@@ -95,7 +101,7 @@ public class HomeFragment extends Fragment {
                                                 });
                                     }
                                     else {
-                                        bal.setText("P0.00");
+//                                        bal.setText("P0.00");
                                     }
                                 }
                                 textView.setText("Hello "+AccountSettings.decode(UserDashboard.fullname[0])+"!");
@@ -178,4 +184,5 @@ public class HomeFragment extends Fragment {
         super.onStart();
 
     }
+
 }
