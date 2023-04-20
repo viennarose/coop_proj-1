@@ -51,15 +51,27 @@ public class MemberInfoIndividual extends AppCompatActivity {
         String patron = intent.getStringExtra("patronage");
         patron = "Patronage Refund: " + patron;
         String dateCreated = intent.getStringExtra("date_created");
+        dateCreated = "Date Paid: " + dateCreated;
+        String totalC = intent.getStringExtra("cbu");
+        totalC = "Total: " + totalC;
+//<<<<<<< HEAD
+//        dateCreated = "Date Paid: " + dateCreated;
+//        String totalC = intent.getStringExtra("cbu");
+//        totalC = "Total: " + totalC;
+//
+//        // Check if username and CBU are not null
+//        if (dateCreated != null && cbu != null && full_Name != null && totalC != null) {
+//=======
 
 
         // Check if username and CBU are not null
-        if (dateCreated != null && cbu != null && full_Name != null && patronage != null) {
+        if (dateCreated != null && cbu != null && full_Name != null && patronage != null && totalC != null) {
             // Set username and CBU in views
             datereq.setText(dateCreated);
             cbuVal.setText(cbu);
             patronage.setText(patron);
             fullName.setText(full_Name);
+            total.setText(totalC);
 
         } else {
             // Handle the null values here
