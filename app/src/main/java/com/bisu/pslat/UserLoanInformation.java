@@ -71,12 +71,12 @@ public class UserLoanInformation extends AppCompatActivity {
                                 serviceVal.setText("Service Charge: P"+child.child("service_charge").getValue().toString());
                                 surVal.setText("Surcharge: P"+child.child("sur_charge").getValue().toString());
                                 mPay.setText("Monthly Payable: "+monthly_payable);
-//                                Intent go = new Intent(UserLoanInformation.this, UserMonthlyPayable.class);
-//                                go.putExtra("loan_id",child.getKey());
-//                                go.putExtra("monthly_payable",monthly_payable);
-//                                go.putExtra("date_created",child.child("date_created").getValue().toString());
-//                                go.putExtra("months",child.child("months").getValue().toString());
-//                                startActivity(go);
+                                Intent go = new Intent(UserLoanInformation.this, UserMonthlyPayable.class);
+                                go.putExtra("loan_id",child.getKey());
+                                go.putExtra("monthly_payable",monthly_payable);
+                                go.putExtra("date_created",child.child("date_created").getValue().toString());
+                                go.putExtra("months",child.child("months").getValue().toString());
+                                startActivity(go);
 
                             }
                         }

@@ -49,13 +49,16 @@ public class MemberInfoIndividual extends AppCompatActivity {
         cbu = "CBU: " + cbu;
         String dateCreated = intent.getStringExtra("date_created");
         dateCreated = "Date Paid: " + dateCreated;
+        String totalC = intent.getStringExtra("cbu");
+        totalC = "Total: " + totalC;
 
         // Check if username and CBU are not null
-        if (dateCreated != null && cbu != null && full_Name != null) {
+        if (dateCreated != null && cbu != null && full_Name != null && totalC != null) {
             // Set username and CBU in views
             datereq.setText(dateCreated);
             cbuVal.setText(cbu);
             fullName.setText(full_Name);
+            total.setText(totalC);
         } else {
             // Handle the null values here
             Toast.makeText(this, "Username or CBU is null", Toast.LENGTH_SHORT).show();

@@ -144,11 +144,11 @@
             android:id="@+id/memberbackButton"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:background="@color/light_blue_600"
-            android:textColor="#ffffff"
-            android:gravity="center"
             android:layout_marginTop="-30dp"
-            android:text="GO BACK" />
+            android:background="@color/light_blue_600"
+            android:gravity="center"
+            android:text="GO BACK"
+            android:textColor="#212121" />
 
     </LinearLayout>
 </RelativeLayout>
