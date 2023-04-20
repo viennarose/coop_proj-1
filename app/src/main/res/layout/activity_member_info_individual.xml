@@ -71,6 +71,23 @@
             android:inputType="number" />
 
         <TextView
+            android:id="@+id/memberPATRONAGE"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableEnd="@drawable/baseline_monetization_on_24"
+            android:ems="10"
+            android:background="@drawable/edittext_border"
+            android:hint="Patronage Refund"
+            android:enabled="false"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:digits=",.- 0123456789qwertzuiopasdfghjklyxcvbnmABCDEFGHIJKLMNOPQRSTUVWXYZ"
+            android:padding="15dp"
+            android:drawablePadding="10dp"
+            android:layout_marginBottom="10dp"
+            android:inputType="number" />
+
+        <TextView
             android:id="@+id/memberDATE"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -91,7 +108,7 @@
             android:id="@+id/memberTOTAL"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:drawableEnd="@drawable/baseline_calendar_month_24"
+            android:drawableEnd="@drawable/baseline_monetization_on_24"
             android:ems="10"
             android:textColorHint="@color/white"
             android:background="@drawable/edittext_border"

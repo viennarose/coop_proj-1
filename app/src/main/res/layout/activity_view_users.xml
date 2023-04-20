@@ -19,11 +19,36 @@
             android:gravity="left|center"
             android:paddingLeft="20dp"
             android:text="GO BACK" />
-    <ListView
+
+        <ImageView
+            android:id="@+id/imageView4"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:layout_marginTop="-50dp"
+            app:srcCompat="@drawable/logocoop"  />
+
+        <TextView
+            android:id="@+id/registration"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:textFontWeight="300"
+            android:textColor="@color/white"
+            android:shadowRadius="80"
+            android:textSize="18dp"
+            android:layout_marginTop="-70dp"
+            android:layout_marginBottom="10dp"
+            android:text="List of Users" />
+
+        <ListView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:divider="@color/light_blue_600"
         android:id="@+id/usersListView"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="-10dp"
         android:dividerHeight="3dp"/>
+
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

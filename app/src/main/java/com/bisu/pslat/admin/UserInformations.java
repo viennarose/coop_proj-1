@@ -43,51 +43,51 @@ public class UserInformations extends AppCompatActivity {
         TextView ms = (TextView) findViewById(R.id.accStatus);
         Button back = (Button) findViewById(R.id.backButton);
 
-        Intent intent = getIntent();
-        String passed_username = intent.getExtras().getString("username");
-        final String[] usernameVal = {""},emailVal = {""},member_type = {""},fullnameval = {""},addressVal = {""},ageVal = {""},phoneVal = {""};
-
-            DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
-            mDatabase.child("users").orderByChild("username").equalTo(AccountSettings.encode(passed_username))
-                    .addListenerForSingleValueEvent(new ValueEventListener() {
-
-                        @Override
-                        public void onDataChange(DataSnapshot dataSnapshot) {
-                            if(dataSnapshot.exists()){
-                                String user_info = dataSnapshot.getValue().toString();
-                                String removebracket = user_info.substring(1,user_info.length()-1);
-                                String[] extract_id = removebracket.split(",");
-                                fullnameval[0] = AccountSettings.originalValue(extract_id[5].split("="));
-                                member_type[0] = extract_id[6].split("=")[1];
-                                addressVal[0] = AccountSettings.originalValue(extract_id[1].split("="));
-                                ageVal[0] = AccountSettings.originalValue(extract_id[7].split("="));
-                                phoneVal[0] = AccountSettings.originalValue(extract_id[3].split("="));
-                                usernameVal[0] = AccountSettings.originalValue(extract_id[9].split("="));
-
-                                fullName.setText(AccountSettings.decode(fullnameval[0]));
-                                address.setText(AccountSettings.decode(addressVal[0]));
-                                age.setText(AccountSettings.decode(ageVal[0]));
-                                phoneNumber.setText(AccountSettings.decode(phoneVal[0]));
-                                email.setText(extract_id[8].split("=")[1]);
-                                username.setText(AccountSettings.decode(usernameVal[0].substring(0,usernameVal[0].length()-1)));
-                                if(member_type[0].matches("not_member")){
-                                    ms.setText("NOT A MEMBER");
-                                    ms.setBackgroundColor(Color.parseColor("#e54949"));
-                                }
-                                else {
-                                    ms.setText("MEMBER");
-                                    ms.setBackgroundColor(Color.parseColor("#0b804f"));
-                                }
-                            } else {
-                                Toast.makeText(UserInformations.this, "Account doesn't exists", Toast.LENGTH_SHORT).show();
-                            }
-                        }
-
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError error) {
-
-                        }
-                    });
+//        Intent intent = getIntent();
+//        String passed_username = intent.getExtras().getString("username");
+//        final String[] usernameVal = {""},emailVal = {""},member_type = {""},fullnameval = {""},addressVal = {""},ageVal = {""},phoneVal = {""};
+//
+//            DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
+//            mDatabase.child("users").orderByChild("username").equalTo(AccountSettings.encode(passed_username))
+//                    .addListenerForSingleValueEvent(new ValueEventListener() {
+//
+//                        @Override
+//                        public void onDataChange(DataSnapshot dataSnapshot) {
+//                            if(dataSnapshot.exists()){
+//                                String user_info = dataSnapshot.getValue().toString();
+//                                String removebracket = user_info.substring(1,user_info.length()-1);
+//                                String[] extract_id = removebracket.split(",");
+//                                fullnameval[0] = AccountSettings.originalValue(extract_id[5].split("="));
+//                                member_type[0] = extract_id[6].split("=")[1];
+//                                addressVal[0] = AccountSettings.originalValue(extract_id[1].split("="));
+//                                ageVal[0] = AccountSettings.originalValue(extract_id[7].split("="));
+//                                phoneVal[0] = AccountSettings.originalValue(extract_id[3].split("="));
+//                                usernameVal[0] = AccountSettings.originalValue(extract_id[9].split("="));
+//
+//                                fullName.setText(AccountSettings.decode(fullnameval[0]));
+//                                address.setText(AccountSettings.decode(addressVal[0]));
+//                                age.setText(AccountSettings.decode(ageVal[0]));
+//                                phoneNumber.setText(AccountSettings.decode(phoneVal[0]));
+//                                email.setText(extract_id[8].split("=")[1]);
+//                                username.setText(AccountSettings.decode(usernameVal[0].substring(0,usernameVal[0].length()-1)));
+//                                if(member_type[0].matches("not_member")){
+//                                    ms.setText("NOT A MEMBER");
+//                                    ms.setBackgroundColor(Color.parseColor("#e54949"));
+//                                }
+//                                else {
+//                                    ms.setText("MEMBER");
+//                                    ms.setBackgroundColor(Color.parseColor("#0b804f"));
+//                                }
+//                            } else {
+//                                Toast.makeText(UserInformations.this, "Account doesn't exists", Toast.LENGTH_SHORT).show();
+//                            }
+//                        }
+//
+//                        @Override
+//                        public void onCancelled(@NonNull DatabaseError error) {
+//
+//                        }
+//                    });
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
