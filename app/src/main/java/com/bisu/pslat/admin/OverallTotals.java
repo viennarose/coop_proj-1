@@ -52,7 +52,58 @@ public class OverallTotals extends AppCompatActivity {
         setContentView(R.layout.activity_overall_totals);
         Button back = (Button) findViewById(R.id.backButton);
         Button totalBtn = (Button) findViewById(R.id.total);
+        Button reportBtn = (Button) findViewById(R.id.report);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            if (!Environment.isExternalStorageManager())
+            {
+                try{
+                    Method m = StrictMode.class.getMethod("disableDeathOnFileUriExposure");
+                    m.invoke(null);
+                }catch(Exception e){
+                    e.printStackTrace();
+                }
+                Intent intent = new Intent(Settings.ACTION_MANAGE_ALL_FILES_ACCESS_PERMISSION);
+                startActivity(intent);
+            }
+        }
+        reportBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                LinearLayout linearLayout = (LinearLayout) findViewById(R.id.print);
+                linearLayout.setDrawingCacheEnabled(true);
+                linearLayout.buildDrawingCache(true);
+                Bitmap bitmap = Bitmap.createBitmap(linearLayout.getDrawingCache());
+                linearLayout.setDrawingCacheEnabled(false); // clear drawing cache
 
+                FileOutputStream outStream = null;
+                File sdCard = Environment.getExternalStorageDirectory();
+                File dir = new File(sdCard.getAbsolutePath() + "/coop");
+                dir.mkdirs();
+                String fileName = String.format("%d.jpg", System.currentTimeMillis());
+                File outFile = new File(dir, fileName);
+                try {
+                    outStream = new FileOutputStream(outFile);
+                    Intent intent = new Intent();
+                    intent.setAction(Intent.ACTION_VIEW);
+                    Uri photoURI = FileProvider.getUriForFile(OverallTotals.this,
+                            BuildConfig.APPLICATION_ID + ".provider",
+                            outFile);
+                    intent.setDataAndType(photoURI,"image/*");
+                    intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+                    OverallTotals.this.startActivity(Intent.createChooser(intent, "View using"));
+                } catch (FileNotFoundException e) {
+                    throw new RuntimeException(e);
+                }
+                bitmap.compress(Bitmap.CompressFormat.JPEG, 100, outStream);
+                try {
+                    outStream.flush();
+                    outStream.close();
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+                Toast.makeText(OverallTotals.this, "Report Generated", Toast.LENGTH_SHORT).show();
+            }
+        });
         mDatabase = FirebaseDatabase.getInstance().getReference();
         mDatabase.child("users").orderByChild("type").equalTo("member")
                 .addListenerForSingleValueEvent(new ValueEventListener() {

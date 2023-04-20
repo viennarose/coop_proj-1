@@ -48,7 +48,7 @@
             android:layout_height="wrap_content"
             android:background="@color/cancel"
             android:textColor="#ffffff"
-            android:enabled="false"
+            android:enabled="true"
             android:gravity="center"
             android:text="Generate Report" />
     </LinearLayout>
