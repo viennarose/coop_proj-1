@@ -48,15 +48,19 @@ public class ViewUsers extends AppCompatActivity {
                         Integer ind = 0;
 
                         for (DataSnapshot child : task.getResult().getChildren()) {
+
                             String full_name = AccountSettings.decode(child.child("fullname").getValue().toString());
                             String username = AccountSettings.decode(child.child("username").getValue().toString());
                             String address = AccountSettings.decode(child.child("address").getValue().toString());
                             String age = AccountSettings.decode(child.child("age").getValue().toString());
-                            String userString = "Name: " + full_name + "\nUsername: " + username + "\nAddress: " + address + "\nAge: " + age;
+                            String phoneNumber = AccountSettings.decode(child.child("phoneNumber").getValue().toString());
+
+                            String userString = "Name: " + full_name + "\nUsername: " + username + "\nAddress: " + address + "\nAge: " + age + "\nPhone Number: " + phoneNumber;
+
                             userList[ind] = userString;
                             ind++;
-                        }
 
+                        }
 
                         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(ViewUsers.this, R.layout.activity_listview, R.id.textView, userList);
                         simpleList.setAdapter(arrayAdapter);

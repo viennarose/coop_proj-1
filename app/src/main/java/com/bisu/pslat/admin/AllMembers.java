@@ -175,9 +175,9 @@ public class AllMembers extends AppCompatActivity {
                                                   Log.d("User", (String) adapterView.getItemAtPosition(i));
                                                   String fullName = adapterView.getItemAtPosition(i).toString().split("@")[0];
                                                   String cbu = adapterView.getItemAtPosition(i).toString().split("Capital Build Up: P")[1].split("\\r?\\n")[0];
-//                                                  String dateCreated = adapterView.getItemAtPosition(i).toString().split("@")[0];;
+//                                                  String dateCreated = adapterView.getItemAtPosition(i).toString().split("Capital Build Up: P")[1].split("\\r?\\n")[-1];
                                                   String[] info = adapterView.getItemAtPosition(i).toString().split("\\r?\\n");
-                                                  String dateCreated = info[info.length - 1].substring("Date Created: ".length());
+                                                  String dateCreated = info[info.length -1].substring("Date Created: ".length());
 
                                                   Intent go = new Intent(AllMembers.this, MemberInfoIndividual.class);
                                                   go.putExtra("fullname", fullName);
