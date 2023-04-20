@@ -24,6 +24,8 @@
         android:layout_height="wrap_content"
         android:divider="@color/light_blue_600"
         android:id="@+id/usersListView"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         android:dividerHeight="3dp"/>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
