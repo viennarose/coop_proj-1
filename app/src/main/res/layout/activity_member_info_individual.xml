@@ -91,7 +91,7 @@
             android:id="@+id/memberTOTAL"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:drawableEnd="@drawable/baseline_calendar_month_24"
+            android:drawableEnd="@drawable/baseline_monetization_on_24"
             android:ems="10"
             android:textColorHint="@color/white"
             android:background="@drawable/edittext_border"
