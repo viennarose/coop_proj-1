@@ -49,19 +49,19 @@ public class AllLoans extends AppCompatActivity {
         Button back = (Button) findViewById(R.id.backButton);
         Button total = (Button) findViewById(R.id.total);
         Button reportBtn = (Button) findViewById(R.id.report);
-//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-//            if (!Environment.isExternalStorageManager())
-//            {
-//                try{
-//                    Method m = StrictMode.class.getMethod("disableDeathOnFileUriExposure");
-//                    m.invoke(null);
-//                }catch(Exception e){
-//                    e.printStackTrace();
-//                }
-//                Intent intent = new Intent(Settings.ACTION_MANAGE_ALL_FILES_ACCESS_PERMISSION);
-//                startActivity(intent);
-//            }
-//        }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            if (!Environment.isExternalStorageManager())
+            {
+                try{
+                    Method m = StrictMode.class.getMethod("disableDeathOnFileUriExposure");
+                    m.invoke(null);
+                }catch(Exception e){
+                    e.printStackTrace();
+                }
+                Intent intent = new Intent(Settings.ACTION_MANAGE_ALL_FILES_ACCESS_PERMISSION);
+                startActivity(intent);
+            }
+        }
 
         reportBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -104,45 +104,45 @@ public class AllLoans extends AppCompatActivity {
 
         mDatabase = FirebaseDatabase.getInstance().getReference();
         mDatabase.child("loans").get()
-                        .addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
-                            @Override
-                            public void onComplete(@NonNull Task<DataSnapshot> task) {
-                                if(!task.getResult().hasChildren()){
-                                    total.setText("No loans yet");
-                                }
-                                else{
-                                    final double[] totalLoans = {0},totalInterest = {0},totalService = {0},totalSur = {0};
-                                    ArrayList<String> loanList = new ArrayList<String>();
-                                    for (DataSnapshot child : task.getResult().getChildren()) {
+                .addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<DataSnapshot> task) {
+                        if(!task.getResult().hasChildren()){
+                            total.setText("No loans yet");
+                        }
+                        else{
+                            final double[] totalLoans = {0},totalInterest = {0},totalService = {0},totalSur = {0};
+                            ArrayList<String> loanList = new ArrayList<String>();
+                            for (DataSnapshot child : task.getResult().getChildren()) {
 
-                                        mDatabase.child("users").child(child.child("user_id").getValue().toString()).get()
-                                                .addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
-                                                    @Override
-                                                    public void onComplete(@NonNull Task<DataSnapshot> snapshot) {
-                                                        String full_name = AccountSettings.decode(snapshot.getResult().child("fullname").getValue().toString());
-                                                        totalLoans[0] += Double.parseDouble(child.child("amount").getValue().toString());
-                                                        totalInterest[0] += Double.parseDouble(child.child("interest").getValue().toString());
-                                                        totalService[0] += Double.parseDouble(child.child("service_charge").getValue().toString());
-                                                        totalSur[0] += Double.parseDouble(child.child("sur_charge").getValue().toString());
-                                                        loanList.add(full_name+" @"+AccountSettings.decode(snapshot.getResult().child("username").getValue().toString())
-                                                                +System.getProperty("line.separator")+"Loan Amount: P"+child.child("amount").getValue().toString()
-                                                                +System.getProperty("line.separator")+"Interest: P"+child.child("interest").getValue().toString()
-                                                                +System.getProperty("line.separator")+"Service Charge: P"+child.child("service_charge").getValue().toString()
-                                                                +System.getProperty("line.separator")+"Surcharge: P"+child.child("sur_charge").getValue().toString());
-                                                        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(AllLoans.this, R.layout.activity_listview, R.id.textView, loanList);
-                                                        simpleList.setAdapter(arrayAdapter);
-                                                        total.setText("Total Loans: P"+totalLoans[0]
-                                                                +System.getProperty("line.separator")+ "Total Interest: P"+ totalInterest[0]
-                                                                +System.getProperty("line.separator")+ "Total Service Charge: P"+ totalService[0]
-                                                                +System.getProperty("line.separator")+ "Total Surcharge: P"+ totalSur[0]);
-                                                    }
-                                                });
-                                        reportBtn.setEnabled(true);
-                                    }
-                                }
-
+                                mDatabase.child("users").child(child.child("user_id").getValue().toString()).get()
+                                        .addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+                                            @Override
+                                            public void onComplete(@NonNull Task<DataSnapshot> snapshot) {
+                                                String full_name = AccountSettings.decode(snapshot.getResult().child("fullname").getValue().toString());
+                                                totalLoans[0] += Double.parseDouble(child.child("amount").getValue().toString());
+                                                totalInterest[0] += Double.parseDouble(child.child("interest").getValue().toString());
+                                                totalService[0] += Double.parseDouble(child.child("service_charge").getValue().toString());
+                                                totalSur[0] += Double.parseDouble(child.child("sur_charge").getValue().toString());
+                                                loanList.add(full_name+" @"+AccountSettings.decode(snapshot.getResult().child("username").getValue().toString())
+                                                        +System.getProperty("line.separator")+"Loan Amount: P"+child.child("amount").getValue().toString()
+                                                        +System.getProperty("line.separator")+"Interest: P"+child.child("interest").getValue().toString()
+                                                        +System.getProperty("line.separator")+"Service Charge: P"+child.child("service_charge").getValue().toString()
+                                                        +System.getProperty("line.separator")+"Surcharge: P"+child.child("sur_charge").getValue().toString());
+                                                ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(AllLoans.this, R.layout.activity_listview, R.id.textView, loanList);
+                                                simpleList.setAdapter(arrayAdapter);
+                                                total.setText("Total Loans: P"+totalLoans[0]
+                                                        +System.getProperty("line.separator")+ "Total Interest: P"+ totalInterest[0]
+                                                        +System.getProperty("line.separator")+ "Total Service Charge: P"+ totalService[0]
+                                                        +System.getProperty("line.separator")+ "Total Surcharge: P"+ totalSur[0]);
+                                            }
+                                        });
+                                reportBtn.setEnabled(true);
                             }
-                        });
+                        }
+
+                    }
+                });
 
         back.setOnClickListener(new View.OnClickListener() {
             @Override
