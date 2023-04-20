@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#202020"
+    tools:context=".admin.MemberInfoIndividual">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:gravity="center">
+
+        <ImageView
+            android:id="@+id/imageView4"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:layout_marginTop="-90dp"
+            app:srcCompat="@drawable/logocoop"  />
+
+        <TextView
+            android:id="@+id/registration"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:textSize="20dp"
+            android:layout_marginTop="-60dp"
+            android:layout_marginBottom="20dp"
+            android:textFontWeight="300"
+            android:text="Membership Details" />
+
+        <EditText
+            android:id="@+id/memberFULLNAME"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableEnd="@drawable/baseline_drive_file_rename_outline_24"
+            android:ems="10"
+            android:background="@drawable/edittext_border"
+            android:hint="Full Name"
+            android:textColorHint="@color/white"
+            android:enabled="false"
+            android:digits=". qwertzuiopasdfghjklyxcvbnmABCDEFGHIJKLMNOPQRSTUVWXYZ"
+            android:padding="15dp"
+            android:textColor="@color/white"
+            android:drawablePadding="10dp"
+            android:layout_marginBottom="10dp"
+            android:inputType="text" />
+
+        <EditText
+            android:id="@+id/memberCBU"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableEnd="@drawable/baseline_monetization_on_24"
+            android:ems="10"
+            android:background="@drawable/edittext_border"
+            android:hint="Capital Build Up"
+            android:enabled="false"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:digits=",.- 0123456789qwertzuiopasdfghjklyxcvbnmABCDEFGHIJKLMNOPQRSTUVWXYZ"
+            android:padding="15dp"
+            android:drawablePadding="10dp"
+            android:layout_marginBottom="10dp"
+            android:inputType="number" />
+
+        <EditText
+            android:id="@+id/memberDATE"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableEnd="@drawable/baseline_calendar_month_24"
+            android:ems="10"
+            android:textColorHint="@color/white"
+            android:background="@drawable/edittext_border"
+            android:hint="Date requested"
+            android:textColor="@color/white"
+            android:padding="15dp"
+            android:enabled="false"
+            android:drawablePadding="10dp"
+            android:layout_marginBottom="10dp"
+            android:inputType="text" />
+
+
+        <EditText
+            android:id="@+id/memberTOTAL"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableEnd="@drawable/baseline_calendar_month_24"
+            android:ems="10"
+            android:textColorHint="@color/white"
+            android:background="@drawable/edittext_border"
+            android:hint="Total"
+            android:textColor="@color/white"
+            android:padding="15dp"
+            android:enabled="false"
+            android:drawablePadding="10dp"
+            android:layout_marginBottom="10dp"
+            android:inputType="text" />
+
+<!--        <Button-->
+<!--            android:id="@+id/approveButton"-->
+<!--            android:layout_width="200dp"-->
+<!--            android:gravity="center"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:background="@color/title_color"-->
+<!--            android:textColor="#ffffff"-->
+<!--            android:layout_marginTop="10dp"-->
+<!--            android:text="APPROVE" />-->
+<!--        <Button-->
+<!--            android:id="@+id/rejectButton"-->
+<!--            android:layout_width="200dp"-->
+<!--            android:gravity="center"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:background="@color/cancel"-->
+<!--            android:layout_marginTop="10dp"-->
+<!--            android:textColor="#ffffff"-->
+<!--            android:text="REJECT" />-->
+
+
+        <ProgressBar
+            android:id="@+id/progressBar2"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_marginTop="10dp"
+            android:scaleY="3"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/progressText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:textSize="12dp"
+            android:textColor="@color/black"
+            android:text="" />
+
+        <Button
+            android:id="@+id/memberbackButton"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:background="@color/light_blue_600"
+            android:textColor="#ffffff"
+            android:gravity="center"
+            android:layout_marginTop="-30dp"
+            android:text="GO BACK" />
+
+    </LinearLayout>
+</RelativeLayout>
