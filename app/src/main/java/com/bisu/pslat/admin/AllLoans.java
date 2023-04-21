@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.os.StrictMode;
 import android.provider.Settings;
+import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -41,21 +42,21 @@ import java.util.ArrayList;
 public class AllLoans extends AppCompatActivity {
     ListView simpleList;
     private DatabaseReference mDatabase;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_all_loans);
-        simpleList = (ListView)findViewById(R.id.usersListView);
+        simpleList = (ListView) findViewById(R.id.usersListView);
         Button back = (Button) findViewById(R.id.backButton);
         Button total = (Button) findViewById(R.id.total);
         Button reportBtn = (Button) findViewById(R.id.report);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-            if (!Environment.isExternalStorageManager())
-            {
-                try{
+            if (!Environment.isExternalStorageManager()) {
+                try {
                     Method m = StrictMode.class.getMethod("disableDeathOnFileUriExposure");
                     m.invoke(null);
-                }catch(Exception e){
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
                 Intent intent = new Intent(Settings.ACTION_MANAGE_ALL_FILES_ACCESS_PERMISSION);
@@ -85,7 +86,7 @@ public class AllLoans extends AppCompatActivity {
                     Uri photoURI = FileProvider.getUriForFile(AllLoans.this,
                             BuildConfig.APPLICATION_ID + ".provider",
                             outFile);
-                    intent.setDataAndType(photoURI,"image/*");
+                    intent.setDataAndType(photoURI, "image/*");
                     intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
                     AllLoans.this.startActivity(Intent.createChooser(intent, "View using"));
                 } catch (FileNotFoundException e) {
@@ -107,40 +108,49 @@ public class AllLoans extends AppCompatActivity {
                 .addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<DataSnapshot> task) {
-                        if(!task.getResult().hasChildren()){
-                            total.setText("No loans yet");
-                        }
-                        else{
-                            final double[] totalLoans = {0},totalInterest = {0},totalService = {0},totalSur = {0};
-                            ArrayList<String> loanList = new ArrayList<String>();
+                        if (task.isSuccessful()) {
+                            ArrayList<String> loanList = new ArrayList<>();
+                            double[] totalLoans = {0};
+                            double[] totalInterest = {0};
+                            double[] totalService = {0};
+                            double[] totalSur = {0};
                             for (DataSnapshot child : task.getResult().getChildren()) {
+                                String userId = child.child("user_id").getValue().toString();
+                                mDatabase.child("users").child(userId).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<DataSnapshot> snapshot) {
+                                        if (snapshot.isSuccessful()) {
+//                                          String fullName = snapshot.getResult().child("fullname").getValue(String.class);
 
-                                mDatabase.child("users").child(child.child("user_id").getValue().toString()).get()
-                                        .addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
-                                            @Override
-                                            public void onComplete(@NonNull Task<DataSnapshot> snapshot) {
-                                                String full_name = AccountSettings.decode(snapshot.getResult().child("fullname").getValue().toString());
-                                                totalLoans[0] += Double.parseDouble(child.child("amount").getValue().toString());
-                                                totalInterest[0] += Double.parseDouble(child.child("interest").getValue().toString());
-                                                totalService[0] += Double.parseDouble(child.child("service_charge").getValue().toString());
-                                                totalSur[0] += Double.parseDouble(child.child("sur_charge").getValue().toString());
-                                                loanList.add(full_name+" @"+AccountSettings.decode(snapshot.getResult().child("username").getValue().toString())
-                                                        +System.getProperty("line.separator")+"Loan Amount: P"+child.child("amount").getValue().toString()
-                                                        +System.getProperty("line.separator")+"Interest: P"+child.child("interest").getValue().toString()
-                                                        +System.getProperty("line.separator")+"Service Charge: P"+child.child("service_charge").getValue().toString()
-                                                        +System.getProperty("line.separator")+"Surcharge: P"+child.child("sur_charge").getValue().toString());
-                                                ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(AllLoans.this, R.layout.activity_listview, R.id.textView, loanList);
-                                                simpleList.setAdapter(arrayAdapter);
-                                                total.setText("Total Loans: P"+totalLoans[0]
-                                                        +System.getProperty("line.separator")+ "Total Interest: P"+ totalInterest[0]
-                                                        +System.getProperty("line.separator")+ "Total Service Charge: P"+ totalService[0]
-                                                        +System.getProperty("line.separator")+ "Total Surcharge: P"+ totalSur[0]);
-                                            }
-                                        });
-                                reportBtn.setEnabled(true);
+                                            String guarantorName = child.child("guarantor_name").exists() ? new String(Base64.decode(child.child("guarantor_name").getValue().toString(), Base64.DEFAULT)) : "N/A";
+
+                                            String loanInfo = "Guarantor Name: " + guarantorName + "\n" +
+//
+                                                    "Loan Amount: P" + child.child("amount").getValue().toString() + "\n" +
+                                                    "Interest: P" + child.child("interest").getValue().toString() + "\n" +
+                                                    "Service Charge: P" + child.child("service_charge").getValue().toString() + "\n" +
+                                                    "Surcharge: P" + child.child("sur_charge").getValue().toString();
+                                            loanList.add(loanInfo);
+                                            totalLoans[0] += Double.parseDouble(child.child("amount").getValue().toString());
+                                            totalInterest[0] += Double.parseDouble(child.child("interest").getValue().toString());
+                                            totalService[0] += Double.parseDouble(child.child("service_charge").getValue().toString());
+                                            totalSur[0] += Double.parseDouble(child.child("sur_charge").getValue().toString());
+                                            ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(AllLoans.this, R.layout.activity_listview, R.id.textView, loanList);
+                                            simpleList.setAdapter(arrayAdapter);
+                                            total.setText("Total Loans: P" + totalLoans[0] +
+                                                    "\nTotal Interest: P" + totalInterest[0] +
+                                                    "\nTotal Service Charge: P" + totalService[0] +
+                                                    "\nTotal Surcharge: P" + totalSur[0]);
+                                        } else {
+                                            // Handle error
+                                        }
+                                    }
+                                });
                             }
+                            reportBtn.setEnabled(true);
+                        } else {
+                            // Handle error
                         }
-
                     }
                 });
 
@@ -154,3 +164,8 @@ public class AllLoans extends AppCompatActivity {
         });
     }
 }
+
+
+
+
+

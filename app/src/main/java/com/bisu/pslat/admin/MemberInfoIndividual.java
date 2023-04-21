@@ -45,7 +45,7 @@ public class MemberInfoIndividual extends AppCompatActivity {
 
         Intent intent = getIntent();
         String full_Name = intent.getStringExtra("fullname");
-        full_Name = "Name: " + full_Name;
+        full_Name = "" + full_Name;
         String cbu = intent.getStringExtra("cbu");
         cbu = "CBU: " + cbu;
         String patron = intent.getStringExtra("patronage");
@@ -54,15 +54,6 @@ public class MemberInfoIndividual extends AppCompatActivity {
         dateCreated = "Date Paid: " + dateCreated;
         String totalC = intent.getStringExtra("cbu");
         totalC = "Total: " + totalC;
-//<<<<<<< HEAD
-//        dateCreated = "Date Paid: " + dateCreated;
-//        String totalC = intent.getStringExtra("cbu");
-//        totalC = "Total: " + totalC;
-//
-//        // Check if username and CBU are not null
-//        if (dateCreated != null && cbu != null && full_Name != null && totalC != null) {
-//=======
-
 
         // Check if username and CBU are not null
         if (dateCreated != null && cbu != null && full_Name != null && patronage != null && totalC != null) {

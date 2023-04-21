@@ -165,7 +165,7 @@
             android:background="@color/light_blue_600"
             android:gravity="center"
             android:text="GO BACK"
-            android:textColor="#212121" />
+            android:textColor="@color/white" />
 
     </LinearLayout>
 </RelativeLayout>

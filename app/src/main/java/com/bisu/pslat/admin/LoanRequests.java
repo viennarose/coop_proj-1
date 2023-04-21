@@ -54,7 +54,7 @@ public class LoanRequests extends AppCompatActivity {
                                                     public void onComplete(@NonNull Task<DataSnapshot> task2) {
                                                         full_name[0] = AccountSettings.decode(task2.getResult().child("fullname").getValue().toString());
                                                         username[0] = AccountSettings.decode(task2.getResult().child("username").getValue().toString());
-                                                        userList.add(full_name[0] +" @"+username[0]
+                                                        userList.add("Name: " + full_name[0] +" @"+username[0]
                                                                 +System.getProperty("line.separator")
                                                                 +"Date Requested: "+child.child("date_created").getValue().toString());
                                                         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(LoanRequests.this, R.layout.activity_listview, R.id.textView, userList);

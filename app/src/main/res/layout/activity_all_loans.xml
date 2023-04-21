@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/app_default"
+    android:background="#202020"
     tools:context=".admin.AllLoans">
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
@@ -14,11 +14,14 @@
             android:id="@+id/backButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#000000"
+            android:background="@color/light_blue_600"
             android:textColor="#ffffff"
             android:gravity="left|center"
             android:paddingLeft="20dp"
             android:text="GO BACK" />
+
+
+
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -28,27 +31,32 @@
             android:id="@+id/total"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/title_color"
-            android:textColor="#ffffff"
+            android:background="@color/white"
+            android:textColor="@color/light_blue_600"
             android:gravity="center"
             android:justificationMode="inter_word"
             android:padding="20dp"
             android:text="Loading..." />
+
+        <Button
+            android:id="@+id/report"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:background="@color/cancel"
+            android:textColor="#ffffff"
+            android:layout_marginBottom="10dp"
+            android:enabled="false"
+            android:gravity="center"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="10dp"
+            android:text="Generate Report"  />
         <ListView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:divider="#000"
+            android:divider="@color/light_blue_600"
             android:id="@+id/usersListView"
-            android:dividerHeight="1dp"/>
+            android:dividerHeight="3dp"/>
     </LinearLayout>
-        <Button
-            android:id="@+id/report"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/cancel"
-            android:enabled="false"
-            android:textColor="#ffffff"
-            android:gravity="center"
-            android:text="Generate Report" />
+
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

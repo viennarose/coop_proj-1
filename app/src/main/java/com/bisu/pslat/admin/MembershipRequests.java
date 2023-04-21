@@ -57,7 +57,7 @@ public class MembershipRequests extends AppCompatActivity {
                                                             full_name[0] = task2.getResult().child("fullname").getValue().toString();
                                                             username[0] = task2.getResult().child("username").getValue().toString();
 
-                                                            userList.add(AccountSettings.decode(full_name[0]) +" @"+ AccountSettings.decode(username[0]));
+                                                            userList.add("Name: " + AccountSettings.decode(full_name[0]) +" @"+ AccountSettings.decode(username[0]));
                                                             ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(MembershipRequests.this, R.layout.activity_listview, R.id.textView, userList);
                                                             simpleList.setAdapter(arrayAdapter);
                                                         }
