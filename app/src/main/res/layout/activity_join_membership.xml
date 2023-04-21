@@ -22,7 +22,7 @@
                 android:padding="20dp"
                 android:text="JOIN MEMBERSHIP"
                 android:textAlignment="textStart"
-                android:textColor="#212121"
+                android:textColor="@color/white"
                 android:textFontWeight="300"
                 android:textSize="18dp"
                 android:textStyle="bold" />

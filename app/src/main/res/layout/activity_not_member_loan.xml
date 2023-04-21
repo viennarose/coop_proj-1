@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/sub_default"
+    android:background="#202020"
     tools:context=".NotMemberLoan">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:layout_margin="20dp"
-        android:background="@color/sub_default">
+        android:background="#202020">
 
         <TextView
             android:id="@+id/title"
@@ -19,9 +19,10 @@
             android:layout_height="wrap_content"
             android:textAlignment="textStart"
             android:textStyle="bold"
-            android:background="@color/app_default"
+            android:background="@color/light_blue_600"
             android:textColor="@color/white"
-            android:textSize="20dp"
+            android:textSize="18dp"
+            android:textFontWeight="300"
             android:padding="20dp"
             android:text="APPLY FOR LOAN" />
 
@@ -31,10 +32,11 @@
             android:layout_height="wrap_content"
             android:textAlignment="textStart"
             android:textStyle="bold"
-            android:background="@color/black_overlay"
+            android:background="#202020"
+            android:textFontWeight="300"
             android:textColor="#fff"
             android:justificationMode="inter_word"
-            android:textSize="20dp"
+            android:textSize="18dp"
             android:padding="20dp"
             android:text="Enter loan amount and choose your guarantor. Once submitted, your guarantor and the admin will review and approve your loan." />
 
@@ -52,6 +54,7 @@
             android:layout_weight="1"
             android:textStyle="bold"
             android:textSize="20dp"
+            android:layout_marginLeft="2dp"
             android:textColor="@color/light_blue_600"
             android:layout_marginBottom="10dp"
             android:text="Guarantor: " />
@@ -73,6 +76,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:textStyle="bold"
+                android:layout_marginLeft="2dp"
                 android:textColor="@color/light_blue_600"
                 android:textSize="20dp"
                 android:layout_marginBottom="10dp"
@@ -103,6 +107,7 @@
                 android:textStyle="bold"
                 android:textColor="@color/light_blue_600"
                 android:textSize="20dp"
+                android:layout_marginLeft="2dp"
                 android:layout_marginBottom="10dp"
                 android:text="No. of Months:" />
 
@@ -134,6 +139,14 @@
             android:background="#e54949"
             android:textColor="#ffffff"
             android:text="CANCEL" />
+
+        <ImageView
+            android:id="@+id/imageView4"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:layout_marginTop="-50dp"
+            app:srcCompat="@drawable/logocoop"/>
+
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -12,8 +12,8 @@
     <color name="light_blue_A200">#FF40C4FF</color>
     <color name="light_blue_A400">#FF00B0FF</color>
     <color name="black_overlay">#66000000</color>
-    <color name="sub_default">#202020</color>
+    <color name="sub_default">#0b804f</color>
     <color name="app_default">#FF039BE5</color>
     <color name="cancel">#e54949</color>
-    <color name="title_color">#202020</color>
+    <color name="title_color">#054f1a</color>
 </resources>
