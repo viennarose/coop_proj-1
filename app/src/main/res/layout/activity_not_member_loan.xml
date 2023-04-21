@@ -43,7 +43,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:orientation="horizontal"
-        android:background="@color/sub_default">
+        android:background="@color/white">
 
         <TextView
             android:id="@+id/textView2"
@@ -52,6 +52,7 @@
             android:layout_weight="1"
             android:textStyle="bold"
             android:textSize="20dp"
+            android:textColor="@color/light_blue_600"
             android:layout_marginBottom="10dp"
             android:text="Guarantor: " />
 
@@ -64,7 +65,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:background="@color/sub_default">
+            android:background="@color/white">
 
             <TextView
                 android:id="@+id/textView"
@@ -72,6 +73,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:textStyle="bold"
+                android:textColor="@color/light_blue_600"
                 android:textSize="20dp"
                 android:layout_marginBottom="10dp"
                 android:text="Loan Amount:" />
@@ -91,7 +93,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:background="@color/sub_default">
+            android:background="@color/white">
 
             <TextView
                 android:id="@+id/textView22"
@@ -99,6 +101,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:textStyle="bold"
+                android:textColor="@color/light_blue_600"
                 android:textSize="20dp"
                 android:layout_marginBottom="10dp"
                 android:text="No. of Months:" />
@@ -121,6 +124,7 @@
             android:background="@color/app_default"
             android:textStyle="bold"
             android:textColor="#fff"
+            android:layout_marginTop="20dp"
             android:layout_marginBottom="10dp"
             android:text="SUBMIT" />
         <Button
