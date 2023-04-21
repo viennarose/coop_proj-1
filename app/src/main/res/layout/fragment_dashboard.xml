@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="#0b804f"
+    android:background="#202020"
     android:layout_height="match_parent"
     tools:context=".user.ui.dashboard.DashboardFragment">
 
@@ -13,65 +13,54 @@
         android:orientation="vertical"
         android:gravity="top">
 
+        <!--        <ImageView-->
+        <!--            android:id="@+id/imageView3"-->
+        <!--            android:layout_width="200dp"-->
+        <!--            android:layout_height="150dp"-->
+        <!--            android:layout_gravity="center"-->
+        <!--            app:srcCompat="@drawable/logocoop"/>-->
+
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="120dp"
+            android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:background="@color/app_default"
-            android:gravity="center">
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="20dp"
+            android:gravity="center_vertical">
 
-            <ImageView
-                android:id="@+id/imageView3"
-                android:layout_width="200dp"
-                android:layout_height="150dp"
-                app:srcCompat="@drawable/icon"
-                tools:ignore="MissingConstraints" />
-            <LinearLayout
-                android:layout_width="match_parent"
+            <TextView
+                android:id="@+id/accBtn"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:background="@color/app_default">
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_gravity="right"
-                    android:background="@color/app_default">
-                    <TextView
-                        android:id="@+id/accBtn"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textAlignment="textEnd"
-                        android:textStyle="bold"
-                        android:textColor="#fff"
-                        android:textSize="15dp"
-                        android:drawableStart="@drawable/baseline_settings_24"
-                        android:background="@color/sub_default"
-                        android:drawablePadding="5dp"
-                        android:padding="5dp"
-                        android:text="Account Settings" />
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_gravity="right"
-                    android:background="@color/app_default">
-                    <TextView
-                        android:id="@+id/logoutButton"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textAlignment="textEnd"
-                        android:textStyle="bold"
-                        android:textColor="#fff"
-                        android:background="#a61616"
-                        android:drawableStart="@drawable/baseline_logout_24"
-                        android:textSize="15dp"
-                        android:drawablePadding="5dp"
-                        android:padding="5dp"
-                        android:text="Log-out" />
-                </LinearLayout>
-            </LinearLayout>
+                android:layout_weight="1"
+                android:textAlignment="textEnd"
+                android:textStyle="bold"
+                android:textColor="#fff"
+                android:textSize="15dp"
+                android:drawableStart="@drawable/baseline_settings_24"
+                android:background="@color/sub_default"
+                android:drawablePadding="5dp"
+                android:padding="5dp"
+                android:layout_marginEnd="20dp"
+                android:text="Account Settings" />
+
+            <TextView
+                android:id="@+id/logoutButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textAlignment="textEnd"
+                android:textStyle="bold"
+                android:textColor="#fff"
+                android:background="#a61616"
+                android:drawableStart="@drawable/baseline_logout_24"
+                android:textSize="15dp"
+                android:drawablePadding="5dp"
+                android:padding="5dp"
+                android:text="Logout" />
+
         </LinearLayout>
         <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="match_parent"
@@ -81,17 +70,17 @@
                 android:id="@+id/loanreq"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="#000000"
+                android:background="@color/light_blue_600"
                 android:textColor="#ffffff"
-                android:gravity="left|center"
+                android:gravity="center"
                 android:paddingLeft="20dp"
                 android:text="REQUESTED LOANS [pending]"/>
             <ListView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:divider="#000"
+                android:divider="@color/light_blue_600"
                 android:id="@+id/reqloanListView"
-                android:dividerHeight="1dp"/>
+                android:dividerHeight="2dp"/>
         </LinearLayout>
 
         <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -102,20 +91,25 @@
                 android:id="@+id/loantext"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="#000000"
+                android:background="@color/light_blue_600"
                 android:textColor="#ffffff"
-                android:gravity="left|center"
+                android:gravity="center"
                 android:paddingLeft="20dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="1dp"
                 android:text="LOANS" />
             <ListView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:divider="#000"
+                android:divider="@color/light_blue_600"
                 android:id="@+id/loanListView"
-                android:dividerHeight="1dp"/>
+                android:dividerHeight="2dp"/>
         </LinearLayout>
 
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+
