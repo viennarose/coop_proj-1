@@ -136,7 +136,7 @@ public class AllMembers extends AppCompatActivity {
                                                         patronage += Double.parseDouble(child2.child("amount").getValue().toString());
                                                     }
                                                 }
-                                                userList.add("Name: " + full_name + " @" + AccountSettings.decode(child.child("username").getValue().toString())
+                                                userList.add(full_name + " @" + AccountSettings.decode(child.child("username").getValue().toString())
                                                         + System.getProperty("line.separator") + "Capital Build Up: P" + cbu
                                                         + System.getProperty("line.separator") + "Patronage Refund: P" + patronage
                                                        + System.getProperty("line.separator") + "Date Paid: " + date_created);
