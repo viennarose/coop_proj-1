@@ -23,6 +23,7 @@ import com.bisu.pslat.AccountSettings;
 import com.bisu.pslat.JoinMembership;
 import com.bisu.pslat.Login;
 import com.bisu.pslat.MemberLoan;
+import com.bisu.pslat.MemberPayment;
 import com.bisu.pslat.NotMemberLoan;
 import com.bisu.pslat.R;
 import com.bisu.pslat.UserDashboard;
@@ -54,6 +55,7 @@ public class HomeFragment extends Fragment {
         View root = binding.getRoot();
         final Button joinB = binding.joinButton;
         final Button loanB = binding.loanButton;
+        final Button paymentLoan = binding.paymentLoanButton;
         final TextView textView = binding.textHome;
         stat = binding.status;
 //        final TextView bal = binding.balanceValue;
@@ -124,6 +126,13 @@ public class HomeFragment extends Fragment {
                                                     joinB.setVisibility(View.VISIBLE);
                                                 }
                                             }, 600);
+                                            new Handler().postDelayed(new Runnable() {
+                                                @Override
+                                                public void run() {
+                                                    paymentLoan.startAnimation(shake);
+                                                    paymentLoan.setVisibility(View.VISIBLE);
+                                                }
+                                            }, 600);
                                         }
                                     }, 1000);
 
@@ -146,12 +155,28 @@ public class HomeFragment extends Fragment {
                                             loanB.startAnimation(shake);
                                             loanB.setVisibility(View.VISIBLE);
 
+                                            new Handler().postDelayed(new Runnable() {
+                                                @Override
+                                                public void run() {
+                                                    paymentLoan.startAnimation(shake);
+                                                    paymentLoan.setVisibility(View.VISIBLE);
+                                                }
+                                            }, 600);
                                         }
+
                                     }, 1000);
                                     loanB.setOnClickListener(new View.OnClickListener() {
                                         @Override
                                         public void onClick(View v) {
                                             Intent intent = new Intent(getContext(), MemberLoan.class);
+                                            startActivity(intent);
+                                        }
+                                    });
+
+                                    paymentLoan.setOnClickListener(new View.OnClickListener() {
+                                        @Override
+                                        public void onClick(View v) {
+                                            Intent intent = new Intent(getContext(), MemberPayment.class);
                                             startActivity(intent);
                                         }
                                     });

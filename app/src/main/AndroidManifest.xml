@@ -67,6 +67,9 @@
             android:name=".MemberLoan"
             android:exported="false" />
         <activity
+            android:name=".MemberPayment"
+            android:exported="false" />
+        <activity
             android:name=".admin.Settings"
             android:exported="false" />
         <activity
