@@ -155,20 +155,34 @@
                 android:paddingTop="10dp"
                 android:text="VIEW TOTALS"
                 android:textColor="@color/white" />
-            <TextView
-                android:id="@+id/loutButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="40dp"
-                android:background="@color/cancel"
-                android:drawableLeft="@drawable/baseline_logout_24"
-                android:padding="8dp"
-                android:text="LOGOUT"
-                android:textAlignment="center"
-                android:textColor="@color/white"
-                android:layout_column="1"
-                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/paymentRequestsBtn"
+                android:layout_width="180dp"
+                android:layout_height="80dp"
+                android:layout_margin="10dp"
+                android:background="@color/light_blue_600"
+                android:drawableTop="@drawable/baseline_settings_24"
+                android:paddingTop="10dp"
+                android:text="PAYMENT REQUESTS"
+                android:textColor="@color/white" />
+
+
         </TableRow>
+
+        <TextView
+            android:id="@+id/loutButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="40dp"
+            android:background="@color/cancel"
+            android:drawableLeft="@drawable/baseline_logout_24"
+            android:padding="8dp"
+            android:text="LOGOUT"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:layout_column="1"
+            android:textStyle="bold" />
     </TableLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
