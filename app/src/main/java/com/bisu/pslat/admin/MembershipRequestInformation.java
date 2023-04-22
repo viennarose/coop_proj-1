@@ -67,9 +67,9 @@ public class MembershipRequestInformation extends AppCompatActivity {
                                                     public void onDataChange(@NonNull DataSnapshot snapshot2) {
                                                         for (DataSnapshot child2 : snapshot2.getChildren()) {
                                                             m_id[0] = child2.getKey();
-                                                            fullName.setText(AccountSettings.decode(child.child("fullname").getValue().toString()));
-                                                            cbuVal.setText(child2.child("cbu").getValue().toString());
-                                                            datereq.setText(child2.child("date_created").getValue().toString());
+                                                            fullName.setText("Name: " + AccountSettings.decode(child.child("fullname").getValue().toString()));
+                                                            cbuVal.setText("CBU: " + child2.child("cbu").getValue().toString());
+                                                            datereq.setText("Date Req: " + child2.child("date_created").getValue().toString());
 
                                                             approveBtn.setOnClickListener(new View.OnClickListener() {
                                                                 @Override

@@ -67,10 +67,10 @@ public class GuarantorRequestInformation extends AppCompatActivity {
                                                 for (DataSnapshot child2 : snapshot2.getChildren()) {
                                                     if(child2.child("date_created").getValue().toString().matches(passed_dc)){
                                                         m_id[0] = child2.getKey();
-                                                        fullName.setText(AccountSettings.decode(child.child("fullname").getValue().toString()));
-                                                        loanVal.setText(child2.child("amount").getValue().toString());
-                                                        monthsVal.setText(child2.child("months").getValue().toString() + " month/s");
-                                                        datereq.setText(child2.child("date_created").getValue().toString());
+                                                        fullName.setText("Name: " + AccountSettings.decode(child.child("fullname").getValue().toString()));
+                                                        loanVal.setText("Loan Amount: " + child2.child("amount").getValue().toString());
+                                                        monthsVal.setText("Months to pay: " +child2.child("months").getValue().toString() + " month/s");
+                                                        datereq.setText("Date Req: " + child2.child("date_created").getValue().toString());
 
                                                         approveBtn.setOnClickListener(new View.OnClickListener() {
                                                             @Override
