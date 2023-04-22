@@ -139,25 +139,45 @@ public class DashboardFragment extends Fragment {
                             ArrayList<String> userList = new ArrayList<String>();
                             final String[] amount = {""};
                             final String[] months = { "" };
-
+                            final String[] interest = { "" };
+                            final String[] service_charge = { "" };
+                            final String[] surcharge = { "" };
                             final String[] date_created = { "" };
+                            final String[] guarantor_name = {""};
 
                             for (DataSnapshot child : snapshot.getChildren()) {
                                 amount[0] = child.child("amount").getValue().toString();
                                 months[0] = child.child("months").getValue().toString();
+                                interest[0] = child.child("interest").getValue().toString();
+                                service_charge[0] = child.child("service_charge").getValue().toString();                                interest[0] = child.child("interest").getValue().toString();
+                                surcharge[0] = child.child("sur_charge").getValue().toString();
                                 date_created[0] = child.child("date_created").getValue().toString();
-                                userList.add("Loan Amount: P"+amount[0]+"," +System.getProperty("line.separator")+"Months to pay: "+months[0] + " month/s"  +System.getProperty("line.separator")+"Date Requested: "+date_created[0]);
+
+                                // check if guarantor exists in user's node
+                                if (child.child("guarantor_username").exists()) {
+                                    guarantor_name[0] = child.child("guarantor_username").getValue().toString();
+                                } else {
+                                    guarantor_name[0] = "Active Member";
+                                }
+
+                                userList.add("Loan Amount: P"+amount[0]
+                                        +System.getProperty("line.separator")+"Interest: "+interest[0]
+                                        +System.getProperty("line.separator")+"Service Charge: "+service_charge[0]
+                                        +System.getProperty("line.separator")+"Surcharge: "+surcharge[0]
+                                        +System.getProperty("line.separator")+"Months to pay: "+months[0] + " month/s"
+                                        + System.getProperty("line.separator") + "Guarantor: " + guarantor_name[0]
+                                        +System.getProperty("line.separator")+"Date Requested: "+date_created[0]);
                                 ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(DashboardFragment.context, R.layout.activity_listview2, R.id.textView, userList);
                                 loanlistView.setAdapter(arrayAdapter);
                             }
                             loanlistView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                                 @Override
                                 public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                                    Log.d("HHHH",adapterView.getItemAtPosition(i).toString().split(",")[1]);
-                                    Intent go = new Intent(DashboardFragment.context, UserLoanInformation.class);
-                                    go.putExtra("date_created",adapterView.getItemAtPosition(i).toString().split(",")[1]
-                                            .split(": ")[1]);
-                                    DashboardFragment.context.startActivity(go);
+//                                    Log.d("HHHH",adapterView.getItemAtPosition(i).toString().split(",")[1]);
+//                                    Intent go = new Intent(DashboardFragment.context, UserLoanInformation.class);
+//                                    go.putExtra("date_created",adapterView.getItemAtPosition(i).toString().split(",")[1]
+//                                            .split(": ")[1]);
+//                                    DashboardFragment.context.startActivity(go);
                                 }
                             });
                         }
