@@ -37,7 +37,7 @@
             android:textFontWeight="300"
             android:layout_marginTop="-50dp"
             android:layout_marginBottom="20dp"
-            android:text="Membership Requests Archive" />
+            android:text="Payment Requests Archive" />
 
         <ListView
             android:id="@+id/paymentListView"
