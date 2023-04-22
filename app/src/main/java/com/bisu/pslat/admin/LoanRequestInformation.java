@@ -74,7 +74,7 @@ public class LoanRequestInformation extends AppCompatActivity {
                                                             gname.setText("Membership Plan");
                                                         }
                                                         else {
-                                                            gname.setText(AccountSettings.decode(AccountSettings.decode(child2.child("guarantor_username").getValue().toString())));
+                                                            gname.setText(child2.child("guarantor_username").getValue().toString());
                                                         }
                                                         loanVal.setText(child2.child("amount").getValue().toString());
                                                         monthsVal.setText(child2.child("months").getValue().toString() + " months");
@@ -112,7 +112,7 @@ public class LoanRequestInformation extends AppCompatActivity {
 
                                                                     mDatabase.child("balance").push().setValue(bal_map);
                                                                 }
-
+                                                                Double loanAmount = Double.parseDouble(loanVal.getText().toString().replace("Loan Amount: ", ""));
                                                                 HashMap<String, Object> map = new HashMap<>();
                                                                 if(finalUserloan_type.matches("not_member")){
                                                                     map.put("guarantor_id", child2.child("guarantor_id").getValue().toString());
@@ -120,7 +120,7 @@ public class LoanRequestInformation extends AppCompatActivity {
                                                                 }
                                                                 map.put("user_id", user_id);
                                                                 map.put("user_type", finalUserloan_type);
-                                                                map.put("amount", loanVal.getText().toString());
+                                                                map.put("amount",loanAmount);
                                                                 map.put("months", child2.child("months").getValue().toString());
                                                                 map.put("interest", child2.child("interest").getValue().toString());
                                                                 map.put("service_charge", service_charge);
