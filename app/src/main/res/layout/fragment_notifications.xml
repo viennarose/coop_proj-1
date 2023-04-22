@@ -21,7 +21,7 @@
             <ImageView
                 android:id="@+id/imageView3"
                 android:layout_width="300dp"
-                android:layout_height="280dp"
+                android:layout_height="200dp"
                 android:layout_marginTop="-30dp"
                 app:srcCompat="@drawable/logocoop"
                 tools:ignore="MissingConstraints" />
@@ -31,7 +31,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginTop="-50dp"
+            android:layout_marginTop="-60dp"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_marginBottom="20dp"
@@ -69,6 +69,10 @@
                 android:text="Log-out" />
 
         </LinearLayout>
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:orientation="vertical">
         <Button
 
             android:layout_width="match_parent"
@@ -77,8 +81,7 @@
             android:textColor="#ffffff"
             android:gravity="center"
             android:paddingLeft="20dp"
-            android:text="Notifications"/>
-
+            android:text="Loan Guarantor Approval"/>
 
         <ListView
             android:layout_width="match_parent"
@@ -87,6 +90,28 @@
             android:divider="@color/light_blue_600"
             android:id="@+id/loanListView"
             android:dividerHeight="3dp"/>
+
+    </LinearLayout>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:orientation="vertical">
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/light_blue_600"
+            android:textColor="#ffffff"
+            android:gravity="center"
+            android:paddingLeft="20dp"
+            android:text="Loans/Payments (Pending)"/>
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:divider="@color/light_blue_600"
+            android:id="@+id/reqloanpaymentListView"
+            android:dividerHeight="2dp"/>
+    </LinearLayout>
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
