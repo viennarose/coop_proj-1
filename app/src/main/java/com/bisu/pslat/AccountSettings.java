@@ -208,12 +208,12 @@ public class AccountSettings extends AppCompatActivity {
                             String removebracket = user_info.substring(1,user_info.length()-1);
                             String[] extract_id = removebracket.split(",");
                             dateCreated[0] = extract_id[4].split("=")[1];
-                            fullnameval[0] = originalValue(extract_id[5].split("="));
-                            member_type[0] = extract_id[6].split("=")[1];
+                            fullnameval[0] = originalValue(extract_id[7].split("="));
+//                            member_type[0] = extract_id[6].split("=")[1];
                             addressVal[0] = originalValue(extract_id[1].split("="));
-                            ageVal[0] = originalValue(extract_id[7].split("="));
-                            phoneVal[0] = originalValue(extract_id[3].split("="));
-                            usernameVal[0] = originalValue(extract_id[9].split("="));
+                            ageVal[0] = originalValue(extract_id[9].split("="));
+                            phoneVal[0] = originalValue(extract_id[4].split("="));
+                            usernameVal[0] = originalValue(extract_id[11].split("="));
                             passwordVal[0] = password_originalValue(extract_id[0].split("="));
                             Log.d("KINI: ", removebracket);
 
