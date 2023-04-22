@@ -91,7 +91,7 @@ public class GuarantorRequestInformation extends AppCompatActivity {
                                                                 HashMap<String, Object> map = new HashMap<>();
                                                                 map.put("user_id", user_id);
                                                                 map.put("guarantor_id", user.getUid());
-                                                                map.put("guarantor_name", UserDashboard.fullname[0]);
+                                                                map.put("guarantor_username", UserDashboard.fullname[0]);
                                                                 map.put("user_type", "not_member");
                                                                 map.put("amount", loanVal.getText().toString());
                                                                 map.put("months", child2.child("months").getValue().toString());
