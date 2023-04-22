@@ -122,6 +122,13 @@
             android:background="#e54949"
             android:textColor="#ffffff"
             android:text="CANCEL" />
+
+        <ImageView
+            android:id="@+id/imageView4"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:layout_marginTop="-50dp"
+            app:srcCompat="@drawable/logocoop"/>
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
