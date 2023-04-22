@@ -138,11 +138,15 @@ public class DashboardFragment extends Fragment {
                         if(snapshot.exists()){
                             ArrayList<String> userList = new ArrayList<String>();
                             final String[] amount = {""};
+                            final String[] months = { "" };
+
                             final String[] date_created = { "" };
+
                             for (DataSnapshot child : snapshot.getChildren()) {
                                 amount[0] = child.child("amount").getValue().toString();
+                                months[0] = child.child("months").getValue().toString();
                                 date_created[0] = child.child("date_created").getValue().toString();
-                                userList.add("Amount: P"+amount[0]+","+System.getProperty("line.separator")+"Date Requested: "+date_created[0]);
+                                userList.add("Loan Amount: P"+amount[0]+"," +System.getProperty("line.separator")+"Months to pay: "+months[0] + " month/s"  +System.getProperty("line.separator")+"Date Requested: "+date_created[0]);
                                 ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(DashboardFragment.context, R.layout.activity_listview2, R.id.textView, userList);
                                 loanlistView.setAdapter(arrayAdapter);
                             }
