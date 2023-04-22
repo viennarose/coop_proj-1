@@ -151,7 +151,7 @@
             android:layout_marginTop="10dp"
             android:background="@color/light_blue_600"
             android:text="GO BACK"
-            android:textColor="#212121" />
+            android:textColor="@color/white" />
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -96,7 +96,7 @@
             android:background="@color/cancel"
             android:gravity="center"
             android:text="REJECT"
-            android:textColor="#000000" />
+            android:textColor="@color/white" />
 
 
         <ProgressBar
@@ -124,7 +124,7 @@
             android:background="@color/light_blue_600"
             android:gravity="center"
             android:text="GO BACK"
-            android:textColor="#212121" />
+            android:textColor="@color/white" />
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
