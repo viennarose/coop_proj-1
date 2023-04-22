@@ -86,6 +86,7 @@ public class GuarantorRequestInformation extends AppCompatActivity {
                                                                 mDatabase.child("guarantor_requests").child(m_id[0]).child("date_updated").setValue(dateToday);
                                                                 mDatabase.child("guarantor_requests").child(m_id[0]).child("status").setValue("approved");
 
+                                                                Double loanAmount = Double.parseDouble(loanVal.getText().toString().replace("Loan Amount: ", ""));
                                                                 barT.setText("Submitting loan request...");
                                                                 FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                                                                 HashMap<String, Object> map = new HashMap<>();
@@ -93,7 +94,7 @@ public class GuarantorRequestInformation extends AppCompatActivity {
                                                                 map.put("guarantor_id", user.getUid());
                                                                 map.put("guarantor_username", UserDashboard.fullname[0]);
                                                                 map.put("user_type", "not_member");
-                                                                map.put("amount", loanVal.getText().toString());
+                                                                map.put("amount", loanAmount);
                                                                 map.put("months", child2.child("months").getValue().toString());
                                                                 map.put("interest", child2.child("interest").getValue().toString());
                                                                 map.put("status", "pending");

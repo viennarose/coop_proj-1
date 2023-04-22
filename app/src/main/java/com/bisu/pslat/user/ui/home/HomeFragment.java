@@ -143,6 +143,14 @@ public class HomeFragment extends Fragment {
                                             startActivity(intent);
                                         }
                                     });
+
+                                    paymentLoan.setOnClickListener(new View.OnClickListener() {
+                                        @Override
+                                        public void onClick(View v) {
+                                            Intent intent = new Intent(getContext(), MemberPayment.class);
+                                            startActivity(intent);
+                                        }
+                                    });
                                 }
                                 else {
                                     stat.setText("Active Member");
