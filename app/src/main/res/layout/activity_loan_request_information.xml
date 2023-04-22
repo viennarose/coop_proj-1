@@ -52,7 +52,7 @@
             android:drawableEnd="@drawable/baseline_check_circle_24"
             android:ems="10"
             android:background="@drawable/edittext_border"
-            android:hint="Guarator Name"
+            android:hint="Guarantor Name"
             android:textColorHint="@color/white"
             android:textColor="@color/white"
             android:enabled="false"
@@ -143,14 +143,15 @@
             android:textSize="12dp"
             android:textColor="@color/black"
             android:text="" />
+
         <Button
             android:id="@+id/backButton"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:background="@color/light_blue_600"
-            android:textColor="#ffffff"
             android:layout_marginTop="10dp"
-            android:text="GO BACK" />
+            android:background="@color/light_blue_600"
+            android:text="GO BACK"
+            android:textColor="#212121" />
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

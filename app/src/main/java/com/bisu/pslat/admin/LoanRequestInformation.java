@@ -69,12 +69,13 @@ public class LoanRequestInformation extends AppCompatActivity {
                                                     if(child2.child("date_created").getValue().toString().matches(passed_dc)){
                                                         m_id[0] = child2.getKey();
                                                         userloan_type = child2.child("user_type").getValue().toString();
+
                                                         fullName.setText("Name: " + AccountSettings.decode(child.child("fullname").getValue().toString()));
-                                                        if(child2.child("guarantor_name").getValue() == null){
+                                                        if(child2.child("guarantor_username").getValue() == null){
                                                             gname.setText("Membership Plan");
                                                         }
                                                         else {
-                                                            gname.setText(AccountSettings.decode(AccountSettings.decode(child2.child("guarantor_name").getValue().toString())));
+                                                            gname.setText(AccountSettings.decode(child2.child("guarantor_username").getValue().toString()));
                                                         }
                                                         loanVal.setText("Loan Amount: " + child2.child("amount").getValue().toString());
                                                         monthsVal.setText("Months to pay: " + child2.child("months").getValue().toString() + " month/s");
@@ -104,7 +105,7 @@ public class LoanRequestInformation extends AppCompatActivity {
                                                                         /(Integer.parseInt(child2.child("months").getValue().toString())))*0.05;
 
                                                                 HashMap<String, Object> bal_map = new HashMap<>();
-                                                                if(child2.child("guarantor_name").getValue() != null){
+                                                                if(child2.child("guarantor_username").getValue() != null){
                                                                     bal_map.put("user_id", child2.child("guarantor_id").getValue().toString());
                                                                     bal_map.put("amount", String.format("%.2f", patronage_refund));
                                                                     bal_map.put("type", "patronage_refund");
@@ -116,7 +117,7 @@ public class LoanRequestInformation extends AppCompatActivity {
                                                                 HashMap<String, Object> map = new HashMap<>();
                                                                 if(finalUserloan_type.matches("not_member")){
                                                                     map.put("guarantor_id", child2.child("guarantor_id").getValue().toString());
-                                                                    map.put("guarantor_name", child2.child("guarantor_name").getValue().toString());
+                                                                    map.put("guarantor_username", child2.child("guarantor_username").getValue().toString());
                                                                 }
                                                                 map.put("user_id", user_id);
                                                                 map.put("user_type", finalUserloan_type);
