@@ -67,27 +67,6 @@
             android:layout_height="300dp"
             android:orientation="vertical">
             <Button
-                android:id="@+id/loanreq"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/light_blue_600"
-                android:textColor="#ffffff"
-                android:gravity="center"
-                android:paddingLeft="20dp"
-                android:text="REQUESTED LOANS [pending]"/>
-            <ListView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:divider="@color/light_blue_600"
-                android:id="@+id/reqloanListView"
-                android:dividerHeight="2dp"/>
-        </LinearLayout>
-
-        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-            android:layout_width="match_parent"
-            android:layout_height="300dp"
-            android:orientation="vertical">
-            <Button
                 android:id="@+id/loantext"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -104,6 +83,28 @@
                 android:id="@+id/loanListView"
                 android:dividerHeight="2dp"/>
         </LinearLayout>
+
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:orientation="vertical">
+            <Button
+                android:id="@+id/loanreq"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/light_blue_600"
+                android:textColor="#ffffff"
+                android:gravity="center"
+                android:paddingLeft="20dp"
+                android:text="Payments"/>
+            <ListView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:divider="@color/light_blue_600"
+                android:id="@+id/reqloanListView"
+                android:dividerHeight="2dp"/>
+        </LinearLayout>
+
 
     </LinearLayout>
 
