@@ -77,7 +77,7 @@ public class LoanRequestInformation extends AppCompatActivity {
                                                             gname.setText(AccountSettings.decode(AccountSettings.decode(child2.child("guarantor_name").getValue().toString())));
                                                         }
                                                         loanVal.setText("Loan Amount: " + child2.child("amount").getValue().toString());
-                                                        monthsVal.setText("Months to pay: " + child2.child("months").getValue().toString() + " months");
+                                                        monthsVal.setText("Months to pay: " + child2.child("months").getValue().toString() + " month/s");
                                                         datereq.setText("Date Req: " + child2.child("date_created").getValue().toString());
 
                                                         String finalUserloan_type = userloan_type;
