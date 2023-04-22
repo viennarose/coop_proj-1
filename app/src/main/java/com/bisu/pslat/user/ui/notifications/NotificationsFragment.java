@@ -24,6 +24,7 @@ import com.bisu.pslat.Login;
 import com.bisu.pslat.R;
 import com.bisu.pslat.UserDashboard;
 import com.bisu.pslat.databinding.FragmentNotificationsBinding;
+import com.bisu.pslat.user.ui.dashboard.DashboardFragment;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -39,7 +40,7 @@ import java.util.ArrayList;
 public class NotificationsFragment extends Fragment {
 
     private FragmentNotificationsBinding binding;
-    public static ListView simpleList;
+    public static ListView simpleList, reqloanpaymentListView;
     public static DatabaseReference mDatabase;
     private static Context context;
 
@@ -52,9 +53,11 @@ public class NotificationsFragment extends Fragment {
         View root = binding.getRoot();
         NotificationsFragment.context = getContext();
         simpleList = binding.loanListView;
+        reqloanpaymentListView = binding.reqloanpaymentListView;
 
         TextView logoutBtn = binding.logoutButton;
         TextView accButton = binding.accBtn;
+        loadreqloanpaymentListView();
 
         accButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -77,6 +80,47 @@ public class NotificationsFragment extends Fragment {
         loadList();
         return root;
     }
+
+    private void loadreqloanpaymentListView() {
+        reqloanpaymentListView.setAdapter(null);
+
+        mDatabase = FirebaseDatabase.getInstance().getReference();
+        mDatabase.child("payment_requests").orderByChild("user_id").equalTo(UserDashboard.user_id[0])
+                .addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        if(snapshot.exists()){
+                            ArrayList<String> userList = new ArrayList<String>();
+                            final String[] payment = {""};
+                            final String[] month = {""};
+                            final String[] date_created = { "" };
+                            for (DataSnapshot child : snapshot.getChildren()) {
+                                if(child.child("status").getValue().toString().matches("pending")){
+                                    String user_id = child.child("user_id").getValue().toString();
+                                    payment[0] = child.child("payment").getValue().toString();
+                                    month[0] = child.child("month").getValue().toString();
+                                    date_created[0] = child.child("date_created").getValue().toString();
+
+                                    userList.add("Payment Amount: P"+payment[0] +System.getProperty("line.separator")+"Month of: "+month[0] +System.getProperty("line.separator")+"Date Requested: "+date_created[0]);
+                                    ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(NotificationsFragment.context, R.layout.activity_listview2, R.id.textView, userList);
+                                    reqloanpaymentListView.setAdapter(arrayAdapter);
+                                }
+                            }
+
+                        }
+                        else {
+                            Toast.makeText(NotificationsFragment.context, "No pending requests", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+    }
+
+
 
     @Override
     public void onDestroyView() {
