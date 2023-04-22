@@ -94,21 +94,23 @@ public class DashboardFragment extends Fragment {
         simpleList.setAdapter(null);
 
         mDatabase = FirebaseDatabase.getInstance().getReference();
-        mDatabase.child("loan_requests").orderByChild("user_id").equalTo(UserDashboard.user_id[0])
+        mDatabase.child("payment_requests").orderByChild("user_id").equalTo(UserDashboard.user_id[0])
                 .addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         if(snapshot.exists()){
                             ArrayList<String> userList = new ArrayList<String>();
-                            final String[] amount = {""};
+                            final String[] payment = {""};
+                            final String[] month = {""};
                             final String[] date_created = { "" };
                             for (DataSnapshot child : snapshot.getChildren()) {
-                                if(child.child("status").getValue().toString().matches("pending")){
+                                if(child.child("status").getValue().toString().matches("approved")){
                                     String user_id = child.child("user_id").getValue().toString();
-                                    amount[0] = child.child("amount").getValue().toString();
+                                    payment[0] = child.child("payment").getValue().toString();
+                                    month[0] = child.child("month").getValue().toString();
                                     date_created[0] = child.child("date_created").getValue().toString();
 
-                                    userList.add("Loan Amount: P"+amount[0]+System.getProperty("line.separator")+"Date Requested: "+date_created[0]);
+                                    userList.add("Payment Amount: P"+payment[0] +System.getProperty("line.separator")+"Month of: "+month[0] +System.getProperty("line.separator")+"Date Requested: "+date_created[0]);
                                     ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(DashboardFragment.context, R.layout.activity_listview2, R.id.textView, userList);
                                     simpleList.setAdapter(arrayAdapter);
                                 }
