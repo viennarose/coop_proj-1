@@ -118,7 +118,7 @@ public class DashboardFragment extends Fragment {
 
                         }
                         else {
-                            Toast.makeText(DashboardFragment.context, "No pending requests", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(DashboardFragment.context, "Empty Loans", Toast.LENGTH_SHORT).show();
                         }
                     }
 
@@ -184,7 +184,7 @@ public class DashboardFragment extends Fragment {
                             });
                         }
                         else {
-                            Toast.makeText(DashboardFragment.context, "No pending loans", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(DashboardFragment.context, "Empty Payments", Toast.LENGTH_SHORT).show();
                         }
                     }
 
