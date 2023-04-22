@@ -104,7 +104,7 @@ public class AllLoans extends AppCompatActivity {
         });
 
         mDatabase = FirebaseDatabase.getInstance().getReference();
-        mDatabase.child("users").get()
+        mDatabase.child("loans").get()
                 .addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<DataSnapshot> task) {
@@ -122,7 +122,7 @@ public class AllLoans extends AppCompatActivity {
                                         if (snapshot.isSuccessful()) {
 //                                          String fullName = snapshot.getResult().child("fullname").getValue(String.class);
 
-                                            String guarantorName = child.child("guarantor_username").exists() ? new String(Base64.decode(child.child("guarantor_name").getValue().toString(), Base64.DEFAULT)) : "N/A";
+                                            String guarantorName = child.child("guarantor_name").exists() ? new String(Base64.decode(child.child("guarantor_name").getValue().toString(), Base64.DEFAULT)) : "N/A";
 
                                             String loanInfo = "Guarantor Name: " + guarantorName + "\n" +
 //

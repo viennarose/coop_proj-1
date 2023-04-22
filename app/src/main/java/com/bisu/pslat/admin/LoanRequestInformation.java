@@ -69,16 +69,17 @@ public class LoanRequestInformation extends AppCompatActivity {
                                                     if(child2.child("date_created").getValue().toString().matches(passed_dc)){
                                                         m_id[0] = child2.getKey();
                                                         userloan_type = child2.child("user_type").getValue().toString();
-                                                        fullName.setText(AccountSettings.decode(child.child("fullname").getValue().toString()));
+
+                                                        fullName.setText("Name: " + AccountSettings.decode(child.child("fullname").getValue().toString()));
                                                         if(child2.child("guarantor_username").getValue() == null){
                                                             gname.setText("Membership Plan");
                                                         }
                                                         else {
                                                             gname.setText(AccountSettings.decode(child2.child("guarantor_username").getValue().toString()));
                                                         }
-                                                        loanVal.setText(child2.child("amount").getValue().toString());
-                                                        monthsVal.setText(child2.child("months").getValue().toString() + " months");
-                                                        datereq.setText(child2.child("date_created").getValue().toString());
+                                                        loanVal.setText("Loan Amount: " + child2.child("amount").getValue().toString());
+                                                        monthsVal.setText("Months to pay: " + child2.child("months").getValue().toString() + " month/s");
+                                                        datereq.setText("Date Req: " + child2.child("date_created").getValue().toString());
 
                                                         String finalUserloan_type = userloan_type;
                                                         approveBtn.setOnClickListener(new View.OnClickListener() {
