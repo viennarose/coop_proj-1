@@ -62,7 +62,7 @@ public class HomeFragment extends Fragment {
         final Button deposit = binding.depositButton;
         final Button withdrawal = binding.withdrawalButton;
         final TextView textView = binding.textHome;
-        final Button depBtn = binding.depBtn;
+//        final Button depBtn = binding.depBtn;
         stat = binding.status;
 //        final TextView bal = binding.balanceValue;
         //homeViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
@@ -201,13 +201,13 @@ public class HomeFragment extends Fragment {
                                         }
                                     });
 
-                                    depBtn.setOnClickListener(new View.OnClickListener() {
-                                        @Override
-                                        public void onClick(View view) {
-                                            Intent intent = new Intent(getContext(), DepositsViewList.class);
-                                            startActivity(intent);
-                                        }
-                                    });
+//                                    depBtn.setOnClickListener(new View.OnClickListener() {
+//                                        @Override
+//                                        public void onClick(View view) {
+//                                            Intent intent = new Intent(getContext(), DepositsViewList.class);
+//                                            startActivity(intent);
+//                                        }
+//                                    });
 
                                     paymentLoan.setOnClickListener(new View.OnClickListener() {
                                         @Override
