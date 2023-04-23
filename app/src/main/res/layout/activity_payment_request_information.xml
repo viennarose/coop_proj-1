@@ -36,11 +36,11 @@
             android:ems="10"
             android:background="@drawable/edittext_border"
             android:hint="Full Name"
-            android:textColorHint="@color/white"
+            android:textColorHint="#202020"
             android:enabled="false"
             android:digits=". qwertzuiopasdfghjklyxcvbnmABCDEFGHIJKLMNOPQRSTUVWXYZ"
             android:padding="15dp"
-            android:textColor="@color/white"
+            android:textColor="#202020"
             android:drawablePadding="10dp"
             android:layout_marginBottom="10dp"
             android:inputType="text" />
@@ -71,8 +71,8 @@
             android:background="@drawable/edittext_border"
             android:hint="Payment Type"
             android:enabled="false"
-            android:textColor="@color/white"
-            android:textColorHint="@color/white"
+            android:textColor="#202020"
+            android:textColorHint="#202020"
             android:digits=",.- 0123456789qwertzuiopasdfghjklyxcvbnmABCDEFGHIJKLMNOPQRSTUVWXYZ"
             android:padding="15dp"
             android:drawablePadding="10dp"
@@ -85,10 +85,10 @@
             android:layout_height="wrap_content"
             android:drawableEnd="@drawable/baseline_calendar_month_24"
             android:ems="10"
-            android:textColorHint="@color/white"
+            android:textColorHint="#202020"
             android:background="@drawable/edittext_border"
             android:hint="Date requested"
-            android:textColor="@color/white"
+            android:textColor="#202020"
             android:padding="15dp"
             android:enabled="false"
             android:drawablePadding="10dp"
@@ -113,7 +113,7 @@
             android:background="@color/cancel"
             android:gravity="center"
             android:text="REJECT"
-            android:textColor="#000000" />
+            android:textColor="@color/white" />
 
 
         <ProgressBar
@@ -135,13 +135,13 @@
 
         <Button
             android:id="@+id/backButton"
-            android:layout_width="300dp"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="50dp"
-            android:background="@color/light_blue_600"
+            android:background="@drawable/button_background"
             android:gravity="center"
             android:text="GO BACK"
-            android:textColor="#212121" />
+            android:textColor="@color/white" />
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

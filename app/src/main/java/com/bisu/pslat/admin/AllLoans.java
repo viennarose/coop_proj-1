@@ -124,7 +124,7 @@ public class AllLoans extends AppCompatActivity {
 
                                             String guarantorName = child.child("guarantor_username").exists() ? new String(Base64.decode(child.child("guarantor_username").getValue().toString(), Base64.DEFAULT)) : "Active Member";
 
-                                            String loanInfo = "Guarantor Name: " + guarantorName + "\n" +
+                                            String loanInfo = "Guarantor: " + guarantorName + "\n" +
                                                     "Loan Amount: P" + child.child("amount").getValue().toString() + "\n" +
                                                     "Interest: P" + child.child("interest").getValue().toString() + "\n" +
                                                     "Service Charge: P" + child.child("service_charge").getValue().toString() + "\n" +
