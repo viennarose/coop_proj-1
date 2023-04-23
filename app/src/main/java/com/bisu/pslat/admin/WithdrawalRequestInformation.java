@@ -147,7 +147,15 @@ public class WithdrawalRequestInformation extends AppCompatActivity {
                                                                 map.put("date_created", dateToday);
                                                                 map.put("date_updated", dateToday);
 
-                                                                mDatabase.child("withdrawals").push().setValue(map)
+                                                                HashMap<String, Object> map2 = new HashMap<>();
+                                                                map2.put("user_id", user_id);
+                                                                map2.put("amount", withdrawalAmount);
+                                                                map2.put("type", "Withdrawal");
+                                                                map2.put("date_created", dateToday);
+
+
+                                                                mDatabase.child("withdrawals").push().setValue(map);
+                                                                mDatabase.child("balance").push().setValue(map2)
                                                                         .addOnSuccessListener(new OnSuccessListener<Void>() {
                                                                             @Override
                                                                             public void onSuccess(Void unused) {

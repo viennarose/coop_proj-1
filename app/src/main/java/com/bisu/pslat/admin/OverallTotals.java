@@ -2,6 +2,7 @@ package com.bisu.pslat.admin;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.WindowDecorActionBar;
 import androidx.core.content.FileProvider;
 
 import android.app.DownloadManager;
@@ -45,8 +46,9 @@ import java.util.ArrayList;
 public class OverallTotals extends AppCompatActivity {
     private DatabaseReference mDatabase;
     private double totalWithdrawal;
-    private double totalLoanPayment;
+    private double totalLoan;
     private double totalDeposit;
+    private double totalCapital;
 
 
     @Override
@@ -55,8 +57,8 @@ public class OverallTotals extends AppCompatActivity {
         setContentView(R.layout.activity_overall_totals);
         Button back = (Button) findViewById(R.id.backButton);
         Button totalBtn = (Button) findViewById(R.id.total);
-//        Button totalDepositBtn = (Button) findViewById(R.id.totalDeposit);
-//        Button totalLoanBtn = (Button) findViewById(R.id.totalLoan);
+        Button totalWithdrawalBtn = (Button) findViewById(R.id.totalDeposit);
+        Button totalLoanBtn = (Button) findViewById(R.id.totalLoan);
         Button reportBtn = (Button) findViewById(R.id.report);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
             if (!Environment.isExternalStorageManager())
@@ -122,20 +124,28 @@ public class OverallTotals extends AppCompatActivity {
                                         .addListenerForSingleValueEvent(new ValueEventListener() {
                                             @Override
                                             public void onDataChange(@NonNull DataSnapshot snapshot) {
+
                                                 for (DataSnapshot child2 : snapshot.getChildren()) {
+                                                    if (child2.child("type").getValue().toString().matches("CBU")) {
+                                                        totalCapital += Double.parseDouble(child2.child("amount").getValue().toString());
+                                                    }
+                                                    if (child2.child("type").getValue().toString().matches("Deposit")) {
+                                                        totalDeposit += Double.parseDouble(child2.child("amount").getValue().toString());
+                                                    }
+
                                                     if (child2.child("type").getValue().toString().matches("Withdrawal")) {
                                                         totalWithdrawal += Double.parseDouble(child2.child("amount").getValue().toString());
                                                     }
-//                                                    if (child2.child("type").getValue().toString().matches("Loan Payment")) {
-//                                                        totalLoanPayment += Double.parseDouble(child2.child("payment").getValue().toString());
-//                                                    }
-//                                                    if (child2.child("type").getValue().toString().matches("Deposit")) {
-//                                                        totalDeposit += Double.parseDouble(child2.child("payment").getValue().toString());
-//                                                    }
+                                                    if (child2.child("type").getValue().toString().matches("Loan Payment")) {
+                                                        totalLoan += Double.parseDouble(child2.child("amount").getValue().toString());
+                                                    }
+//
                                                 }
-                                                totalBtn.setText("Total Capital: P" + totalWithdrawal);
-//                                                totalDepositBtn.setText("Total Capital: P" + totalLoanPayment);
-//                                                totalLoanBtn.setText("Total Capital: P" + totalDeposit);
+
+                                                totalBtn.setText("Total Capital: P" + (totalCapital + totalDeposit));
+//                                                totalDepositBtn.setText("Total De: P" + totalDeposit);
+                                                totalWithdrawalBtn.setText("Total Withdrawals: P" + totalWithdrawal);
+                                                totalLoanBtn.setText("Total Loan Payments: P" + totalLoan);
 
 
                                             }
