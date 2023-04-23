@@ -7,6 +7,7 @@ import android.animation.ObjectAnimator;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Base64;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -26,6 +27,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.nio.charset.StandardCharsets;
 import java.util.Calendar;
 import java.util.HashMap;
 
@@ -74,7 +76,12 @@ public class LoanRequestInformation extends AppCompatActivity {
                                                             gname.setText("Membership Plan");
                                                         }
                                                         else {
-                                                            gname.setText(child2.child("guarantor_username").getValue().toString());
+//                                                            gname.setText(child2.child("guarantor_username").getValue().toString());
+
+                                                            //Only Code I Added Today 4/23/2023 Retrieve Decoded Guarantor Username
+                                                            String encodedValue = child2.child("guarantor_username").getValue(String.class);
+                                                            String decodedValue = new String(Base64.decode(encodedValue, Base64.DEFAULT), StandardCharsets.UTF_8);
+                                                            gname.setText(decodedValue);
                                                         }
                                                         loanVal.setText(child2.child("amount").getValue().toString());
                                                         monthsVal.setText(child2.child("months").getValue().toString() + " months");

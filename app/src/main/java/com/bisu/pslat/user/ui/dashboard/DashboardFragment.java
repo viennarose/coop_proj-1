@@ -3,6 +3,7 @@ package com.bisu.pslat.user.ui.dashboard;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Base64;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -156,8 +157,15 @@ public class DashboardFragment extends Fragment {
                                 date_created[0] = child.child("date_created").getValue().toString();
 
                                 // check if guarantor exists in user's node
+//                                if (child.child("guarantor_username").exists()) {
+//                                    guarantor_name[0] = child.child("guarantor_username").getValue().toString();
+//                                } else {
+//                                    guarantor_name[0] = "Active Member";
+//                                }
                                 if (child.child("guarantor_username").exists()) {
-                                    guarantor_name[0] = child.child("guarantor_username").getValue().toString();
+                                    String encodedValue = child.child("guarantor_username").getValue(String.class);
+                                    String decodedValue = new String(Base64.decode(encodedValue, Base64.DEFAULT), StandardCharsets.UTF_8);
+                                    guarantor_name[0] = decodedValue;
                                 } else {
                                     guarantor_name[0] = "Active Member";
                                 }
