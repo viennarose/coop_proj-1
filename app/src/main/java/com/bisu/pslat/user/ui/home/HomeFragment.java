@@ -22,6 +22,7 @@ import androidx.lifecycle.ViewModelProvider;
 import com.bisu.pslat.AccountSettings;
 import com.bisu.pslat.JoinMembership;
 import com.bisu.pslat.Login;
+import com.bisu.pslat.MemberDeposit;
 import com.bisu.pslat.MemberLoan;
 import com.bisu.pslat.MemberPayment;
 import com.bisu.pslat.NotMemberLoan;
@@ -56,6 +57,8 @@ public class HomeFragment extends Fragment {
         final Button joinB = binding.joinButton;
         final Button loanB = binding.loanButton;
         final Button paymentLoan = binding.paymentLoanButton;
+        final Button deposit = binding.depositButton;
+        final Button withdrawal = binding.withdrawalButton;
         final TextView textView = binding.textHome;
         stat = binding.status;
 //        final TextView bal = binding.balanceValue;
@@ -170,6 +173,20 @@ public class HomeFragment extends Fragment {
                                                     paymentLoan.setVisibility(View.VISIBLE);
                                                 }
                                             }, 600);
+                                            new Handler().postDelayed(new Runnable() {
+                                                @Override
+                                                public void run() {
+                                                    deposit.startAnimation(shake);
+                                                    deposit.setVisibility(View.VISIBLE);
+                                                }
+                                            }, 600);
+                                            new Handler().postDelayed(new Runnable() {
+                                                @Override
+                                                public void run() {
+                                                    withdrawal.startAnimation(shake);
+                                                    withdrawal.setVisibility(View.VISIBLE);
+                                                }
+                                            }, 600);
                                         }
 
                                     }, 1000);
@@ -188,6 +205,21 @@ public class HomeFragment extends Fragment {
                                             startActivity(intent);
                                         }
                                     });
+                                    withdrawal.setOnClickListener(new View.OnClickListener() {
+                                        @Override
+                                        public void onClick(View v) {
+                                            Intent intent = new Intent(getContext(), MemberPayment.class);
+                                            startActivity(intent);
+                                        }
+                                    });
+                                    deposit.setOnClickListener(new View.OnClickListener() {
+                                        @Override
+                                        public void onClick(View v) {
+                                            Intent intent = new Intent(getContext(), MemberDeposit.class);
+                                            startActivity(intent);
+                                        }
+                                    });
+
                                 }
                             }
                             else {

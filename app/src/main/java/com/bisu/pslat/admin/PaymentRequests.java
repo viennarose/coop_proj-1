@@ -37,11 +37,12 @@ public class PaymentRequests extends AppCompatActivity {
 
     ListView simpleList;
     private DatabaseReference mDatabase;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_payment_requests);
-        simpleList = (ListView)findViewById(R.id.paymentListView);
+        simpleList = (ListView) findViewById(R.id.paymentListView);
         Button back = (Button) findViewById(R.id.backButton);
 
         mDatabase = FirebaseDatabase.getInstance().getReference();
@@ -49,10 +50,10 @@ public class PaymentRequests extends AppCompatActivity {
                 .addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        if(snapshot.exists()){
+                        if (snapshot.exists()) {
                             ArrayList<String> userList = new ArrayList<String>();
                             final String[] full_name = {""};
-                            final String[] username = { "" };
+                            final String[] username = {""};
                             for (DataSnapshot child : snapshot.getChildren()) {
                                 String user_id = child.child("user_id").getValue().toString();
                                 mDatabase.child("users").child(user_id).get()
@@ -61,12 +62,11 @@ public class PaymentRequests extends AppCompatActivity {
                                             public void onComplete(@NonNull Task<DataSnapshot> task2) {
                                                 if (!task2.isSuccessful()) {
                                                     Log.e("firebase", "Error getting data", task2.getException());
-                                                }
-                                                else {
+                                                } else {
                                                     full_name[0] = task2.getResult().child("fullname").getValue().toString();
                                                     username[0] = task2.getResult().child("username").getValue().toString();
 
-                                                    userList.add("Name: " + AccountSettings.decode(full_name[0]) +" @"+ AccountSettings.decode(username[0]));
+                                                    userList.add("Name: " + AccountSettings.decode(full_name[0]) + " @" + AccountSettings.decode(username[0]));
                                                     ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(PaymentRequests.this, R.layout.activity_listview, R.id.textView, userList);
                                                     simpleList.setAdapter(arrayAdapter);
                                                 }
@@ -78,14 +78,13 @@ public class PaymentRequests extends AppCompatActivity {
                                 @Override
                                 public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                                     Log.d("User", (String) adapterView.getItemAtPosition(i));
-                                    Intent go = new Intent(PaymentRequests.this,PaymentRequestInformation.class);
-                                    go.putExtra("username",adapterView.getItemAtPosition(i).toString().split("@")[1]);
+                                    Intent go = new Intent(PaymentRequests.this, PaymentRequestInformation.class);
+                                    go.putExtra("username", adapterView.getItemAtPosition(i).toString().split("@")[1]);
                                     startActivity(go);
                                     finish();
                                 }
                             });
-                        }
-                        else {
+                        } else {
                             Toast.makeText(PaymentRequests.this, "No pending requests", Toast.LENGTH_SHORT).show();
                         }
                     }

@@ -72,6 +72,7 @@
         <activity
             android:name=".MemberPayment"
             android:exported="false" />
+
         <activity
             android:name=".admin.Settings"
             android:exported="false" />
@@ -104,6 +105,9 @@
             android:exported="false" />
         <activity
             android:name=".JoinMembership"
+            android:exported="false" />
+        <activity
+            android:name=".MemberDeposit"
             android:exported="false" />
         <activity
             android:name=".UserDashboard"

@@ -35,6 +35,7 @@ public class PaymentRequestInformation extends AppCompatActivity {
         setContentView(R.layout.activity_payment_request_information);
         EditText fullName = (EditText) findViewById(R.id.fullName);
         EditText paymentVal = (EditText) findViewById(R.id.payment);
+        EditText paymentType = (EditText) findViewById(R.id.paymentType);
         EditText month = (EditText) findViewById(R.id.reqDate);
         Button back = (Button) findViewById(R.id.backButton);
         Button approveBtn = (Button) findViewById(R.id.approveButton);
@@ -64,6 +65,7 @@ public class PaymentRequestInformation extends AppCompatActivity {
                                                     fullName.setText(AccountSettings.decode(child.child("fullname").getValue().toString()));
                                                     paymentVal.setText(child2.child("payment").getValue().toString());
                                                     month.setText(child2.child("month").getValue().toString());
+                                                    paymentType.setText(child2.child("payment_type").getValue().toString());
 
                                                     approveBtn.setOnClickListener(new View.OnClickListener() {
                                                         @Override
@@ -87,6 +89,7 @@ public class PaymentRequestInformation extends AppCompatActivity {
                                                             HashMap<String, Object> map = new HashMap<>();
                                                             map.put("user_id", user_id);
                                                             map.put("amount", child2.child("payment").getValue().toString());
+
                                                             map.put("type", "Loan Payment");
                                                             map.put("date_created", dateToday);
 
