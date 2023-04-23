@@ -44,7 +44,10 @@ import java.util.ArrayList;
 
 public class OverallTotals extends AppCompatActivity {
     private DatabaseReference mDatabase;
-    private double totalcbu;
+    private double totalWithdrawal;
+    private double totalLoanPayment;
+    private double totalDeposit;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +55,8 @@ public class OverallTotals extends AppCompatActivity {
         setContentView(R.layout.activity_overall_totals);
         Button back = (Button) findViewById(R.id.backButton);
         Button totalBtn = (Button) findViewById(R.id.total);
+//        Button totalDepositBtn = (Button) findViewById(R.id.totalDeposit);
+//        Button totalLoanBtn = (Button) findViewById(R.id.totalLoan);
         Button reportBtn = (Button) findViewById(R.id.report);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
             if (!Environment.isExternalStorageManager())
@@ -118,11 +123,21 @@ public class OverallTotals extends AppCompatActivity {
                                             @Override
                                             public void onDataChange(@NonNull DataSnapshot snapshot) {
                                                 for (DataSnapshot child2 : snapshot.getChildren()) {
-                                                    if (child2.child("type").getValue().toString().matches("CBU")) {
-                                                        totalcbu += Double.parseDouble(child2.child("amount").getValue().toString());
+                                                    if (child2.child("type").getValue().toString().matches("Withdrawal")) {
+                                                        totalWithdrawal += Double.parseDouble(child2.child("amount").getValue().toString());
                                                     }
+//                                                    if (child2.child("type").getValue().toString().matches("Loan Payment")) {
+//                                                        totalLoanPayment += Double.parseDouble(child2.child("payment").getValue().toString());
+//                                                    }
+//                                                    if (child2.child("type").getValue().toString().matches("Deposit")) {
+//                                                        totalDeposit += Double.parseDouble(child2.child("payment").getValue().toString());
+//                                                    }
                                                 }
-                                                totalBtn.setText("Total Capital: P" + totalcbu);
+                                                totalBtn.setText("Total Capital: P" + totalWithdrawal);
+//                                                totalDepositBtn.setText("Total Capital: P" + totalLoanPayment);
+//                                                totalLoanBtn.setText("Total Capital: P" + totalDeposit);
+
+
                                             }
 
                                             @Override

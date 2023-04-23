@@ -106,7 +106,7 @@ public class DashboardFragment extends Fragment {
                             final String[] paymentType = {""};
                             final String[] date_created = { "" };
                             for (DataSnapshot child : snapshot.getChildren()) {
-                                if((child.child("status").getValue().toString().matches("approved") && child.child("payment_type").getValue().toString().matches("Loan Payment"))){
+                                if(child.child("status").getValue().toString().matches("approved")){
                                     String user_id = child.child("user_id").getValue().toString();
                                     payment[0] = child.child("payment").getValue().toString();
                                     month[0] = child.child("month").getValue().toString();
