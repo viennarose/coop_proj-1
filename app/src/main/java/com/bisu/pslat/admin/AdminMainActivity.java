@@ -121,14 +121,14 @@ public class AdminMainActivity extends AppCompatActivity {
             }
         });
 
-//        collectionBtn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(AdminMainActivity.this, Collection.class);
-//                startActivity(intent);
-//                finish();
-//            }
-//        });
+        collectionBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(AdminMainActivity.this, Collection.class);
+                startActivity(intent);
+                finish();
+            }
+        });
 
     }
 }
