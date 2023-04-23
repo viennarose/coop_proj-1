@@ -36,63 +36,58 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class PaymentRequests extends AppCompatActivity {
-
     ListView simpleList;
     private DatabaseReference mDatabase;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_payment_requests);
-        simpleList = (ListView) findViewById(R.id.paymentListView);
+        simpleList = (ListView)findViewById(R.id.paymentListView);
         Button back = (Button) findViewById(R.id.backButton);
 
         mDatabase = FirebaseDatabase.getInstance().getReference();
         mDatabase.child("payment_requests").orderByChild("status").equalTo("pending")
                 .addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        if (snapshot.exists()) {
+                    public void onDataChange(@NonNull DataSnapshot task) {
+                        if (task.exists()){
                             ArrayList<String> userList = new ArrayList<String>();
-                            final String[] full_name = {""};
-                            final String[] username = {""};
-                            for (DataSnapshot child : snapshot.getChildren()) {
+
+                            Log.d("count", String.valueOf(task.getChildrenCount()));
+                            for (DataSnapshot child : task.getChildren()) {
+                                String[] full_name = {""};
+                                String[] username = {""};
                                 String user_id = child.child("user_id").getValue().toString();
                                 mDatabase.child("users").child(user_id).get()
                                         .addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
                                             @Override
                                             public void onComplete(@NonNull Task<DataSnapshot> task2) {
-                                                if (!task2.isSuccessful()) {
-                                                    Log.e("firebase", "Error getting data", task2.getException());
-                                                } else {
-                                                    full_name[0] = task2.getResult().child("fullname").getValue().toString();
-                                                    username[0] = task2.getResult().child("username").getValue().toString();
-
-
-                                                    userList.add("Name: " + AccountSettings.decode(full_name[0]) +System.getProperty("line.separator") +"Username: "+ AccountSettings.decode(username[0]));
-
-                                                    ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(PaymentRequests.this, R.layout.activity_listview, R.id.textView, userList);
-                                                    simpleList.setAdapter(arrayAdapter);
-                                                }
+                                                full_name[0] = AccountSettings.decode(task2.getResult().child("fullname").getValue().toString());
+                                                username[0] = AccountSettings.decode(task2.getResult().child("username").getValue().toString());
+                                                userList.add("Name: " + full_name[0] +" @"+username[0]
+                                                        +System.getProperty("line.separator")
+                                                        +"Date Requested: "+child.child("date_created").getValue().toString());
+                                                ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(PaymentRequests.this, R.layout.activity_listview, R.id.textView, userList);
+                                                simpleList.setAdapter(arrayAdapter);
                                             }
                                         });
                             }
-
 
                             simpleList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                                 @Override
                                 public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                                     Log.d("User", (String) adapterView.getItemAtPosition(i));
-
                                     Intent go = new Intent(PaymentRequests.this,PaymentRequestInformation.class);
-                                    go.putExtra("username",adapterView.getItemAtPosition(i).toString().split("Username: ")[1]);
-
+                                    go.putExtra("username",adapterView.getItemAtPosition(i).toString().split("@")[1]
+                                            .split("Date Requested: ")[0].trim());
+                                    go.putExtra("date_created",adapterView.getItemAtPosition(i).toString().split("@")[1]
+                                            .split("Date Requested: ")[1]);
                                     startActivity(go);
-                                    finish();
                                 }
                             });
-                        } else {
-                            Toast.makeText(PaymentRequests.this, "No pending requests", Toast.LENGTH_SHORT).show();
+                        }
+                        else{
+                            Toast.makeText(PaymentRequests.this, "No payment requests", Toast.LENGTH_SHORT).show();
                         }
                     }
 
@@ -101,7 +96,6 @@ public class PaymentRequests extends AppCompatActivity {
 
                     }
                 });
-
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

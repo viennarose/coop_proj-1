@@ -54,7 +54,7 @@
             android:background="@drawable/edittext_border"
             android:hint="Amount"
             android:enabled="false"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:textColorHint="@color/white"
             android:digits=",.- 0123456789qwertzuiopasdfghjklyxcvbnmABCDEFGHIJKLMNOPQRSTUVWXYZ"
             android:padding="15dp"
@@ -113,7 +113,7 @@
             android:background="@color/cancel"
             android:gravity="center"
             android:text="REJECT"
-            android:textColor="@color/white" />
+            android:textColor="#000000" />
 
 
         <ProgressBar
