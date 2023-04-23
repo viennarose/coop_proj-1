@@ -19,11 +19,11 @@ import java.text.DateFormat;
 import java.util.Calendar;
 import java.util.HashMap;
 
-public class MemberPayment extends AppCompatActivity {
-
+public class MemberDeposit extends AppCompatActivity {
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_member_payment);
+        setContentView(R.layout.activity_member_deposit);
         EditText payment = (EditText) findViewById(R.id.paymentAmount);
         Spinner month = (Spinner) findViewById(R.id.monthSpinner);
         Button submitBtn = (Button) findViewById(R.id.submitButton);
@@ -34,11 +34,11 @@ public class MemberPayment extends AppCompatActivity {
             public void onClick(View v) {
                 submitBtn.setEnabled(false);
                 if(payment.getText().toString().matches("")){
-                    Toast.makeText(MemberPayment.this, "Enter amount", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MemberDeposit.this, "Enter amount", Toast.LENGTH_SHORT).show();
                     submitBtn.setEnabled(true);
                 }
                 else if(Integer.parseInt(payment.getText().toString()) < 100){
-                    Toast.makeText(MemberPayment.this, "Amount should be atleast 100 or higher", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MemberDeposit.this, "Amount should be atleast 100 or higher", Toast.LENGTH_SHORT).show();
                     submitBtn.setEnabled(true);
                 }
                 else {
@@ -52,7 +52,7 @@ public class MemberPayment extends AppCompatActivity {
                         map.put("month", selectedMonth);
 //                        map.put("month", month.getText().toString());
                         map.put("status", "pending");
-                        map.put("payment_type", "Loan Payment");
+                        map.put("payment_type", "Deposit");
                         map.put("date_created", dateToday);
                         map.put("date_updated", dateToday);
                         DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
@@ -61,7 +61,7 @@ public class MemberPayment extends AppCompatActivity {
                                     @Override
                                     public void onSuccess(Void unused) {
                                         finish();
-                                        Toast.makeText(MemberPayment.this, "Payment Request Submitted", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(MemberDeposit.this, "Deposit Request Submitted", Toast.LENGTH_SHORT).show();
                                     }
                                 });
                     }
