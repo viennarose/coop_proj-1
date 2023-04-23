@@ -99,13 +99,13 @@ public class PaymentRequestInformation extends AppCompatActivity {
 
                                                                 HashMap<String, Object> map = new HashMap<>();
                                                                 map.put("user_id", user_id);
-                                                                map.put("payment", child2.child("payment").getValue().toString());
-                                                                map.put("type", "Loan Payment");
+                                                                map.put("amount", child2.child("payment").getValue().toString());
+                                                                map.put("type", finalUserpayment_type);
                                                                 map.put("date_created", dateToday);
 
                                                                 HashMap<String, Object> map2 = new HashMap<>();
                                                                 map2.put("payment", child2.child("payment").getValue().toString());
-                                                                map2.put("type", "Loan Payment");
+                                                                map2.put("type", finalUserpayment_type);
                                                                 map2.put("date_created", dateToday);
 
                                                                 barT.setText("Setting up user balance...");

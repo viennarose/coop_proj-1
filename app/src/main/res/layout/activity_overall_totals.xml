@@ -35,26 +35,26 @@
                 android:justificationMode="inter_word"
                 android:padding="20dp"
                 android:text="Loading..." />
-<!--            <Button-->
-<!--                android:id="@+id/totalDeposit"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:background="@color/title_color"-->
-<!--                android:textColor="#ffffff"-->
-<!--                android:gravity="center"-->
-<!--                android:justificationMode="inter_word"-->
-<!--                android:padding="20dp"-->
-<!--                android:text="Loading..." />-->
-<!--            <Button-->
-<!--                android:id="@+id/totalLoan"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:background="@color/title_color"-->
-<!--                android:textColor="#ffffff"-->
-<!--                android:gravity="center"-->
-<!--                android:justificationMode="inter_word"-->
-<!--                android:padding="20dp"-->
-<!--                android:text="Loading..." />-->
+            <Button
+                android:id="@+id/totalDeposit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/title_color"
+                android:textColor="#ffffff"
+                android:gravity="center"
+                android:justificationMode="inter_word"
+                android:padding="20dp"
+                android:text="Loading..." />
+            <Button
+                android:id="@+id/totalLoan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/title_color"
+                android:textColor="#ffffff"
+                android:gravity="center"
+                android:justificationMode="inter_word"
+                android:padding="20dp"
+                android:text="Loading..." />
             <ListView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
