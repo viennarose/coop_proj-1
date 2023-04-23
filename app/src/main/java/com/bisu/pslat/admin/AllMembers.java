@@ -136,7 +136,7 @@ public class AllMembers extends AppCompatActivity {
                                                         patronage += Double.parseDouble(child2.child("amount").getValue().toString());
                                                     }
                                                 }
-                                                userList.add(full_name + " @" + AccountSettings.decode(child.child("username").getValue().toString())
+                                                userList.add("Name: " + full_name + System.getProperty("line.separator") + "Username: " + AccountSettings.decode(child.child("username").getValue().toString())
                                                         + System.getProperty("line.separator") + "Capital Build Up: P" + cbu
                                                         + System.getProperty("line.separator") + "Patronage Refund: P" + patronage
                                                        + System.getProperty("line.separator") + "Date Paid: " + date_created);
@@ -173,7 +173,7 @@ public class AllMembers extends AppCompatActivity {
                                               @Override
                                               public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                                                   Log.d("User", (String) adapterView.getItemAtPosition(i));
-                                                  String fullName = adapterView.getItemAtPosition(i).toString().split("@")[0];
+                                                  String fullName = adapterView.getItemAtPosition(i).toString().split("Username: ")[0];
                                                   String cbu = adapterView.getItemAtPosition(i).toString().split("Capital Build Up: P")[1].split("\\r?\\n")[0];
                                                   String patronage = adapterView.getItemAtPosition(i).toString().split("Patronage Refund: P")[1].split("\\r?\\n")[0];
                                                   String dateCreated = adapterView.getItemAtPosition(i).toString().split("Date Paid: ")[1];

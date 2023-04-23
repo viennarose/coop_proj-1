@@ -27,21 +27,24 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
+import java.util.Map;
 
 public class PaymentRequests extends AppCompatActivity {
 
     ListView simpleList;
     private DatabaseReference mDatabase;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_payment_requests);
-        simpleList = (ListView)findViewById(R.id.paymentListView);
+        simpleList = (ListView) findViewById(R.id.paymentListView);
         Button back = (Button) findViewById(R.id.backButton);
 
         mDatabase = FirebaseDatabase.getInstance().getReference();
@@ -66,7 +69,7 @@ public class PaymentRequests extends AppCompatActivity {
                                                     full_name[0] = task2.getResult().child("fullname").getValue().toString();
                                                     username[0] = task2.getResult().child("username").getValue().toString();
 
-                                                    userList.add("Name: " + AccountSettings.decode(full_name[0]) +" @"+ AccountSettings.decode(username[0]));
+                                                    userList.add("Name: " + AccountSettings.decode(full_name[0]) +System.getProperty("line.separator") +"Username: "+ AccountSettings.decode(username[0]));
                                                     ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(PaymentRequests.this, R.layout.activity_listview, R.id.textView, userList);
                                                     simpleList.setAdapter(arrayAdapter);
                                                 }
@@ -74,12 +77,13 @@ public class PaymentRequests extends AppCompatActivity {
                                         });
                             }
 
+
                             simpleList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                                 @Override
                                 public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                                     Log.d("User", (String) adapterView.getItemAtPosition(i));
                                     Intent go = new Intent(PaymentRequests.this,PaymentRequestInformation.class);
-                                    go.putExtra("username",adapterView.getItemAtPosition(i).toString().split("@")[1]);
+                                    go.putExtra("username",adapterView.getItemAtPosition(i).toString().split("Username: ")[1]);
                                     startActivity(go);
                                     finish();
                                 }
@@ -106,3 +110,4 @@ public class PaymentRequests extends AppCompatActivity {
         });
     }
 }
+
