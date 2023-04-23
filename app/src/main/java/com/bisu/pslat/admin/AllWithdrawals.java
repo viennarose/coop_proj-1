@@ -101,7 +101,7 @@ public class AllWithdrawals extends AppCompatActivity {
         });
 
         mDatabase = FirebaseDatabase.getInstance().getReference();
-        mDatabase.child("withdrawal").get()
+        mDatabase.child("withdrawals").get()
                 .addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<DataSnapshot> task) {
@@ -119,10 +119,10 @@ public class AllWithdrawals extends AppCompatActivity {
                                         if (snapshot.isSuccessful()) {
 //                                          String fullName = snapshot.getResult().child("fullname").getValue(String.class);
 
-                                            String dateUpdated = child.child("date_updated").exists() ? new String(Base64.decode(child.child("guarantor_username").getValue().toString(), Base64.DEFAULT)) : "Active Member";
+//                                            String amount = child.child("username").exists() ? new String(Base64.decode(child.child("user_id").getValue().toString(), Base64.DEFAULT)) : "Active Member";
 
-                                            String loanInfo = "Amount: " + dateUpdated;
-
+                                            String loanInfo = "Name: " + child.child("user_id" ).getValue().toString() + "\n" +
+                                            "Withdraw Amount: P" + child.child("amount").getValue().toString();
                                             loanList.add(loanInfo);
                                             totalWithdrawals[0] += Double.parseDouble(child.child("amount").getValue().toString());
 //                                            totalInterest[0] += Double.parseDouble(child.child("interest").getValue().toString());

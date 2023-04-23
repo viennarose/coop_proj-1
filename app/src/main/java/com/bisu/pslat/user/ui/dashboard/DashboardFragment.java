@@ -103,15 +103,17 @@ public class DashboardFragment extends Fragment {
                             ArrayList<String> userList = new ArrayList<String>();
                             final String[] payment = {""};
                             final String[] month = {""};
+                            final String[] paymentType = {""};
                             final String[] date_created = { "" };
                             for (DataSnapshot child : snapshot.getChildren()) {
-                                if(child.child("status").getValue().toString().matches("approved")){
+                                if((child.child("status").getValue().toString().matches("approved") && child.child("payment_type").getValue().toString().matches("Loan Payment"))){
                                     String user_id = child.child("user_id").getValue().toString();
                                     payment[0] = child.child("payment").getValue().toString();
                                     month[0] = child.child("month").getValue().toString();
+                                    paymentType[0] = child.child("payment_type").getValue().toString();
                                     date_created[0] = child.child("date_created").getValue().toString();
 
-                                    userList.add("Payment Amount: P"+payment[0] +System.getProperty("line.separator")+"Month of: "+month[0] +System.getProperty("line.separator")+"Date Requested: "+date_created[0]);
+                                    userList.add("Payment Amount: P"+payment[0] +System.getProperty("line.separator")+"Month of: "+month[0] +System.getProperty("line.separator")+"Payment Type: " + paymentType[0] +System.getProperty("line.separator")+"Date Requested: "+date_created[0]);
                                     ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(DashboardFragment.context, R.layout.activity_listview2, R.id.textView, userList);
                                     simpleList.setAdapter(arrayAdapter);
                                 }
