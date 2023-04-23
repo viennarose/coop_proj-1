@@ -26,6 +26,8 @@ public class AdminMainActivity extends AppCompatActivity {
         Button accBtn = (Button) findViewById(R.id.accButton);
         Button totalsBtn = (Button) findViewById(R.id.totalsBtn);
         Button paymentRequestsBtn = (Button) findViewById(R.id.paymentRequestsBtn);
+        Button withdrawalRequestsBtn = (Button) findViewById(R.id.withdrawalRequestsBtn);
+        Button collectionBtn = (Button) findViewById(R.id.CollectionBtn);
         TextView logout = (TextView) findViewById(R.id.loutButton);
 
         logout.setOnClickListener(new View.OnClickListener() {
@@ -109,6 +111,24 @@ public class AdminMainActivity extends AppCompatActivity {
                 finish();
             }
         });
+
+        withdrawalRequestsBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(AdminMainActivity.this, WithdrawalRequests.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
+//        collectionBtn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(AdminMainActivity.this, Collection.class);
+//                startActivity(intent);
+//                finish();
+//            }
+//        });
 
     }
 }

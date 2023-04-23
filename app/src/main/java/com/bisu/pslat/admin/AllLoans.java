@@ -50,6 +50,7 @@ public class AllLoans extends AppCompatActivity {
         simpleList = (ListView) findViewById(R.id.usersListView);
         Button back = (Button) findViewById(R.id.backButton);
         Button total = (Button) findViewById(R.id.total);
+        Button withdrawalBtn = (Button) findViewById(R.id.WithdrawalBtn);
         Button reportBtn = (Button) findViewById(R.id.report);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
             if (!Environment.isExternalStorageManager()) {
@@ -152,6 +153,15 @@ public class AllLoans extends AppCompatActivity {
                         }
                     }
                 });
+
+        withdrawalBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(AllLoans.this, AllWithdrawals.class);
+                startActivity(intent);
+                finish();
+            }
+        });
 
         back.setOnClickListener(new View.OnClickListener() {
             @Override

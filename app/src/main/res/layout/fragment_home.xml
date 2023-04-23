@@ -79,9 +79,9 @@
                     android:textFontWeight="300"
                     android:textSize="15dp"
                     android:textStyle="bold" />
-
             </LinearLayout>
         </LinearLayout>
+
         <ImageView
             android:id="@+id/imageView3"
             android:layout_width="250dp"
@@ -90,6 +90,7 @@
             android:layout_gravity="center"
             app:srcCompat="@drawable/logocoop"
             tools:ignore="MissingConstraints" />
+
         <TextView
             android:id="@+id/text_home"
             android:layout_width="match_parent"
@@ -131,17 +132,7 @@
             android:text="PAY LOAN"
             android:textColor="@color/white"
             android:visibility="invisible" />
-        <Button
-            android:id="@+id/joinButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="20dp"
-            android:background="@drawable/button_background"
-            android:text="JOIN MEMBERSHIP"
-            android:textColor="@color/white"
-            android:visibility="invisible" />
+
         <Button
             android:id="@+id/depositButton"
             android:layout_width="match_parent"
@@ -153,6 +144,7 @@
             android:text="Deposit"
             android:textColor="@color/white"
             android:visibility="invisible" />
+
         <Button
             android:id="@+id/withdrawalButton"
             android:layout_width="match_parent"
@@ -165,7 +157,17 @@
             android:textColor="@color/white"
             android:visibility="invisible" />
 
-
+        <Button
+            android:id="@+id/joinButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/button_background"
+            android:text="JOIN MEMBERSHIP"
+            android:textColor="@color/white"
+            android:visibility="invisible" />
 
     </LinearLayout>
 

@@ -86,7 +86,7 @@ public class PaymentRequestInformation extends AppCompatActivity {
                                                                 ObjectAnimator.ofInt(pbar, "progress", 10000)
                                                                         .setDuration(1000)
                                                                         .start();
-                                                                barT.setText("Approving loan request...");
+                                                                barT.setText("Approving payment request...");
 
                                                                 String dateToday = java.text.DateFormat.getDateTimeInstance().format(Calendar.getInstance().getTime());
                                                                 mDatabase.child("payment_requests").child(m_id[0]).child("date_updated").setValue(dateToday);
@@ -99,19 +99,18 @@ public class PaymentRequestInformation extends AppCompatActivity {
 
                                                                 HashMap<String, Object> map = new HashMap<>();
                                                                 map.put("user_id", user_id);
-                                                                map.put("amount", child2.child("payment").getValue().toString());
-
+                                                                map.put("payment", child2.child("payment").getValue().toString());
                                                                 map.put("type", "Loan Payment");
                                                                 map.put("date_created", dateToday);
 
                                                                 HashMap<String, Object> map2 = new HashMap<>();
-                                                                map2.put("amount", child2.child("payment").getValue().toString());
+                                                                map2.put("payment", child2.child("payment").getValue().toString());
                                                                 map2.put("type", "Loan Payment");
                                                                 map2.put("date_created", dateToday);
 
                                                                 barT.setText("Setting up user balance...");
 
-                                                                mDatabase.child("payment_requests").child(user_id).push().setValue(map2);
+                                                                mDatabase.child("payments").child(user_id).push().setValue(map2);
                                                                 mDatabase.child("balance").push().setValue(map)
                                                                         .addOnSuccessListener(new OnSuccessListener<Void>() {
                                                                             @Override
