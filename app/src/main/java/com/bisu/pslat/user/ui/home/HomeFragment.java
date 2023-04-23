@@ -25,6 +25,7 @@ import com.bisu.pslat.Login;
 import com.bisu.pslat.MemberDeposit;
 import com.bisu.pslat.MemberLoan;
 import com.bisu.pslat.MemberPayment;
+import com.bisu.pslat.MemberWithdrawal;
 import com.bisu.pslat.NotMemberLoan;
 import com.bisu.pslat.R;
 import com.bisu.pslat.UserDashboard;
@@ -86,28 +87,28 @@ public class HomeFragment extends Fragment {
                                     UserDashboard.fullname[0] = child1.child("fullname").getValue().toString();
                                     UserDashboard.username[0] = child1.child("username").getValue().toString();
 
-                                    if(child1.child("type").getValue().toString().matches("member")){
-                                        mDatabase.child("balance").orderByChild("user_id").equalTo(user.getUid())
-                                                .addListenerForSingleValueEvent(new ValueEventListener() {
-                                                    @Override
-                                                    public void onDataChange(@NonNull DataSnapshot snapshot2) {
-                                                        double balanceVal = 0.00;
-
-                                                        for(DataSnapshot ds : snapshot2.getChildren()){
-                                                            balanceVal+=Double.parseDouble(ds.child("amount").getValue().toString());
-                                                        }
-//                                                        bal.setText("P"+balanceVal);
-                                                    }
-
-                                                    @Override
-                                                    public void onCancelled(@NonNull DatabaseError error) {
-
-                                                    }
-                                                });
-                                    }
-                                    else {
-//                                        bal.setText("P0.00");
-                                    }
+//                                    if(child1.child("type").getValue().toString().matches("member")){
+//                                        mDatabase.child("balance").orderByChild("user_id").equalTo(user.getUid())
+//                                                .addListenerForSingleValueEvent(new ValueEventListener() {
+//                                                    @Override
+//                                                    public void onDataChange(@NonNull DataSnapshot snapshot2) {
+//                                                        double balanceVal = 0.00;
+//
+//                                                        for(DataSnapshot ds : snapshot2.getChildren()){
+//                                                            balanceVal+=Double.parseDouble(ds.child("amount").getValue().toString());
+//                                                        }
+////                                                        bal.setText("P"+balanceVal);
+//                                                    }
+//
+//                                                    @Override
+//                                                    public void onCancelled(@NonNull DatabaseError error) {
+//
+//                                                    }
+//                                                });
+//                                    }
+//                                    else {
+////                                        bal.setText("P0.00");
+//                                    }
                                 }
                                 textView.setText("Hello "+AccountSettings.decode(UserDashboard.fullname[0])+"!");
 
@@ -208,7 +209,7 @@ public class HomeFragment extends Fragment {
                                     withdrawal.setOnClickListener(new View.OnClickListener() {
                                         @Override
                                         public void onClick(View v) {
-                                            Intent intent = new Intent(getContext(), MemberPayment.class);
+                                            Intent intent = new Intent(getContext(), MemberWithdrawal.class);
                                             startActivity(intent);
                                         }
                                     });

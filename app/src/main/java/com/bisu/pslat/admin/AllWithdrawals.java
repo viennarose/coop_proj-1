@@ -13,7 +13,6 @@ import android.os.Environment;
 import android.os.StrictMode;
 import android.provider.Settings;
 import android.util.Base64;
-import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -21,16 +20,13 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.bisu.pslat.AccountSettings;
 import com.bisu.pslat.BuildConfig;
 import com.bisu.pslat.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -39,18 +35,18 @@ import java.io.IOException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 
-public class AllLoans extends AppCompatActivity {
+public class AllWithdrawals extends AppCompatActivity {
     ListView simpleList;
     private DatabaseReference mDatabase;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_all_loans);
+        setContentView(R.layout.activity_all_withdrawals);
+
         simpleList = (ListView) findViewById(R.id.usersListView);
         Button back = (Button) findViewById(R.id.backButton);
         Button total = (Button) findViewById(R.id.total);
-        Button withdrawalBtn = (Button) findViewById(R.id.WithdrawalBtn);
+
         Button reportBtn = (Button) findViewById(R.id.report);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
             if (!Environment.isExternalStorageManager()) {
@@ -84,12 +80,12 @@ public class AllLoans extends AppCompatActivity {
                     outStream = new FileOutputStream(outFile);
                     Intent intent = new Intent();
                     intent.setAction(Intent.ACTION_VIEW);
-                    Uri photoURI = FileProvider.getUriForFile(AllLoans.this,
+                    Uri photoURI = FileProvider.getUriForFile(AllWithdrawals.this,
                             BuildConfig.APPLICATION_ID + ".provider",
                             outFile);
                     intent.setDataAndType(photoURI, "image/*");
                     intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-                    AllLoans.this.startActivity(Intent.createChooser(intent, "View using"));
+                    AllWithdrawals.this.startActivity(Intent.createChooser(intent, "View using"));
                 } catch (FileNotFoundException e) {
                     throw new RuntimeException(e);
                 }
@@ -100,21 +96,21 @@ public class AllLoans extends AppCompatActivity {
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
-                Toast.makeText(AllLoans.this, "Report Generated", Toast.LENGTH_SHORT).show();
+                Toast.makeText(AllWithdrawals.this, "Report Generated", Toast.LENGTH_SHORT).show();
             }
         });
 
         mDatabase = FirebaseDatabase.getInstance().getReference();
-        mDatabase.child("loans").get()
+        mDatabase.child("withdrawal").get()
                 .addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<DataSnapshot> task) {
                         if (task.isSuccessful()) {
                             ArrayList<String> loanList = new ArrayList<>();
-                            double[] totalLoans = {0};
-                            double[] totalInterest = {0};
-                            double[] totalService = {0};
-                            double[] totalSur = {0};
+                            double[] totalWithdrawals = {0};
+//                            double[] totalInterest = {0};
+//                            double[] totalService = {0};
+//                            double[] totalSur = {0};
                             for (DataSnapshot child : task.getResult().getChildren()) {
                                 String userId = child.child("user_id").getValue().toString();
                                 mDatabase.child("users").child(userId).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
@@ -123,24 +119,21 @@ public class AllLoans extends AppCompatActivity {
                                         if (snapshot.isSuccessful()) {
 //                                          String fullName = snapshot.getResult().child("fullname").getValue(String.class);
 
-                                            String guarantorName = child.child("guarantor_username").exists() ? new String(Base64.decode(child.child("guarantor_username").getValue().toString(), Base64.DEFAULT)) : "Active Member";
+                                            String dateUpdated = child.child("date_updated").exists() ? new String(Base64.decode(child.child("guarantor_username").getValue().toString(), Base64.DEFAULT)) : "Active Member";
 
-                                            String loanInfo = "Guarantor: " + guarantorName + "\n" +
-                                                    "Loan Amount: P" + child.child("amount").getValue().toString() + "\n" +
-                                                    "Interest: P" + child.child("interest").getValue().toString() + "\n" +
-                                                    "Service Charge: P" + child.child("service_charge").getValue().toString() + "\n" +
-                                                    "Surcharge: P" + child.child("sur_charge").getValue().toString();
+                                            String loanInfo = "Amount: " + dateUpdated;
+
                                             loanList.add(loanInfo);
-                                            totalLoans[0] += Double.parseDouble(child.child("amount").getValue().toString());
-                                            totalInterest[0] += Double.parseDouble(child.child("interest").getValue().toString());
-                                            totalService[0] += Double.parseDouble(child.child("service_charge").getValue().toString());
-                                            totalSur[0] += Double.parseDouble(child.child("sur_charge").getValue().toString());
-                                            ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(AllLoans.this, R.layout.activity_listview, R.id.textView, loanList);
+                                            totalWithdrawals[0] += Double.parseDouble(child.child("amount").getValue().toString());
+//                                            totalInterest[0] += Double.parseDouble(child.child("interest").getValue().toString());
+//                                            totalService[0] += Double.parseDouble(child.child("service_charge").getValue().toString());
+//                                            totalSur[0] += Double.parseDouble(child.child("sur_charge").getValue().toString());
+                                            ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(AllWithdrawals.this, R.layout.activity_listview, R.id.textView, loanList);
                                             simpleList.setAdapter(arrayAdapter);
-                                            total.setText("Total Loans: P" + totalLoans[0] +
-                                                    "\nTotal Interest: P" + totalInterest[0] +
-                                                    "\nTotal Service Charge: P" + totalService[0] +
-                                                    "\nTotal Surcharge: P" + totalSur[0]);
+                                            total.setText("Total Withdrawals: P" + totalWithdrawals[0]);
+//                                                    "\nTotal Interest: P" + totalInterest[0] +
+//                                                    "\nTotal Service Charge: P" + totalService[0] +
+//                                                    "\nTotal Surcharge: P" + totalSur[0]);
                                         } else {
                                             // Handle error
                                         }
@@ -154,27 +147,16 @@ public class AllLoans extends AppCompatActivity {
                     }
                 });
 
-        withdrawalBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(AllLoans.this, AllWithdrawals.class);
-                startActivity(intent);
-                finish();
-            }
-        });
+
 
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(AllLoans.this, AdminMainActivity.class);
+                Intent intent = new Intent(AllWithdrawals.this, AllLoans.class);
                 startActivity(intent);
                 finish();
             }
         });
     }
+
 }
-
-
-
-
-

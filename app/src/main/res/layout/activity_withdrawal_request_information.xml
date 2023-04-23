@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#202020"
+    tools:context=".admin.WithdrawalRequestInformation">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/registration"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:textSize="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="20dp"
+            android:textFontWeight="300"
+            android:text="Withdrawal Request Information" />
+
+        <EditText
+            android:id="@+id/fullName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableEnd="@drawable/baseline_drive_file_rename_outline_24"
+            android:ems="10"
+            android:background="@drawable/edittext_border"
+            android:hint="Full Name"
+            android:textColorHint="#202020"
+            android:enabled="false"
+            android:digits=". qwertzuiopasdfghjklyxcvbnmABCDEFGHIJKLMNOPQRSTUVWXYZ"
+            android:padding="15dp"
+            android:textColor="#202020"
+            android:drawablePadding="10dp"
+            android:layout_marginBottom="10dp"
+            android:inputType="text" />
+
+        <EditText
+            android:id="@+id/payment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableEnd="@drawable/baseline_monetization_on_24"
+            android:ems="10"
+            android:background="@drawable/edittext_border"
+            android:hint="Amount"
+            android:enabled="false"
+            android:textColor="@color/black"
+            android:textColorHint="@color/white"
+            android:digits=",.- 0123456789qwertzuiopasdfghjklyxcvbnmABCDEFGHIJKLMNOPQRSTUVWXYZ"
+            android:padding="15dp"
+            android:drawablePadding="10dp"
+            android:layout_marginBottom="10dp"
+            android:inputType="number" />
+
+        <EditText
+            android:id="@+id/paymentType"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableEnd="@drawable/baseline_monetization_on_24"
+            android:ems="10"
+            android:background="@drawable/edittext_border"
+            android:hint="Payment Type"
+            android:enabled="false"
+            android:textColor="#202020"
+            android:textColorHint="#202020"
+            android:digits=",.- 0123456789qwertzuiopasdfghjklyxcvbnmABCDEFGHIJKLMNOPQRSTUVWXYZ"
+            android:padding="15dp"
+            android:drawablePadding="10dp"
+            android:layout_marginBottom="10dp"
+            android:inputType="number" />
+
+        <EditText
+            android:id="@+id/reqDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableEnd="@drawable/baseline_calendar_month_24"
+            android:ems="10"
+            android:textColorHint="#202020"
+            android:background="@drawable/edittext_border"
+            android:hint="Date requested"
+            android:textColor="#202020"
+            android:padding="15dp"
+            android:enabled="false"
+            android:drawablePadding="10dp"
+            android:layout_marginBottom="10dp"
+            android:inputType="text" />
+
+        <Button
+            android:id="@+id/approveButton"
+            android:layout_width="200dp"
+            android:gravity="center"
+            android:layout_height="wrap_content"
+            android:background="@color/title_color"
+            android:textColor="#ffffff"
+            android:layout_marginTop="10dp"
+            android:text="APPROVE" />
+
+        <Button
+            android:id="@+id/rejectButton"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@color/cancel"
+            android:gravity="center"
+            android:text="REJECT"
+            android:textColor="#000000" />
+
+
+        <ProgressBar
+            android:id="@+id/progressBar2"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_marginTop="10dp"
+            android:scaleY="3"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/progressText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:textSize="12dp"
+            android:textColor="@color/black"
+            android:text="" />
+
+        <Button
+            android:id="@+id/backButton"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:background="@drawable/button_background"
+            android:gravity="center"
+            android:text="GO BACK"
+            android:textColor="@color/white" />
+
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

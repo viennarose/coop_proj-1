@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#202020"
+    tools:context=".admin.WithdrawalRequests">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <Button
+            android:id="@+id/backButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/light_blue_600"
+            android:textColor="@color/white"
+            android:gravity="left|center"
+            android:paddingLeft="20dp"
+            android:text="GO BACK" />
+
+        <ImageView
+            android:id="@+id/imageView4"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:layout_marginTop="-50dp"
+            app:srcCompat="@drawable/logocoop"  />
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:gravity="center"
+            android:textSize="20dp"
+            android:textFontWeight="300"
+            android:layout_marginTop="-50dp"
+            android:layout_marginBottom="20dp"
+            android:text="Withdrawal Requests Archive" />
+
+        <ListView
+            android:id="@+id/paymentListView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:divider="@color/light_blue_600"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:dividerHeight="3dp" />
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

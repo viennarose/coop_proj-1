@@ -4,8 +4,6 @@ import android.animation.ObjectAnimator;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.util.Base64;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -25,16 +23,16 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.nio.charset.StandardCharsets;
 import java.util.Calendar;
 import java.util.HashMap;
 
-public class PaymentRequestInformation extends AppCompatActivity {
+public class WithdrawalRequestInformation extends AppCompatActivity {
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_payment_request_information);
+        setContentView(R.layout.activity_withdrawal_request_information);
         EditText fullName = (EditText) findViewById(R.id.fullName);
 
         EditText paymentVal = (EditText) findViewById(R.id.payment);
@@ -61,7 +59,7 @@ public class PaymentRequestInformation extends AppCompatActivity {
                             for (DataSnapshot child : snapshot.getChildren()) {
 
                                 String user_id = child.getKey();
-                                mDatabase.child("payment_requests").orderByChild("user_id").equalTo(user_id)
+                                mDatabase.child("withdrawal_requests").orderByChild("user_id").equalTo(user_id)
                                         .addListenerForSingleValueEvent(new ValueEventListener() {
                                             @Override
                                             public void onDataChange(@NonNull DataSnapshot snapshot2) {
@@ -72,12 +70,58 @@ public class PaymentRequestInformation extends AppCompatActivity {
                                                         userpayment_type = child2.child("payment_type").getValue().toString();
                                                         fullName.setText(AccountSettings.decode(child.child("fullname").getValue().toString()));
 //
-                                                        paymentVal.setText(child2.child("payment").getValue().toString());
+                                                        paymentVal.setText(child2.child("amount").getValue().toString());
                                                         paymentType.setText(child2.child("payment_type").getValue().toString());
 //                                                        months.setText(child2.child("months").getValue().toString() + " months");
                                                         month.setText(child2.child("date_created").getValue().toString());
 
                                                         String finalUserpayment_type = userpayment_type;
+//                                                        approveBtn.setOnClickListener(new View.OnClickListener() {
+//                                                            @Override
+//                                                            public void onClick(View v) {
+//                                                                pbar.setVisibility(View.VISIBLE);
+//                                                                pbar.getProgressDrawable().setColorFilter(Color.RED, android.graphics.PorterDuff.Mode.SRC_IN);
+//                                                                ObjectAnimator.ofInt(pbar, "progress", 10000)
+//                                                                        .setDuration(1000)
+//                                                                        .start();
+//                                                                barT.setText("Approving withdrawal request...");
+//
+//                                                                String dateToday = java.text.DateFormat.getDateTimeInstance().format(Calendar.getInstance().getTime());
+//                                                                mDatabase.child("withdrawals").child(m_id[0]).child("date_updated").setValue(dateToday);
+//                                                                mDatabase.child("withdrawals").child(m_id[0]).child("status").setValue("approved");
+//                                                                mDatabase.child("withdrawals").child(user_id).child("user_id").setValue(user_id);
+//                                                                barT.setText("Updating user table...");
+//
+//                                                                mDatabase.child("users").child(user_id).child("type").setValue("member");
+//                                                                mDatabase.child("users").child(user_id).child("date_updated").setValue(dateToday);
+//
+//                                                                HashMap<String, Object> map = new HashMap<>();
+//                                                                map.put("user_id", user_id);
+//                                                                map.put("amount", child2.child("amount").getValue().toString());
+//                                                                map.put("type", "Withdrawal");
+//                                                                map.put("date_created", dateToday);
+//
+//                                                                HashMap<String, Object> map2 = new HashMap<>();
+//                                                                map.put("user_id", user_id);
+//                                                                map2.put("amount", child2.child("amount").getValue().toString());
+//                                                                map2.put("type", "Withdrawal");
+//                                                                map2.put("date_created", dateToday);
+//
+//                                                                barT.setText("Setting up user balance...");
+//
+//                                                                mDatabase.child("withdrawals").child(user_id).push().setValue(map2);
+//                                                                mDatabase.child("balance").push().setValue(map)
+//                                                                        .addOnSuccessListener(new OnSuccessListener<Void>() {
+//                                                                            @Override
+//                                                                            public void onSuccess(Void unused) {
+//                                                                                Intent intent = new Intent(WithdrawalRequestInformation.this, WithdrawalRequests.class);
+//                                                                                startActivity(intent);
+//                                                                                finish();
+//                                                                            }
+//                                                                        });
+//                                                            }
+//                                                        });
+
                                                         approveBtn.setOnClickListener(new View.OnClickListener() {
                                                             @Override
                                                             public void onClick(View v) {
@@ -86,55 +130,46 @@ public class PaymentRequestInformation extends AppCompatActivity {
                                                                 ObjectAnimator.ofInt(pbar, "progress", 10000)
                                                                         .setDuration(1000)
                                                                         .start();
-                                                                barT.setText("Approving payment request...");
+                                                                barT.setText("Approving loan request...");
 
                                                                 String dateToday = java.text.DateFormat.getDateTimeInstance().format(Calendar.getInstance().getTime());
-                                                                mDatabase.child("payment_requests").child(m_id[0]).child("date_updated").setValue(dateToday);
-                                                                mDatabase.child("payment_requests").child(m_id[0]).child("status").setValue("approved");
+                                                                mDatabase.child("withdrawal_requests").child(m_id[0]).child("date_updated").setValue(dateToday);
+                                                                mDatabase.child("withdrawal_requests").child(m_id[0]).child("status").setValue("approved");
 
-                                                                barT.setText("Updating user table...");
+                                                                barT.setText("Submitting loan request...");
 
-                                                                mDatabase.child("users").child(user_id).child("type").setValue("member");
-                                                                mDatabase.child("users").child(user_id).child("date_updated").setValue(dateToday);
 
+                                                                Double withdrawalAmount = Double.parseDouble(paymentVal.getText().toString().replace("Loan Amount: ", ""));
                                                                 HashMap<String, Object> map = new HashMap<>();
+
                                                                 map.put("user_id", user_id);
-                                                                map.put("payment", child2.child("payment").getValue().toString());
-                                                                map.put("type", "Loan Payment");
+                                                                map.put("amount",withdrawalAmount);
                                                                 map.put("date_created", dateToday);
+                                                                map.put("date_updated", dateToday);
 
-                                                                HashMap<String, Object> map2 = new HashMap<>();
-                                                                map2.put("payment", child2.child("payment").getValue().toString());
-                                                                map2.put("type", "Loan Payment");
-                                                                map2.put("date_created", dateToday);
-
-                                                                barT.setText("Setting up user balance...");
-
-                                                                mDatabase.child("payments").child(user_id).push().setValue(map2);
-                                                                mDatabase.child("balance").push().setValue(map)
+                                                                mDatabase.child("withdrawals").push().setValue(map)
                                                                         .addOnSuccessListener(new OnSuccessListener<Void>() {
                                                                             @Override
                                                                             public void onSuccess(Void unused) {
-                                                                                Intent intent = new Intent(PaymentRequestInformation.this, PaymentRequests.class);
+                                                                                Toast.makeText(WithdrawalRequestInformation.this, "Withdrawal Request Approved", Toast.LENGTH_SHORT).show();
+                                                                                Intent intent = new Intent(WithdrawalRequestInformation.this, WithdrawalRequests.class);
                                                                                 startActivity(intent);
                                                                                 finish();
                                                                             }
                                                                         });
                                                             }
                                                         });
-
-
                                                         rejectBtn.setOnClickListener(new View.OnClickListener() {
                                                             @Override
                                                             public void onClick(View v) {
                                                                 String dateToday = java.text.DateFormat.getDateTimeInstance().format(Calendar.getInstance().getTime());
-                                                                mDatabase.child("payment_requests").child(m_id[0]).child("date_updated").setValue(dateToday);
-                                                                mDatabase.child("payment_requests").child(m_id[0]).child("status").setValue("rejected")
+                                                                mDatabase.child("withdrawal_requests").child(m_id[0]).child("date_updated").setValue(dateToday);
+                                                                mDatabase.child("withdrawal_requests").child(m_id[0]).child("status").setValue("rejected")
                                                                         .addOnSuccessListener(new OnSuccessListener<Void>() {
                                                                             @Override
                                                                             public void onSuccess(Void unused) {
-                                                                                Toast.makeText(PaymentRequestInformation.this, "Request Rejected", Toast.LENGTH_SHORT).show();
-                                                                                Intent intent = new Intent(PaymentRequestInformation.this, LoanRequests.class);
+                                                                                Toast.makeText(WithdrawalRequestInformation.this, "Request Rejected", Toast.LENGTH_SHORT).show();
+                                                                                Intent intent = new Intent(WithdrawalRequestInformation.this, LoanRequests.class);
                                                                                 startActivity(intent);
                                                                                 finish();
                                                                             }
@@ -153,7 +188,7 @@ public class PaymentRequestInformation extends AppCompatActivity {
                             }
                         }
                         else {
-                            Toast.makeText(PaymentRequestInformation.this, "User doesnt exist", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(WithdrawalRequestInformation.this, "User doesnt exist", Toast.LENGTH_SHORT).show();
                         }
                     }
 
@@ -165,7 +200,7 @@ public class PaymentRequestInformation extends AppCompatActivity {
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(PaymentRequestInformation.this, PaymentRequests.class);
+                Intent intent = new Intent(WithdrawalRequestInformation.this, PaymentRequests.class);
                 startActivity(intent);
                 finish();
             }

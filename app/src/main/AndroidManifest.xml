@@ -37,6 +37,9 @@
             android:name=".admin.AllLoans"
             android:exported="false" />
         <activity
+            android:name=".admin.AllWithdrawals"
+            android:exported="false" />
+        <activity
             android:name=".admin.AllMembers"
             android:exported="false" />
         <activity
@@ -61,6 +64,12 @@
             android:name=".admin.MembershipRequestInformation"
             android:exported="false" />
         <activity
+            android:name=".admin.WithdrawalRequestInformation"
+            android:exported="false" />
+        <activity
+            android:name=".admin.Collection"
+            android:exported="false" />
+        <activity
             android:name=".admin.PaymentRequestInformation"
             android:exported="false" />
         <activity
@@ -72,7 +81,6 @@
         <activity
             android:name=".MemberPayment"
             android:exported="false" />
-
         <activity
             android:name=".admin.Settings"
             android:exported="false" />
@@ -81,6 +89,9 @@
             android:exported="false" />
         <activity
             android:name=".admin.PaymentRequests"
+            android:exported="false" />
+        <activity
+            android:name=".admin.WithdrawalRequests"
             android:exported="false" />
         <activity
             android:name=".admin.LoanRequests"
@@ -108,6 +119,9 @@
             android:exported="false" />
         <activity
             android:name=".MemberDeposit"
+            android:exported="false" />
+        <activity
+            android:name=".MemberWithdrawal"
             android:exported="false" />
         <activity
             android:name=".UserDashboard"
