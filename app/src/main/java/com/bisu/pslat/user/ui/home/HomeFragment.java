@@ -31,6 +31,7 @@ import com.bisu.pslat.R;
 import com.bisu.pslat.UserDashboard;
 import com.bisu.pslat.UserLoanInformation;
 import com.bisu.pslat.databinding.FragmentHomeBinding;
+import com.bisu.pslat.user.ui.DepositsViewList;
 import com.bisu.pslat.user.ui.dashboard.DashboardFragment;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -61,6 +62,7 @@ public class HomeFragment extends Fragment {
         final Button deposit = binding.depositButton;
         final Button withdrawal = binding.withdrawalButton;
         final TextView textView = binding.textHome;
+        final Button depBtn = binding.depBtn;
         stat = binding.status;
 //        final TextView bal = binding.balanceValue;
         //homeViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
@@ -199,6 +201,14 @@ public class HomeFragment extends Fragment {
                                         }
                                     });
 
+                                    depBtn.setOnClickListener(new View.OnClickListener() {
+                                        @Override
+                                        public void onClick(View view) {
+                                            Intent intent = new Intent(getContext(), DepositsViewList.class);
+                                            startActivity(intent);
+                                        }
+                                    });
+
                                     paymentLoan.setOnClickListener(new View.OnClickListener() {
                                         @Override
                                         public void onClick(View v) {
@@ -238,6 +248,8 @@ public class HomeFragment extends Fragment {
         }
         return root;
     }
+
+
 
     @Override
     public void onDestroyView() {

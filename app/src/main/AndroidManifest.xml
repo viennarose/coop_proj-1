@@ -19,6 +19,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MaterialComponents.Light.NoActionBar.Bridge"
         tools:targetApi="31">
+        <activity
+            android:name=".user.ui.DepositsViewList"
+            android:exported="false" />
 
         <provider
             android:name="androidx.core.content.FileProvider"
