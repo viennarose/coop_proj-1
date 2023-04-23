@@ -45,7 +45,7 @@ public class MemberInfoIndividual extends AppCompatActivity {
 
         Intent intent = getIntent();
         String full_Name = intent.getStringExtra("fullname");
-        full_Name = "Name: " + full_Name;
+        full_Name = "" + full_Name;
         String cbu = intent.getStringExtra("cbu");
         cbu = "CBU: " + cbu;
         String patron = intent.getStringExtra("patronage");
