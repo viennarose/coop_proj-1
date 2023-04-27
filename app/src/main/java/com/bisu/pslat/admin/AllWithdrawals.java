@@ -119,15 +119,13 @@ public class AllWithdrawals extends AppCompatActivity {
                                         if (snapshot.isSuccessful()) {
 //                                          String fullName = snapshot.getResult().child("fullname").getValue(String.class);
 
-//                                            String amount = child.child("username").exists() ? new String(Base64.decode(child.child("user_id").getValue().toString(), Base64.DEFAULT)) : "Active Member";
+                                            String username = child.child("username").exists() ? new String(Base64.decode(child.child("user_id").getValue().toString(), Base64.DEFAULT)) : "Active Member";
 
-                                            String loanInfo = "Name: " + child.child("user_id" ).getValue().toString() + "\n" +
+                                            String loanInfo = "Name: " + username + "\n" +
                                             "Withdraw Amount: P" + child.child("amount").getValue().toString();
                                             loanList.add(loanInfo);
                                             totalWithdrawals[0] += Double.parseDouble(child.child("amount").getValue().toString());
-//                                            totalInterest[0] += Double.parseDouble(child.child("interest").getValue().toString());
-//                                            totalService[0] += Double.parseDouble(child.child("service_charge").getValue().toString());
-//                                            totalSur[0] += Double.parseDouble(child.child("sur_charge").getValue().toString());
+//                                           le.parseDouble(child.child("sur_charge").getValue().toString());
                                             ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(AllWithdrawals.this, R.layout.activity_listview, R.id.textView, loanList);
                                             simpleList.setAdapter(arrayAdapter);
                                             total.setText("Total Withdrawals: P" + totalWithdrawals[0]);

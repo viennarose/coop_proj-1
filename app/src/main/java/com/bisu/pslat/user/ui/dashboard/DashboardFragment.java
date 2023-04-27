@@ -57,26 +57,26 @@ public class DashboardFragment extends Fragment {
         //final TextView textView = binding.textDashboard;
         //dashboardViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
 
-        TextView logoutBtn = binding.logoutButton;
-        TextView accButton = binding.accBtn;
+//        TextView logoutBtn = binding.logoutButton;
+//        TextView accButton = binding.accBtn;
         loadLoanReqList();
         loadLoanList();
-        accButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getContext(), AccountSettings.class);
-                startActivity(intent);
-            }
-        });
+//        accButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(getContext(), AccountSettings.class);
+//                startActivity(intent);
+//            }
+//        });
 
-        logoutBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                FirebaseAuth.getInstance().signOut();
-                Intent intent = new Intent(getContext(), Login.class);
-                startActivity(intent);
-            }
-        });
+//        logoutBtn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                FirebaseAuth.getInstance().signOut();
+//                Intent intent = new Intent(getContext(), Login.class);
+//                startActivity(intent);
+//            }
+//        });
         return root;
     }
 
