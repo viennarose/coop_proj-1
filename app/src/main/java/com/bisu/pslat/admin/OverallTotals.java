@@ -57,7 +57,8 @@ public class OverallTotals extends AppCompatActivity {
         setContentView(R.layout.activity_overall_totals);
         Button back = (Button) findViewById(R.id.backButton);
         Button totalBtn = (Button) findViewById(R.id.total);
-        Button totalWithdrawalBtn = (Button) findViewById(R.id.totalDeposit);
+        Button totalWithdrawalBtn = (Button) findViewById(R.id.totalWithdrawal);
+        Button totalDepositBtn = (Button) findViewById(R.id.totalDeposit);
         Button totalLoanBtn = (Button) findViewById(R.id.totalLoan);
         Button reportBtn = (Button) findViewById(R.id.report);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
@@ -143,7 +144,8 @@ public class OverallTotals extends AppCompatActivity {
                                                 }
 
                                                 totalBtn.setText("Total Capital: P" + (totalCapital + totalDeposit));
-//                                                totalDepositBtn.setText("Total De: P" + totalDeposit);
+
+                                                totalDepositBtn.setText("Total Deposit: P" + totalDeposit);
                                                 totalWithdrawalBtn.setText("Total Withdrawals: P" + totalWithdrawal);
                                                 totalLoanBtn.setText("Total Loan Payments: P" + totalLoan);
 

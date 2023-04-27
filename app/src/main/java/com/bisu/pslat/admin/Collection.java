@@ -104,16 +104,65 @@ public class Collection extends AppCompatActivity {
             }
         });
 
+//        mDatabase = FirebaseDatabase.getInstance().getReference();
+//        mDatabase.child("payment_requests").orderByChild("status").equalTo("approved").get()
+//
+//                .addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+//                    @Override
+//                    public void onComplete(@NonNull Task<DataSnapshot> task) {
+//                        if (task.isSuccessful()) {
+//                            ArrayList<String> loanList = new ArrayList<>();
+//                            double[] totalDeposits = {0};
+////                            double[] totalInterest = {0};
+////                            double[] totalService = {0};
+////                            double[] totalSur = {0};
+//                            for (DataSnapshot child : task.getResult().getChildren()) {
+//                                String userId = child.child("user_id").getValue().toString();
+//                                mDatabase.child("users").child(userId).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+//                                    @Override
+//                                    public void onComplete(@NonNull Task<DataSnapshot> snapshot) {
+//                                        if (snapshot.isSuccessful()) {
+////                                          String fullName = snapshot.getResult().child("fullname").getValue(String.class);
+//
+////                                            String guarantorName = child.child("guarantor_username").exists() ? new String(Base64.decode(child.child("guarantor_username").getValue().toString(), Base64.DEFAULT)) : "Active Member";
+//
+//                                            String loanInfo = "Status " + child.child("status").getValue().toString();
+////                                                    "Loan Amount: P" + child.child("amount").getValue().toString() + "\n" +
+////                                                    "Interest: P" + child.child("interest").getValue().toString() + "\n" +
+////                                                    "Service Charge: P" + child.child("service_charge").getValue().toString() + "\n" +
+////                                                    "Surcharge: P" + child.child("sur_charge").getValue().toString();
+//                                            loanList.add(loanInfo);
+//                                            totalDeposits[0] += Double.parseDouble(child.child("payment").getValue().toString());
+////                                            totalInterest[0] += Double.parseDouble(child.child("interest").getValue().toString());
+////                                            totalService[0] += Double.parseDouble(child.child("service_charge").getValue().toString());
+////                                            totalSur[0] += Double.parseDouble(child.child("sur_charge").getValue().toString());
+//                                            ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(Collection.this, R.layout.activity_listview, R.id.textView, loanList);
+//                                            simpleList.setAdapter(arrayAdapter);
+//                                            total.setText("Total Loans: P" + totalDeposits[0]);
+////                                                    "\nTotal Interest: P" + totalInterest[0] +
+////                                                    "\nTotal Service Charge: P" + totalService[0] +
+////                                                    "\nTotal Surcharge: P" + totalSur[0]);
+//                                        } else {
+//                                            // Handle error
+//                                        }
+//                                    }
+//                                });
+//                            }
+//                            reportBtn.setEnabled(true);
+//                        } else {
+//                            // Handle error
+//                        }
+//                    }
+//                });
         mDatabase = FirebaseDatabase.getInstance().getReference();
         mDatabase.child("payment_requests").orderByChild("status").equalTo("approved")
                 .addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot task) {
                         if (!task.exists()) {
-                            total.setText("No members yet");
+//                            totalBtn.setText("No members yet");
                         } else {
                             final double[] totalcbu = {0};
-                            double[] totalPayments = {0};
                             ArrayList<String> userList = new ArrayList<String>();
                             for (DataSnapshot child : task.getChildren()) {
                                 String payment = child.child("payment").getValue().toString();
@@ -124,20 +173,28 @@ public class Collection extends AppCompatActivity {
                                             @Override
                                             public void onDataChange(@NonNull DataSnapshot snapshot) {
                                                 String loanPayment = "";
-
+                                                double totalPayments = 0.00;
                                                 for (DataSnapshot child2 : snapshot.getChildren()) {
-                                                    totalPayments[0] += Double.parseDouble(child2.child("payment").getValue().toString());
+                                                    if (child2.child("payment_type").getValue().toString().matches("Loan Payment")) {
+//                                                            Log.d("jjjjjj",child.getValue().toString());
+//                                                            Log.d("jjjjjj222",child2.getValue().toString());
+                                                        loanPayment = child2.child("payment").getValue().toString();
+                                                        totalcbu[0] += Double.parseDouble(child2.child("payment").getValue().toString());
+                                                    }
+//                                                    } else if (child2.child("type").getValue().toString().matches("patronage_refund")) {
+//                                                        patronage += Double.parseDouble(child2.child("amount").getValue().toString());
+//                                                    }
 
                                                 }
                                                 userList.add("Amount: " + payment + System.getProperty("line.separator")
                                                         + System.getProperty("line.separator") + "Payment Type " + paymentType
+
                                                         + System.getProperty("line.separator") + "Date Paid: " + date_created);
 
                                                 ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(Collection.this, R.layout.activity_listview, R.id.textView, userList);
                                                 simpleList.setAdapter(arrayAdapter);
-                                                total.setText("Total Payments: P" + totalPayments[0]);
+//                                                total.setText("Total Payments: P" + totalcbu[0]);
                                             }
-
 
                                             @Override
                                             public void onCancelled(@NonNull DatabaseError error) {
