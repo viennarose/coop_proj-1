@@ -94,7 +94,7 @@ public class PaymentRequestInformation extends AppCompatActivity {
 
                                                                 barT.setText("Updating user table...");
 
-                                                                mDatabase.child("users").child(user_id).child("type").setValue("member");
+//                                                                mDatabase.child("users").child(user_id).child("type").setValue("member");
                                                                 mDatabase.child("users").child(user_id).child("date_updated").setValue(dateToday);
 
                                                                 HashMap<String, Object> map = new HashMap<>();

@@ -182,7 +182,7 @@
                 android:background="@color/light_blue_600"
                 android:drawableTop="@drawable/baseline_settings_24"
                 android:paddingTop="10dp"
-                android:text="VIEW TOTALS"
+                android:text="FINANCIAL REPORT"
                 android:textColor="@color/white" />
 
             <Button
