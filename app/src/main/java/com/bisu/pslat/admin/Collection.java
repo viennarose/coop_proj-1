@@ -193,7 +193,7 @@ public class Collection extends AppCompatActivity {
 
                                                 ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(Collection.this, R.layout.activity_listview, R.id.textView, userList);
                                                 simpleList.setAdapter(arrayAdapter);
-                                                total.setText("Total Payments: P" + totalcbu[0]);
+//                                                total.setText("Total Payments: P" + totalcbu[0]);
                                             }
 
                                             @Override

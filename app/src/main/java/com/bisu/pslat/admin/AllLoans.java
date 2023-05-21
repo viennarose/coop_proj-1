@@ -127,20 +127,20 @@ public class AllLoans extends AppCompatActivity {
 
                                             String loanInfo = "Guarantor: " + guarantorName + "\n" +
                                                     "Loan Amount: P" + child.child("amount").getValue().toString() + "\n" +
-                                                    "Interest: P" + child.child("interest").getValue().toString() + "\n" +
-                                                    "Service Charge: P" + child.child("service_charge").getValue().toString() + "\n" +
-                                                    "Surcharge: P" + child.child("sur_charge").getValue().toString();
+                                                    "Interest: P" + child.child("interest").getValue().toString();
+//                                                    "Service Charge: P" + child.child("service_charge").getValue().toString();
+//                                                    "Surcharge: P" + child.child("sur_charge").getValue().toString();
                                             loanList.add(loanInfo);
                                             totalLoans[0] += Double.parseDouble(child.child("amount").getValue().toString());
                                             totalInterest[0] += Double.parseDouble(child.child("interest").getValue().toString());
                                             totalService[0] += Double.parseDouble(child.child("service_charge").getValue().toString());
-                                            totalSur[0] += Double.parseDouble(child.child("sur_charge").getValue().toString());
+//                                            totalSur[0] += Double.parseDouble(child.child("sur_charge").getValue().toString());
                                             ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(AllLoans.this, R.layout.activity_listview, R.id.textView, loanList);
                                             simpleList.setAdapter(arrayAdapter);
                                             total.setText("Total Loans: P" + totalLoans[0] +
-                                                    "\nTotal Interest: P" + totalInterest[0] +
-                                                    "\nTotal Service Charge: P" + totalService[0] +
-                                                    "\nTotal Surcharge: P" + totalSur[0]);
+                                                    "\nTotal Interest: P" + totalInterest[0]);
+//                                                    "\nTotal Service Charge: P" + totalService[0]);
+//                                                    "\nTotal Surcharge: P" + totalSur[0]);
                                         } else {
                                             // Handle error
                                         }
@@ -153,6 +153,8 @@ public class AllLoans extends AppCompatActivity {
                         }
                     }
                 });
+
+
 
         withdrawalBtn.setOnClickListener(new View.OnClickListener() {
             @Override
