@@ -6,10 +6,12 @@
     android:layout_height="match_parent"
     android:background="#202020"
     tools:context=".admin.AllMembers">
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
+
         <Button
             android:id="@+id/backButton"
             android:layout_width="match_parent"
@@ -19,45 +21,74 @@
             android:gravity="left|center"
             android:paddingLeft="20dp"
             android:text="GO BACK" />
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/print"
-        android:orientation="vertical">
 
-        <Button
-            android:id="@+id/total"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/white"
-            android:textColor="@color/light_blue_600"
-            android:gravity="center"
-            android:justificationMode="inter_word"
-            android:padding="20dp"
-            android:text="Loading..." />
-        <Button
-            android:id="@+id/report"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:background="@color/cancel"
-            android:textColor="#ffffff"
-            android:layout_marginBottom="10dp"
-            android:enabled="false"
-            android:gravity="center"
-            android:layout_marginLeft="5dp"
-            android:layout_marginTop="10dp"
-            android:text="Generate Report" />
-        <ListView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:divider="@color/light_blue_600"
-            android:id="@+id/usersListView"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:dividerHeight="3dp"/>
-    </LinearLayout>
+            android:id="@+id/print"
+            android:orientation="vertical">
 
+            <Button
+                android:id="@+id/total"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:textColor="@color/light_blue_600"
+                android:gravity="center"
+                android:justificationMode="inter_word"
+                android:padding="20dp"
+                android:text="Loading..." />
 
+            <Button
+                android:id="@+id/report"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:background="@color/cancel"
+                android:textColor="#ffffff"
+                android:layout_marginBottom="10dp"
+                android:enabled="false"
+                android:gravity="center"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="10dp"
+                android:text="Generate Report" />
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/searchEditText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:hint="Search"
+                    android:inputType="text"
+                    android:textColor="#ffffff"
+                    android:textColorHint="#B3ffffff"
+                    android:background="@android:color/transparent"
+                    android:padding="10dp"/>
+
+                <Button
+                    android:id="@+id/searchButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Search"
+                    android:textColor="#ffffff"
+                    android:background="@color/light_blue_600"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"/>
+
+            </LinearLayout>
+
+            <ListView
+                android:id="@+id/usersListView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:divider="@color/light_blue_600"
+                android:dividerHeight="3dp" />
+        </LinearLayout>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
