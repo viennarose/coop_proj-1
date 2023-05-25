@@ -63,7 +63,7 @@
                 android:background="@color/light_blue_600"
                 android:drawableTop="@drawable/baseline_groups_24"
                 android:paddingTop="10dp"
-                android:text="VIEW USERS"
+                android:text="VIEW BORROWERS"
                 android:textColor="@color/white" />
 
             <Button
