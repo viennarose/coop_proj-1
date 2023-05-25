@@ -85,7 +85,7 @@
             android:textColor="#ffffff"
             android:gravity="center"
             android:paddingLeft="20dp"
-            android:text="Loan Guarantor Approval"/>
+            android:text="Loan Guarantor Approval/Notification"/>
 
         <ListView
             android:layout_width="match_parent"
